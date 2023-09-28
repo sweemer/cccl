@@ -24,6 +24,7 @@
 #endif
 
 #include "../cstdlib"              // _LIBCUDACXX_UNREACHABLE
+#include "../__type_traits/void_t.h" // _CUDA_VSTD::__void_t
 
 #if defined(_LIBCUDACXX_COMPILER_NVRTC)
 #define _LIBCUDACXX_OFFSET_IS_ZERO(type, member) !(&(((type *)0)->member))
@@ -987,8 +988,6 @@ void __cp_async_fallback(_Group __g, char * __dest, const char * __src, _CUDA_VS
 // Use as follows:
 // static_assert(__get_size_align<size_t>::align == 1)
 // static_assert(__get_size_align<aligned_size_t<n>>::align == n)
-template< class... >
-using __custom_void_t = void;
 
 // Default impl: always returns 1.
 template <typename, typename = void>
@@ -998,7 +997,7 @@ struct __get_size_align {
 
 // aligned_size_t<n> overload: return n.
 template <typename T>
-struct __get_size_align<T, __custom_void_t<decltype(T::align)>> {
+struct __get_size_align<T, _CUDA_VSTD::__void_t<decltype(T::align)>> {
     static constexpr int align = T::align;
 };
 
