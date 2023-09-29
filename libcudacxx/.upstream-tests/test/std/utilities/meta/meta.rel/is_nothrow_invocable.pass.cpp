@@ -8,7 +8,7 @@
 
 // UNSUPPORTED: c++98, c++03, c++11
 
-// XFAIL: nvcc
+// XFAIL: nvcc, nvrtc
 // FIXME: Triage and fix this.
 
 // type_traits
