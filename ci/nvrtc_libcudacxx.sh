@@ -15,5 +15,6 @@ configure "$CMAKE_OPTIONS"
 readonly TEST_PARALLEL_LEVEL=8
 
 source "./sccache_stats.sh" "start"
+ninja -C ${BUILD_DIR} nvrtcc
 LIBCUDACXX_SITE_CONFIG="${BUILD_DIR}/libcudacxx/test/lit.site.cfg" lit -v -j ${TEST_PARALLEL_LEVEL} --no-progress-bar -Dcompute_archs=${GPU_ARCHS} -Dstd="c++${CXX_STANDARD}" ../libcudacxx/.upstream-tests/test
 source "./sccache_stats.sh" "end"
