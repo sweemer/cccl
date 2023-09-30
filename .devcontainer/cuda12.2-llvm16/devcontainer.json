@@ -1,6 +1,6 @@
 {
   "shutdownAction": "stopContainer",
-  "image": "rapidsai/devcontainers:23.08-cpp-llvm16-cuda12.2-ubuntu22.04",
+  "image": "rapidsai/devcontainers:23.12-cpp-llvm16-cuda12.2-ubuntu22.04",
   "hostRequirements": {
     "gpu": true
   },
@@ -31,7 +31,8 @@
       "settings": {
         "clangd.arguments": [
           "--compile-commands-dir=${workspaceFolder}/build/latest"
-        ]
+        ],
+        "clangFormat.executable.default": "/usr/bin/clang-format-17"
       }
     }
   },
