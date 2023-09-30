@@ -1,0 +1,119 @@
+BasedOnStyle: LLVM
+# Note that we don't specify the language in this file because some files are
+# detected as Cpp, but others are detected as ObjC and we want this formatting
+# to apply to all types of files.
+
+AlignAfterOpenBracket: DontAlign
+AlignConsecutiveAssignments: Consecutive
+AlignConsecutiveBitFields: Consecutive
+AlignConsecutiveMacros: Consecutive
+AlignEscapedNewlines: Left
+AlignOperands: AlignAfterOperator
+AlignTrailingComments:
+  Kind:            Never
+AllowAllArgumentsOnNextLine: true
+AllowAllParametersOfDeclarationOnNextLine: true
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortLambdasOnASingleLine: Empty
+AlwaysBreakAfterDefinitionReturnType: All
+AlwaysBreakTemplateDeclarations: Yes
+AttributeMacros: [
+                  '_ALIGNAS_TYPE',
+                  '_ALIGNAS',
+                  '_LIBCUDACXX_ALIGNOF',
+                  '_LIBCUDACXX_ALWAYS_INLINE',
+                  '_LIBCUDACXX_CONSTEXPR_AFTER_CXX11',
+                  '_LIBCUDACXX_CONSTEXPR_AFTER_CXX14',
+                  '_LIBCUDACXX_CONSTEXPR_AFTER_CXX20',
+                  '_LIBCUDACXX_CONSTEXPR_AFTER_CXX23',
+                  '_LIBCUDACXX_CONSTEXPR',
+                  '_LIBCUDACXX_CONSTINIT',
+                  '_LIBCUDACXX_DEPRECATED_IN_CXX11',
+                  '_LIBCUDACXX_DEPRECATED_IN_CXX14',
+                  '_LIBCUDACXX_DEPRECATED_IN_CXX17',
+                  '_LIBCUDACXX_DEPRECATED_IN_CXX20',
+                  '_LIBCUDACXX_DEPRECATED',
+                  '_LIBCUDACXX_DISABLE_EXTENTSION_WARNING',
+                  '_LIBCUDACXX_EXCLUDE_FROM_EXPLICIT_INSTANTIATION',
+                  '_LIBCUDACXX_EXPORTED_FROM_ABI',
+                  '_LIBCUDACXX_EXTERN_TEMPLATE_TYPE_VIS',
+                  '_LIBCUDACXX_FALLTHROUGH',
+                  '_LIBCUDACXX_HIDDEN',
+                  '_LIBCUDACXX_HIDE_FROM_ABI_AFTER_V1',
+                  '_LIBCUDACXX_HIDE_FROM_ABI',
+                  '_LIBCUDACXX_INLINE_VISIBILITY',
+                  '_LIBCUDACXX_INTERNAL_LINKAGE',
+                  '_LIBCUDACXX_METHOD_TEMPLATE_IMPLICIT_INSTANTIATION_VIS',
+                  '_LIBCUDACXX_NO_DESTROY',
+                  '_LIBCUDACXX_NO_SANITIZE',
+                  '_LIBCUDACXX_NO_UNIQUE_ADDRESS',
+                  '_LIBCUDACXX_NOALIAS',
+                  '_LIBCUDACXX_NODISCARD_EXT',
+                  '_LIBCUDACXX_NODISCARD',
+                  '_LIBCUDACXX_NORETURN',
+                  '_LIBCUDACXX_OVERRIDABLE_FUNC_VIS',
+                  '_LIBCUDACXX_STANDALONE_DEBUG',
+                  '_LIBCUDACXX_TEMPLATE_DATA_VIS',
+                  '_LIBCUDACXX_TEMPLATE_VIS',
+                  '_LIBCUDACXX_THREAD_SAFETY_ANNOTATION',
+                  '_LIBCUDACXX_USING_IF_EXISTS',
+                  '_LIBCUDACXX_WEAK',
+                 ]
+BinPackArguments: false
+BinPackParameters: true
+BreakBeforeBinaryOperators: NonAssignment
+BreakBeforeBraces: Custom
+BraceWrapping:
+    AfterClass: true
+    AfterStruct: true
+    AfterFunction: true
+    SplitEmptyFunction: false
+    SplitEmptyRecord: false
+BreakBeforeConceptDeclarations: true
+BreakConstructorInitializers: BeforeComma
+BreakInheritanceList: BeforeComma
+EmptyLineAfterAccessModifier: Never
+EmptyLineBeforeAccessModifier: Always
+FixNamespaceComments: true
+IncludeBlocks:   Preserve
+IndentWrappedFunctionNames: false
+IndentRequires: true
+InsertBraces: true
+InsertNewlineAtEOF: true
+InsertTrailingCommas: Wrapped
+KeepEmptyLinesAtTheStartOfBlocks: false
+Macros:
+- _LIBCUDACXX_TEMPLATE(...)=template<...>
+- _LIBCUDACXX_REQUIRES(...)=requires (...)
+MaxEmptyLinesToKeep: 1
+PackConstructorInitializers: Never
+PenaltyIndentedWhitespace: 2
+PointerAlignment: Left
+RemoveSemicolon: false
+
+SortIncludes: Never
+Standard: c++20
+SpaceAfterCStyleCast: true
+SpaceBeforeParens: ControlStatements
+SpacesInAngles: Leave
+
+StatementMacros: [
+  '_LIBCUDACXX_BEGIN_NAMESPACE_STD',
+  '_LIBCUDACXX_END_NAMESPACE_STD',
+  '_LIBCUDACXX_BEGIN_NAMESPACE_STD_NOVERSION',
+  '_LIBCUDACXX_END_NAMESPACE_STD_NOVERSION',
+  '_LIBCUDACXX_BEGIN_NAMESPACE_RANGES',
+  '_LIBCUDACXX_END_NAMESPACE_RANGES',
+  '_LIBCUDACXX_BEGIN_NAMESPACE_RANGES_ABI',
+  '_LIBCUDACXX_END_NAMESPACE_RANGES_ABI',
+  '_LIBCUDACXX_BEGIN_NAMESPACE_CPO',
+  '_LIBCUDACXX_END_NAMESPACE_CPO',
+  '_LIBCUDACXX_BEGIN_NAMESPACE_VIEWS',
+  '_LIBCUDACXX_END_NAMESPACE_VIEWS',
+]
+
+# libc++'s preferred indentions of preprocessor statements.
+IndentPPDirectives: AfterHash
+
+# libc++ has some long names so we need more than the 80 column limit imposed by LLVM style, for sensible formatting
+ColumnLimit: 120
