@@ -75,23 +75,23 @@ Macros:
 #include <__pragma_push>
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 #include_next <float.h>
 
 #ifdef __cplusplus
 
-#ifndef FLT_EVAL_METHOD
-#define FLT_EVAL_METHOD __FLT_EVAL_METHOD__
-#endif
+#  ifndef FLT_EVAL_METHOD
+#    define FLT_EVAL_METHOD __FLT_EVAL_METHOD__
+#  endif
 
-#ifndef DECIMAL_DIG
-#define DECIMAL_DIG __DECIMAL_DIG__
-#endif
+#  ifndef DECIMAL_DIG
+#    define DECIMAL_DIG __DECIMAL_DIG__
+#  endif
 
 #endif // __cplusplus
 
 #include <__pragma_pop>
 
-#endif  // _LIBCUDACXX_FLOAT_H
+#endif // _LIBCUDACXX_FLOAT_H

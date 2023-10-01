@@ -45,7 +45,7 @@
 #define _LIBCUDACXX___MDSPAN_DYNAMIC_EXTENT_HPP
 
 #ifndef __cuda_std__
-#include <__config>
+#  include <__config>
 #endif // __cuda_std__
 
 #include "../__fwd/span.h" // dynamic_extent
@@ -63,12 +63,16 @@ _LIBCUDACXX_BEGIN_NAMESPACE_STD
 namespace __detail {
 
 template <class>
-_LIBCUDACXX_HOST_DEVICE constexpr auto __make_dynamic_extent() {
+_LIBCUDACXX_HOST_DEVICE constexpr auto
+__make_dynamic_extent()
+{
   return dynamic_extent;
 }
 
 template <size_t>
-_LIBCUDACXX_HOST_DEVICE constexpr auto __make_dynamic_extent_integral() {
+_LIBCUDACXX_HOST_DEVICE constexpr auto
+__make_dynamic_extent_integral()
+{
   return dynamic_extent;
 }
 

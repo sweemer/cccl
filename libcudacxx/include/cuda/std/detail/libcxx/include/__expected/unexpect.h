@@ -10,18 +10,19 @@
 #define _LIBCUDACXX___EXPECTED_UNEXPECT_H
 
 #ifndef __cuda_std__
-#include <__config>
+#  include <__config>
 #endif // __cuda_std__
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 #if _LIBCUDACXX_STD_VER > 11
 
 _LIBCUDACXX_BEGIN_NAMESPACE_STD
 
-struct unexpect_t {
+struct unexpect_t
+{
   explicit unexpect_t() = default;
 };
 

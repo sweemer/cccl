@@ -11,13 +11,13 @@
 #define _LIBCUDACXX___TYPE_TRAITS_ADD_RVALUE_REFERENCE_H
 
 #ifndef __cuda_std__
-#include <__config>
+#  include <__config>
 #endif // __cuda_std__
 
 #include "../__type_traits/is_referenceable.h"
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 _LIBCUDACXX_BEGIN_NAMESPACE_STD
@@ -30,11 +30,13 @@ using __add_rvalue_reference_t = _LIBCUDACXX_ADD_RVALUE_REFERENCE(_Tp);
 #else
 
 template <class _Tp, bool = __libcpp_is_referenceable<_Tp>::value>
-struct __add_rvalue_reference_impl {
+struct __add_rvalue_reference_impl
+{
   typedef _LIBCUDACXX_NODEBUG_TYPE _Tp type;
 };
 template <class _Tp >
-struct __add_rvalue_reference_impl<_Tp, true> {
+struct __add_rvalue_reference_impl<_Tp, true>
+{
   typedef _LIBCUDACXX_NODEBUG_TYPE _Tp&& type;
 };
 
@@ -44,7 +46,8 @@ using __add_rvalue_reference_t = typename __add_rvalue_reference_impl<_Tp>::type
 #endif // defined(_LIBCUDACXX_ADD_RVALUE_REFERENCE) && !defined(_LIBCUDACXX_USE_ADD_RVALUE_REFERENCE_FALLBACK)
 
 template <class _Tp>
-struct add_rvalue_reference {
+struct add_rvalue_reference
+{
   using type = __add_rvalue_reference_t<_Tp>;
 };
 

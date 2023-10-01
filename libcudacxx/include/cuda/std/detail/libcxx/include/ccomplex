@@ -20,9 +20,9 @@
 #include <complex>
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 // hh 080623 Created
 
-#endif  // _LIBCUDACXX_CCOMPLEX
+#endif // _LIBCUDACXX_CCOMPLEX

@@ -12,18 +12,19 @@
 #define _LIBCUDACXX___ITERATOR_DEFAULT_SENTINEL_H
 
 #ifndef __cuda_std__
-#include <__config>
+#  include <__config>
 #endif // __cuda_std__
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 _LIBCUDACXX_BEGIN_NAMESPACE_STD
 
 #if _LIBCUDACXX_STD_VER > 14
 
-struct default_sentinel_t { };
+struct default_sentinel_t
+{};
 inline constexpr default_sentinel_t default_sentinel{};
 
 #endif // _LIBCUDACXX_STD_VER > 14

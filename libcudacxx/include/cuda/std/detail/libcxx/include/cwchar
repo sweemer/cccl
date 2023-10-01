@@ -107,36 +107,36 @@ size_t wcsrtombs(char* restrict dst, const wchar_t** restrict src, size_t len,
 #include <wchar.h>
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 _LIBCUDACXX_BEGIN_NAMESPACE_STD
 
-using ::mbstate_t;
-using ::size_t;
-using ::tm;
-using ::wint_t;
-using ::FILE;
-using ::fwprintf;
-using ::fwscanf;
-using ::swprintf;
-using ::vfwprintf;
-using ::vswprintf;
-using ::swscanf;
-using ::vfwscanf;
-using ::vswscanf;
 using ::fgetwc;
 using ::fgetws;
+using ::FILE;
 using ::fputwc;
 using ::fputws;
 using ::fwide;
+using ::fwprintf;
+using ::fwscanf;
 using ::getwc;
+using ::mbstate_t;
 using ::putwc;
+using ::size_t;
+using ::swprintf;
+using ::swscanf;
+using ::tm;
 using ::ungetwc;
+using ::vfwprintf;
+using ::vfwscanf;
+using ::vswprintf;
+using ::vswscanf;
 using ::wcstod;
 using ::wcstof;
-using ::wcstold;
 using ::wcstol;
+using ::wcstold;
+using ::wint_t;
 #ifndef _LIBCUDACXX_HAS_NO_LONG_LONG
 using ::wcstoll;
 #endif // _LIBCUDACXX_HAS_NO_LONG_LONG
@@ -144,36 +144,36 @@ using ::wcstoul;
 #ifndef _LIBCUDACXX_HAS_NO_LONG_LONG
 using ::wcstoull;
 #endif // _LIBCUDACXX_HAS_NO_LONG_LONG
-using ::wcscpy;
-using ::wcsncpy;
+using ::btowc;
+using ::mbrlen;
+using ::mbrtowc;
+using ::mbsinit;
+using ::mbsrtowcs;
+using ::wcrtomb;
 using ::wcscat;
-using ::wcsncat;
+using ::wcschr;
 using ::wcscmp;
 using ::wcscoll;
+using ::wcscpy;
+using ::wcscspn;
+using ::wcsftime;
+using ::wcslen;
+using ::wcsncat;
 using ::wcsncmp;
-using ::wcsxfrm;
-using ::wcschr;
+using ::wcsncpy;
 using ::wcspbrk;
 using ::wcsrchr;
-using ::wcsstr;
-using ::wmemchr;
-using ::wcscspn;
-using ::wcslen;
+using ::wcsrtombs;
 using ::wcsspn;
+using ::wcsstr;
 using ::wcstok;
+using ::wcsxfrm;
+using ::wctob;
+using ::wmemchr;
 using ::wmemcmp;
 using ::wmemcpy;
 using ::wmemmove;
 using ::wmemset;
-using ::wcsftime;
-using ::btowc;
-using ::wctob;
-using ::mbsinit;
-using ::mbrlen;
-using ::mbrtowc;
-using ::wcrtomb;
-using ::mbsrtowcs;
-using ::wcsrtombs;
 
 #ifndef _LIBCUDACXX_HAS_NO_STDIN
 using ::getwchar;
@@ -189,4 +189,4 @@ using ::wprintf;
 
 _LIBCUDACXX_END_NAMESPACE_STD
 
-#endif  // _LIBCUDACXX_CWCHAR
+#endif // _LIBCUDACXX_CWCHAR

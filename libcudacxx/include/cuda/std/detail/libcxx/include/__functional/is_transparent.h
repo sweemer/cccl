@@ -12,14 +12,14 @@
 #define _LIBCUDACXX___FUNCTIONAL_IS_TRANSPARENT
 
 #ifndef __cuda_std__
-#include <__config>
+#  include <__config>
 #endif // __cuda_std__
 
 #include "../__type_traits/integral_constant.h"
 #include "../__type_traits/void_t.h"
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 _LIBCUDACXX_BEGIN_NAMESPACE_STD
@@ -27,11 +27,12 @@ _LIBCUDACXX_BEGIN_NAMESPACE_STD
 #if _LIBCUDACXX_STD_VER > 11
 
 template <class _Tp, class, class = void>
-struct __is_transparent : false_type {};
+struct __is_transparent : false_type
+{};
 
 template <class _Tp, class _Up>
-struct __is_transparent<_Tp, _Up, __void_t<typename _Tp::is_transparent> >
-   : true_type {};
+struct __is_transparent<_Tp, _Up, __void_t<typename _Tp::is_transparent> > : true_type
+{};
 
 #endif
 

@@ -31,26 +31,27 @@ ForwardIterator search(ForwardIterator first, ForwardIterator last,
 
 */
 
-#include <experimental/__config>
 #include <algorithm>
+#include <experimental/__config>
 #include <type_traits>
 
 #include <__debug>
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 _LIBCUDACXX_PUSH_MACROS
 #include <__undef_macros>
 
-
 _LIBCUDACXX_BEGIN_NAMESPACE_LFTS
 
 template <class _ForwardIterator, class _Searcher>
-_LIBCUDACXX_INLINE_VISIBILITY
-_ForwardIterator search(_ForwardIterator __f, _ForwardIterator __l, const _Searcher &__s)
-{ return __s(__f, __l).first; }
+_LIBCUDACXX_INLINE_VISIBILITY _ForwardIterator
+search(_ForwardIterator __f, _ForwardIterator __l, const _Searcher& __s)
+{
+  return __s(__f, __l).first;
+}
 
 _LIBCUDACXX_END_NAMESPACE_LFTS
 

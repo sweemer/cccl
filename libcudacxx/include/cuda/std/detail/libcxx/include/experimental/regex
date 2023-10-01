@@ -36,20 +36,18 @@ namespace pmr {
  */
 
 #include <experimental/__config>
-#include <regex>
-#include <experimental/string>
 #include <experimental/memory_resource>
+#include <experimental/string>
+#include <regex>
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 _LIBCUDACXX_BEGIN_NAMESPACE_LFTS_PMR
 
 template <class _BiDirIter>
-using match_results =
-    _CUDA_VSTD::match_results<_BiDirIter,
-        polymorphic_allocator<_CUDA_VSTD::sub_match<_BiDirIter>>>;
+using match_results = _CUDA_VSTD::match_results<_BiDirIter, polymorphic_allocator<_CUDA_VSTD::sub_match<_BiDirIter>>>;
 
 typedef match_results<const char*> cmatch;
 typedef match_results<const wchar_t*> wcmatch;

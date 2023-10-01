@@ -11,21 +11,21 @@
 #define _LIBCUDACXX___TYPE_TRAITS_NAT_H
 
 #ifndef __cuda_std__
-#include <__config>
+#  include <__config>
 #endif // __cuda_std__
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 _LIBCUDACXX_BEGIN_NAMESPACE_STD
 
 struct __nat
 {
-    __nat() = delete;
-    __nat(const __nat&) = delete;
-    __nat& operator=(const __nat&) = delete;
-    ~__nat() = delete;
+  __nat()                        = delete;
+  __nat(const __nat&)            = delete;
+  __nat& operator=(const __nat&) = delete;
+  ~__nat()                       = delete;
 };
 
 _LIBCUDACXX_END_NAMESPACE_STD

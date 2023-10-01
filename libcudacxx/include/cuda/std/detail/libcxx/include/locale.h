@@ -36,9 +36,9 @@ Functions:
 #include <__config>
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 #include_next <locale.h>
 
-#endif  // _LIBCUDACXX_LOCALE_H
+#endif // _LIBCUDACXX_LOCALE_H

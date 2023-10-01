@@ -18,11 +18,11 @@
 
 */
 
-#include <ccomplex>
 #include "cmath"
+#include <ccomplex>
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
-#endif  // _LIBCUDACXX_CTGMATH
+#endif // _LIBCUDACXX_CTGMATH

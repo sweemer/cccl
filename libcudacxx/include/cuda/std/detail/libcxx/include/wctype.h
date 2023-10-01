@@ -47,32 +47,32 @@ wctrans_t wctrans(const char* property);
 #include <__config>
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 #include_next <wctype.h>
 
 #ifdef __cplusplus
 
-#undef iswalnum
-#undef iswalpha
-#undef iswblank
-#undef iswcntrl
-#undef iswdigit
-#undef iswgraph
-#undef iswlower
-#undef iswprint
-#undef iswpunct
-#undef iswspace
-#undef iswupper
-#undef iswxdigit
-#undef iswctype
-#undef wctype
-#undef towlower
-#undef towupper
-#undef towctrans
-#undef wctrans
+#  undef iswalnum
+#  undef iswalpha
+#  undef iswblank
+#  undef iswcntrl
+#  undef iswdigit
+#  undef iswgraph
+#  undef iswlower
+#  undef iswprint
+#  undef iswpunct
+#  undef iswspace
+#  undef iswupper
+#  undef iswxdigit
+#  undef iswctype
+#  undef wctype
+#  undef towlower
+#  undef towupper
+#  undef towctrans
+#  undef wctrans
 
-#endif  // __cplusplus
+#endif // __cplusplus
 
-#endif  // _LIBCUDACXX_WCTYPE_H
+#endif // _LIBCUDACXX_WCTYPE_H

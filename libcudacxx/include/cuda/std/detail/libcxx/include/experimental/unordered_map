@@ -40,24 +40,22 @@ namespace pmr {
  */
 
 #include <experimental/__config>
-#include <unordered_map>
 #include <experimental/memory_resource>
+#include <unordered_map>
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 _LIBCUDACXX_BEGIN_NAMESPACE_LFTS_PMR
 
-template <class _Key, class _Value,
-          class _Hash = hash<_Key>, class _Pred = equal_to<_Key>>
-using unordered_map = _CUDA_VSTD::unordered_map<_Key, _Value, _Hash, _Pred,
-                        polymorphic_allocator<pair<const _Key, _Value>>>;
+template <class _Key, class _Value, class _Hash = hash<_Key>, class _Pred = equal_to<_Key>>
+using unordered_map =
+    _CUDA_VSTD::unordered_map<_Key, _Value, _Hash, _Pred, polymorphic_allocator<pair<const _Key, _Value>>>;
 
-template <class _Key, class _Value,
-          class _Hash = hash<_Key>, class _Pred = equal_to<_Key>>
-using unordered_multimap = _CUDA_VSTD::unordered_multimap<_Key, _Value, _Hash, _Pred,
-                        polymorphic_allocator<pair<const _Key, _Value>>>;
+template <class _Key, class _Value, class _Hash = hash<_Key>, class _Pred = equal_to<_Key>>
+using unordered_multimap =
+    _CUDA_VSTD::unordered_multimap<_Key, _Value, _Hash, _Pred, polymorphic_allocator<pair<const _Key, _Value>>>;
 
 _LIBCUDACXX_END_NAMESPACE_LFTS_PMR
 

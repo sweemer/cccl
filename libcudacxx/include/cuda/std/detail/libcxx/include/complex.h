@@ -20,17 +20,17 @@
 #include <__config>
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 #ifdef __cplusplus
 
-#include <ccomplex>
+#  include <ccomplex>
 
-#else  // __cplusplus
+#else // __cplusplus
 
-#include_next <complex.h>
+#  include_next <complex.h>
 
-#endif  // __cplusplus
+#endif // __cplusplus
 
-#endif  // _LIBCUDACXX_COMPLEX_H
+#endif // _LIBCUDACXX_COMPLEX_H

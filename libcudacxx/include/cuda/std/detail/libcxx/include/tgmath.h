@@ -20,17 +20,17 @@
 #include <__config>
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 #ifdef __cplusplus
 
-#include <ctgmath>
+#  include <ctgmath>
 
-#else  // __cplusplus
+#else // __cplusplus
 
-#include_next <tgmath.h>
+#  include_next <tgmath.h>
 
-#endif  // __cplusplus
+#endif // __cplusplus
 
-#endif  // _LIBCUDACXX_TGMATH_H
+#endif // _LIBCUDACXX_TGMATH_H

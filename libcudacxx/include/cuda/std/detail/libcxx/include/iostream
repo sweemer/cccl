@@ -14,9 +14,9 @@
     iostream synopsis
 
 #include <ios>
-#include <streambuf>
 #include <istream>
 #include <ostream>
+#include <streambuf>
 
 namespace std {
 
@@ -35,12 +35,12 @@ extern wostream wclog;
 
 #include <__config>
 #include <ios>
-#include <streambuf>
 #include <istream>
 #include <ostream>
+#include <streambuf>
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 _LIBCUDACXX_BEGIN_NAMESPACE_STD
@@ -60,4 +60,4 @@ extern _LIBCUDACXX_FUNC_VIS wostream wclog;
 
 _LIBCUDACXX_END_NAMESPACE_STD
 
-#endif  // _LIBCUDACXX_IOSTREAM
+#endif // _LIBCUDACXX_IOSTREAM

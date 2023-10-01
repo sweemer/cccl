@@ -12,28 +12,28 @@
 #define _LIBCUDACXX___FWD_STRING_VIEW_H
 
 #ifndef __cuda_std__
-#include <__config>
+#  include <__config>
 #endif // __cuda_std__
 
 #include "../__fwd/string.h"
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 _LIBCUDACXX_BEGIN_NAMESPACE_STD
 
-template<class _CharT, class _Traits = char_traits<_CharT> >
+template <class _CharT, class _Traits = char_traits<_CharT> >
 class _LIBCUDACXX_TEMPLATE_VIS basic_string_view;
 
-typedef basic_string_view<char>     string_view;
+typedef basic_string_view<char> string_view;
 #ifndef _LIBCUDACXX_NO_HAS_CHAR8_T
-typedef basic_string_view<char8_t>  u8string_view;
+typedef basic_string_view<char8_t> u8string_view;
 #endif
 typedef basic_string_view<char16_t> u16string_view;
 typedef basic_string_view<char32_t> u32string_view;
 #ifndef _LIBCUDACXX_HAS_NO_WIDE_CHARACTERS
-typedef basic_string_view<wchar_t>  wstring_view;
+typedef basic_string_view<wchar_t> wstring_view;
 #endif
 
 // clang-format off

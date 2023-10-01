@@ -57,36 +57,36 @@ size_t strlen(const char* s);
 */
 
 #ifndef __cuda_std__
-#include <__config>
-#include <string.h>
-#include <__pragma_push>
+#  include <__config>
+#  include <__pragma_push>
+#  include <string.h>
 #endif //__simet__ <- a tribute to ogiroux
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 _LIBCUDACXX_BEGIN_NAMESPACE_STD
 
-using ::size_t;
+using ::memchr;
+using ::memcmp;
 using ::memcpy;
 using ::memmove;
-using ::strcpy;
-using ::strncpy;
+using ::size_t;
 using ::strcat;
-using ::strncat;
-using ::memcmp;
-using ::strcmp;
-using ::strncmp;
-using ::strcoll;
-using ::strxfrm;
-using ::memchr;
 using ::strchr;
+using ::strcmp;
+using ::strcoll;
+using ::strcpy;
 using ::strcspn;
+using ::strncat;
+using ::strncmp;
+using ::strncpy;
 using ::strpbrk;
 using ::strrchr;
 using ::strspn;
 using ::strstr;
+using ::strxfrm;
 #ifndef _LIBCUDACXX_HAS_NO_THREAD_UNSAFE_C_FUNCTIONS
 using ::strtok;
 #endif
@@ -97,7 +97,7 @@ using ::strlen;
 _LIBCUDACXX_END_NAMESPACE_STD
 
 #ifndef __cuda_std__
-#include <__pragma_pop>
+#  include <__pragma_pop>
 #endif //__cuda_std__
 
-#endif  // _LIBCUDACXX_CSTRING
+#endif // _LIBCUDACXX_CSTRING

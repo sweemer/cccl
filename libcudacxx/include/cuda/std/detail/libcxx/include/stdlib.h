@@ -9,18 +9,18 @@
 
 #if defined(__need_malloc_and_calloc) || defined(_LIBCUDACXX_STDLIB_INCLUDE_NEXT)
 
-#if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
-#endif
+#  if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
+#    pragma GCC system_header
+#  endif
 
-#if defined(_LIBCUDACXX_STDLIB_INCLUDE_NEXT)
-#undef _LIBCUDACXX_STDLIB_INCLUDE_NEXT
-#endif
+#  if defined(_LIBCUDACXX_STDLIB_INCLUDE_NEXT)
+#    undef _LIBCUDACXX_STDLIB_INCLUDE_NEXT
+#  endif
 
-#include_next <stdlib.h>
+#  include_next <stdlib.h>
 
 #elif !defined(_LIBCUDACXX_STDLIB_H)
-#define _LIBCUDACXX_STDLIB_H
+#  define _LIBCUDACXX_STDLIB_H
 
 /*
     stdlib.h synopsis
@@ -88,16 +88,16 @@ void *aligned_alloc(size_t alignment, size_t size);                       // C11
 
 */
 
-#include <__config>
+#  include <__config>
 
-#if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
-#endif
+#  if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
+#    pragma GCC system_header
+#  endif
 
-#include_next <stdlib.h>
+#  include_next <stdlib.h>
 
-#ifdef __cplusplus
-#include <math.h>
-#endif  // __cplusplus
+#  ifdef __cplusplus
+#    include <math.h>
+#  endif // __cplusplus
 
-#endif  // _LIBCUDACXX_STDLIB_H
+#endif // _LIBCUDACXX_STDLIB_H

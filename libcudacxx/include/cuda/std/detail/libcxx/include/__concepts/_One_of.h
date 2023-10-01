@@ -11,7 +11,7 @@
 #define _LIBCUDACXX___CONCEPTS_ONE_OF_H
 
 #ifndef __cuda_std__
-#include <__config>
+#  include <__config>
 #endif //__cuda_std__
 
 #include "../__concepts/__concept_macros.h"
@@ -19,7 +19,7 @@
 #include "../__type_traits/is_same.h"
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 _LIBCUDACXX_BEGIN_NAMESPACE_STD

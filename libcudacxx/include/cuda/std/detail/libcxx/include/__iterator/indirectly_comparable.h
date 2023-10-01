@@ -12,7 +12,7 @@
 #define _LIBCUDACXX___ITERATOR_INDIRECTLY_COMPARABLE_H
 
 #ifndef __cuda_std__
-#include <__config>
+#  include <__config>
 #endif // __cuda_std__
 
 #include "../__functional/identity.h"
@@ -20,18 +20,16 @@
 #include "../__iterator/projected.h"
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 _LIBCUDACXX_BEGIN_NAMESPACE_STD
 
 #if _LIBCUDACXX_STD_VER > 17
 
-template <class _Iter1, class _Iter2, class _BinaryPred,
-          class _Proj1 = identity, class _Proj2 = identity>
+template <class _Iter1, class _Iter2, class _BinaryPred, class _Proj1 = identity, class _Proj2 = identity>
 concept indirectly_comparable =
-    indirect_binary_predicate<_BinaryPred, projected<_Iter1, _Proj1>,
-                              projected<_Iter2, _Proj2>>;
+    indirect_binary_predicate<_BinaryPred, projected<_Iter1, _Proj1>, projected<_Iter2, _Proj2>>;
 
 #elif _LIBCUDACXX_STD_VER > 14
 

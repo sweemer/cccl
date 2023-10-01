@@ -12,7 +12,7 @@
 #define _LIBCUDACXX___ITERATOR_SORTABLE_H
 
 #ifndef __cuda_std__
-#include <__config>
+#  include <__config>
 #endif // __cuda_std__
 
 #include "../__functional/identity.h"
@@ -22,7 +22,7 @@
 #include "../__iterator/projected.h"
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 _LIBCUDACXX_BEGIN_NAMESPACE_STD
@@ -30,19 +30,14 @@ _LIBCUDACXX_BEGIN_NAMESPACE_STD
 #if _LIBCUDACXX_STD_VER > 17
 
 template <class _Iter, class _Comp = _CUDA_VRANGES::less, class _Proj = identity>
-concept sortable =
-  permutable<_Iter> &&
-  indirect_strict_weak_order<_Comp, projected<_Iter, _Proj>>;
+concept sortable = permutable<_Iter> && indirect_strict_weak_order<_Comp, projected<_Iter, _Proj>>;
 
 #elif _LIBCUDACXX_STD_VER > 14
 
 template <class _Iter, class _Comp, class _Proj>
-_LIBCUDACXX_CONCEPT_FRAGMENT(
-  __sortable_,
-  requires()( //
-    requires(permutable<_Iter>),
-    requires(indirect_strict_weak_order<_Comp, projected<_Iter, _Proj>>)
-  ));
+_LIBCUDACXX_CONCEPT_FRAGMENT(__sortable_,
+    requires()( //
+        requires(permutable<_Iter>), requires(indirect_strict_weak_order<_Comp, projected<_Iter, _Proj>>)));
 
 template <class _Iter, class _Comp = _CUDA_VRANGES::less, class _Proj = identity>
 _LIBCUDACXX_CONCEPT sortable = _LIBCUDACXX_FRAGMENT(__sortable_, _Iter, _Comp, _Proj);

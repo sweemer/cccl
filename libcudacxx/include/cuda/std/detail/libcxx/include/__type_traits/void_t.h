@@ -11,17 +11,18 @@
 #define _LIBCUDACXX___TYPE_TRAITS_VOID_T_H
 
 #ifndef __cuda_std__
-#include <__config>
+#  include <__config>
 #endif // __cuda_std__
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 _LIBCUDACXX_BEGIN_NAMESPACE_STD
 
 #if _LIBCUDACXX_STD_VER > 11
-template <class...> using void_t = void;
+template <class...>
+using void_t = void;
 #endif
 
 template <class...>

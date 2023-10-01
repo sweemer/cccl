@@ -13,7 +13,7 @@
 #include <__config>
 
 #if defined(_LIBCUDACXX_HAS_PARALLEL_ALGORITHMS) && _LIBCUDACXX_STD_VER >= 17
-#   include <__pstl_execution>
+#  include <__pstl_execution>
 #endif
 
 #endif // _LIBCUDACXX_EXECUTION

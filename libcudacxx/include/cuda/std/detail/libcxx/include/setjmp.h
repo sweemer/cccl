@@ -28,17 +28,17 @@ void longjmp(jmp_buf env, int val);
 #include <__config>
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 #include_next <setjmp.h>
 
 #ifdef __cplusplus
 
-#ifndef setjmp
-#define setjmp(env) setjmp(env)
-#endif
+#  ifndef setjmp
+#    define setjmp(env) setjmp(env)
+#  endif
 
 #endif // __cplusplus
 
-#endif  // _LIBCUDACXX_SETJMP_H
+#endif // _LIBCUDACXX_SETJMP_H

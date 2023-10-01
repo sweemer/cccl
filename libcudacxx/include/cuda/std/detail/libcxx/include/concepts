@@ -131,12 +131,12 @@ namespace std {
 */
 
 #ifndef __cuda_std__
-#include <__config>
+#  include <__config>
 #endif // __cuda_std__
 
 #include "__assert" // all public C++ headers provide the assertion handler
-#include "__concepts/__concept_macros.h"
 #include "__concepts/_One_of.h"
+#include "__concepts/__concept_macros.h"
 #include "__concepts/arithmetic.h"
 #include "__concepts/assignable.h"
 #include "__concepts/boolean_testable.h"
@@ -163,7 +163,7 @@ namespace std {
 #include "version"
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 #endif // _LIBCUDACXX_CONCEPTS

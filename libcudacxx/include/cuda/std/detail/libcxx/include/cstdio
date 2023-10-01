@@ -99,7 +99,7 @@ void perror(const char* s);
 #include <stdio.h>
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 _LIBCUDACXX_BEGIN_NAMESPACE_STD
@@ -108,38 +108,38 @@ using ::FILE;
 using ::fpos_t;
 using ::size_t;
 
+using ::clearerr;
 using ::fclose;
+using ::feof;
+using ::ferror;
 using ::fflush;
-using ::setbuf;
-using ::setvbuf;
-using ::fprintf;
-using ::fscanf;
-using ::snprintf;
-using ::sprintf;
-using ::sscanf;
-using ::vfprintf;
-using ::vfscanf;
-using ::vsscanf;
-using ::vsnprintf;
-using ::vsprintf;
 using ::fgetc;
+using ::fgetpos;
 using ::fgets;
+using ::fprintf;
 using ::fputc;
 using ::fputs;
-using ::getc;
-using ::putc;
-using ::ungetc;
 using ::fread;
-using ::fwrite;
-using ::fgetpos;
+using ::fscanf;
 using ::fseek;
 using ::fsetpos;
 using ::ftell;
-using ::rewind;
-using ::clearerr;
-using ::feof;
-using ::ferror;
+using ::fwrite;
+using ::getc;
 using ::perror;
+using ::putc;
+using ::rewind;
+using ::setbuf;
+using ::setvbuf;
+using ::snprintf;
+using ::sprintf;
+using ::sscanf;
+using ::ungetc;
+using ::vfprintf;
+using ::vfscanf;
+using ::vsnprintf;
+using ::vsprintf;
+using ::vsscanf;
 
 #ifndef _LIBCUDACXX_HAS_NO_GLOBAL_FILESYSTEM_NAMESPACE
 using ::fopen;
@@ -152,9 +152,9 @@ using ::tmpnam;
 
 #ifndef _LIBCUDACXX_HAS_NO_STDIN
 using ::getchar;
-#if _LIBCUDACXX_STD_VER <= 11 && !defined(_LIBCUDACXX_C_HAS_NO_GETS)
+#  if _LIBCUDACXX_STD_VER <= 11 && !defined(_LIBCUDACXX_C_HAS_NO_GETS)
 using ::gets;
-#endif
+#  endif
 using ::scanf;
 using ::vscanf;
 #endif
@@ -168,4 +168,4 @@ using ::vprintf;
 
 _LIBCUDACXX_END_NAMESPACE_STD
 
-#endif  // _LIBCUDACXX_CSTDIO
+#endif // _LIBCUDACXX_CSTDIO

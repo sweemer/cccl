@@ -10,7 +10,6 @@
 #ifndef _LIBCUDACXX_FENV_H
 #define _LIBCUDACXX_FENV_H
 
-
 /*
     fenv.h synopsis
 
@@ -53,7 +52,7 @@ int feupdateenv(const fenv_t* envp);
 #include <__config>
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 #include_next <fenv.h>
@@ -62,52 +61,49 @@ int feupdateenv(const fenv_t* envp);
 
 extern "C++" {
 
-#ifdef feclearexcept
-#undef feclearexcept
-#endif
+#  ifdef feclearexcept
+#    undef feclearexcept
+#  endif
 
-#ifdef fegetexceptflag
-#undef fegetexceptflag
-#endif
+#  ifdef fegetexceptflag
+#    undef fegetexceptflag
+#  endif
 
+#  ifdef feraiseexcept
+#    undef feraiseexcept
+#  endif
 
-#ifdef feraiseexcept
-#undef feraiseexcept
-#endif
+#  ifdef fesetexceptflag
+#    undef fesetexceptflag
+#  endif
 
-#ifdef fesetexceptflag
-#undef fesetexceptflag
-#endif
+#  ifdef fetestexcept
+#    undef fetestexcept
+#  endif
 
+#  ifdef fegetround
+#    undef fegetround
+#  endif
 
-#ifdef fetestexcept
-#undef fetestexcept
-#endif
+#  ifdef fesetround
+#    undef fesetround
+#  endif
 
-#ifdef fegetround
-#undef fegetround
-#endif
+#  ifdef fegetenv
+#    undef fegetenv
+#  endif
 
-#ifdef fesetround
-#undef fesetround
-#endif
+#  ifdef feholdexcept
+#    undef feholdexcept
+#  endif
 
-#ifdef fegetenv
-#undef fegetenv
-#endif
+#  ifdef fesetenv
+#    undef fesetenv
+#  endif
 
-#ifdef feholdexcept
-#undef feholdexcept
-#endif
-
-
-#ifdef fesetenv
-#undef fesetenv
-#endif
-
-#ifdef feupdateenv
-#undef feupdateenv
-#endif
+#  ifdef feupdateenv
+#    undef feupdateenv
+#  endif
 
 } // extern "C++"
 

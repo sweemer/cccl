@@ -43,15 +43,15 @@ int raise(int sig);
 #include <signal.h>
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 _LIBCUDACXX_BEGIN_NAMESPACE_STD
 
+using ::raise;
 using ::sig_atomic_t;
 using ::signal;
-using ::raise;
 
 _LIBCUDACXX_END_NAMESPACE_STD
 
-#endif  // _LIBCUDACXX_CSIGNAL
+#endif // _LIBCUDACXX_CSIGNAL

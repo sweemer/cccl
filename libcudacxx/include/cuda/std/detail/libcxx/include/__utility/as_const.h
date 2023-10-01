@@ -11,20 +11,24 @@
 #define _LIBCUDACXX___UTILITY_AS_CONST_H
 
 #ifndef __cuda_std__
-#include <__config>
+#  include <__config>
 #endif // __cuda_std__
 
 #include "../__type_traits/add_const.h"
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 _LIBCUDACXX_BEGIN_NAMESPACE_STD
 
 #if _LIBCUDACXX_STD_VER > 11
 template <class _Tp>
-_LIBCUDACXX_NODISCARD_EXT _LIBCUDACXX_INLINE_VISIBILITY constexpr add_const_t<_Tp>& as_const(_Tp& __t) noexcept { return __t; }
+_LIBCUDACXX_NODISCARD_EXT _LIBCUDACXX_INLINE_VISIBILITY constexpr add_const_t<_Tp>&
+as_const(_Tp& __t) noexcept
+{
+  return __t;
+}
 
 template <class _Tp>
 void as_const(const _Tp&&) = delete;

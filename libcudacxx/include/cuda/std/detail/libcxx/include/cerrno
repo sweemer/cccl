@@ -26,7 +26,7 @@ Macros:
 #include <errno.h>
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
-#endif  // _LIBCUDACXX_CERRNO
+#endif // _LIBCUDACXX_CERRNO

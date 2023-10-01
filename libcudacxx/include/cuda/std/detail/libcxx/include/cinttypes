@@ -240,19 +240,19 @@ uintmax_t wcstoumax(const wchar_t* restrict nptr, wchar_t** restrict endptr, int
 #include "cstdint"
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 _LIBCUDACXX_BEGIN_NAMESPACE_STD
 
-using::imaxdiv_t;
-using::imaxabs;
-using::imaxdiv;
-using::strtoimax;
-using::strtoumax;
-using::wcstoimax;
-using::wcstoumax;
+using ::imaxabs;
+using ::imaxdiv;
+using ::imaxdiv_t;
+using ::strtoimax;
+using ::strtoumax;
+using ::wcstoimax;
+using ::wcstoumax;
 
 _LIBCUDACXX_END_NAMESPACE_STD
 
-#endif  // _LIBCUDACXX_CINTTYPES
+#endif // _LIBCUDACXX_CINTTYPES

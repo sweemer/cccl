@@ -13,13 +13,13 @@
 #define _LIBCUDACXX___ITERATOR_UNREACHABLE_SENTINEL_H
 
 #ifndef __cuda_std__
-#include <__config>
+#  include <__config>
 #endif // __cuda_std__
 
 #include "../__iterator/concepts.h"
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 #if _LIBCUDACXX_STD_VER > 14
@@ -33,49 +33,49 @@ _LIBCUDACXX_BEGIN_NAMESPACE_RANGES_ABI
 // are only ever found through ADL
 
 struct unreachable_sentinel_t
-#ifdef _LIBCUDACXX_COMPILER_MSVC
+#  ifdef _LIBCUDACXX_COMPILER_MSVC
     ;
 namespace __unreachable_sentinel_detail {
 struct __unreachable_base
-#endif // _LIBCUDACXX_COMPILER_MSVC
+#  endif // _LIBCUDACXX_COMPILER_MSVC
 {
   _LIBCUDACXX_TEMPLATE(class _Iter)
   _LIBCUDACXX_REQUIRES(weakly_incrementable<_Iter>)
-  _LIBCUDACXX_HIDE_FROM_ABI
-      _LIBCUDACXX_INLINE_VISIBILITY _LIBCUDACXX_NODISCARD_FRIEND constexpr bool
-      operator==(const unreachable_sentinel_t &, const _Iter &) noexcept {
+  _LIBCUDACXX_HIDE_FROM_ABI _LIBCUDACXX_INLINE_VISIBILITY _LIBCUDACXX_NODISCARD_FRIEND constexpr bool
+  operator==(const unreachable_sentinel_t&, const _Iter&) noexcept
+  {
     return false;
   }
-#if _LIBCUDACXX_STD_VER < 20
+#  if _LIBCUDACXX_STD_VER < 20
   _LIBCUDACXX_TEMPLATE(class _Iter)
   _LIBCUDACXX_REQUIRES(weakly_incrementable<_Iter>)
-  _LIBCUDACXX_HIDE_FROM_ABI
-      _LIBCUDACXX_INLINE_VISIBILITY _LIBCUDACXX_NODISCARD_FRIEND constexpr bool
-      operator==(const _Iter &, const unreachable_sentinel_t &) noexcept {
+  _LIBCUDACXX_HIDE_FROM_ABI _LIBCUDACXX_INLINE_VISIBILITY _LIBCUDACXX_NODISCARD_FRIEND constexpr bool
+  operator==(const _Iter&, const unreachable_sentinel_t&) noexcept
+  {
     return false;
   }
   _LIBCUDACXX_TEMPLATE(class _Iter)
   _LIBCUDACXX_REQUIRES(weakly_incrementable<_Iter>)
-  _LIBCUDACXX_HIDE_FROM_ABI
-      _LIBCUDACXX_INLINE_VISIBILITY _LIBCUDACXX_NODISCARD_FRIEND constexpr bool
-      operator!=(const unreachable_sentinel_t &, const _Iter &) noexcept {
+  _LIBCUDACXX_HIDE_FROM_ABI _LIBCUDACXX_INLINE_VISIBILITY _LIBCUDACXX_NODISCARD_FRIEND constexpr bool
+  operator!=(const unreachable_sentinel_t&, const _Iter&) noexcept
+  {
     return true;
   }
   _LIBCUDACXX_TEMPLATE(class _Iter)
   _LIBCUDACXX_REQUIRES(weakly_incrementable<_Iter>)
-  _LIBCUDACXX_HIDE_FROM_ABI
-      _LIBCUDACXX_INLINE_VISIBILITY _LIBCUDACXX_NODISCARD_FRIEND constexpr bool
-      operator!=(const _Iter &, const unreachable_sentinel_t &) noexcept {
+  _LIBCUDACXX_HIDE_FROM_ABI _LIBCUDACXX_INLINE_VISIBILITY _LIBCUDACXX_NODISCARD_FRIEND constexpr bool
+  operator!=(const _Iter&, const unreachable_sentinel_t&) noexcept
+  {
     return true;
   }
-#endif // _LIBCUDACXX_STD_VER < 20
+#  endif // _LIBCUDACXX_STD_VER < 20
 };
 
-#ifdef _LIBCUDACXX_COMPILER_MSVC
+#  ifdef _LIBCUDACXX_COMPILER_MSVC
 } // namespace __unreachable_sentinel_detail
-struct unreachable_sentinel_t
-    : __unreachable_sentinel_detail::__unreachable_base {};
-#endif // _LIBCUDACXX_COMPILER_MSVC
+struct unreachable_sentinel_t : __unreachable_sentinel_detail::__unreachable_base
+{};
+#  endif // _LIBCUDACXX_COMPILER_MSVC
 
 _LIBCUDACXX_END_NAMESPACE_RANGES_ABI
 

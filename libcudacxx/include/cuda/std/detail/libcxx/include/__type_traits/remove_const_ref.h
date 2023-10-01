@@ -11,14 +11,14 @@
 #define _LIBCUDACXX___TYPE_TRAITS_REMOVE_CONST_REF_H
 
 #ifndef __cuda_std__
-#include <__config>
+#  include <__config>
 #endif // __cuda_std__
 
 #include "../__type_traits/remove_const.h"
 #include "../__type_traits/remove_reference.h"
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 _LIBCUDACXX_BEGIN_NAMESPACE_STD

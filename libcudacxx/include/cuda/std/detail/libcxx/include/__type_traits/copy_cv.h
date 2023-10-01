@@ -11,7 +11,7 @@
 #define _LIBCUDACXX___TYPE_TRAITS_COPY_CV_H
 
 #ifndef __cuda_std__
-#include <__config>
+#  include <__config>
 #endif // __cuda_std__
 
 #include "../__type_traits/add_const.h"
@@ -19,7 +19,7 @@
 #include "../__type_traits/add_volatile.h"
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 _LIBCUDACXX_BEGIN_NAMESPACE_STD
@@ -29,25 +29,25 @@ _LIBCUDACXX_BEGIN_NAMESPACE_STD
 template <class _From, class _To>
 struct __copy_cv
 {
-    using type = _To;
+  using type = _To;
 };
 
 template <class _From, class _To>
 struct __copy_cv<const _From, _To>
 {
-    using type = typename add_const<_To>::type;
+  using type = typename add_const<_To>::type;
 };
 
 template <class _From, class _To>
 struct __copy_cv<volatile _From, _To>
 {
-    using type = typename add_volatile<_To>::type;
+  using type = typename add_volatile<_To>::type;
 };
 
 template <class _From, class _To>
 struct __copy_cv<const volatile _From, _To>
 {
-    using type = typename add_cv<_To>::type;
+  using type = typename add_cv<_To>::type;
 };
 
 template <class _From, class _To>

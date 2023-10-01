@@ -34,12 +34,13 @@ inline namespace fundamentals_v1 {
 #include <utility>
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 _LIBCUDACXX_BEGIN_NAMESPACE_LFTS
 
-  struct _LIBCUDACXX_TEMPLATE_VIS erased_type { };
+struct _LIBCUDACXX_TEMPLATE_VIS erased_type
+{};
 
 _LIBCUDACXX_END_NAMESPACE_LFTS
 

@@ -12,20 +12,23 @@
 #define _LIBCUDACXX___FUNCTIONAL_IDENTITY_H
 
 #ifndef __cuda_std__
-#include <__config>
+#  include <__config>
 #endif // __cuda_std__
 
 #include "../__utility/forward.h"
 
 #if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
+#  pragma GCC system_header
 #endif
 
 _LIBCUDACXX_BEGIN_NAMESPACE_STD
 
-struct __identity {
+struct __identity
+{
   template <class _Tp>
-  _LIBCUDACXX_NODISCARD_EXT _LIBCUDACXX_INLINE_VISIBILITY constexpr _Tp&& operator()(_Tp&& __t) const noexcept {
+  _LIBCUDACXX_NODISCARD_EXT _LIBCUDACXX_INLINE_VISIBILITY constexpr _Tp&&
+  operator()(_Tp&& __t) const noexcept
+  {
     return _CUDA_VSTD::forward<_Tp>(__t);
   }
 
@@ -34,14 +37,16 @@ struct __identity {
 
 #if _LIBCUDACXX_STD_VER > 11
 
-struct identity {
-    template<class _Tp>
-    _LIBCUDACXX_NODISCARD_EXT _LIBCUDACXX_INLINE_VISIBILITY constexpr _Tp&& operator()(_Tp&& __t) const noexcept
-    {
-        return _CUDA_VSTD::forward<_Tp>(__t);
-    }
+struct identity
+{
+  template <class _Tp>
+  _LIBCUDACXX_NODISCARD_EXT _LIBCUDACXX_INLINE_VISIBILITY constexpr _Tp&&
+  operator()(_Tp&& __t) const noexcept
+  {
+    return _CUDA_VSTD::forward<_Tp>(__t);
+  }
 
-    using is_transparent = void;
+  using is_transparent = void;
 };
 #endif // _LIBCUDACXX_STD_VER > 11
 
