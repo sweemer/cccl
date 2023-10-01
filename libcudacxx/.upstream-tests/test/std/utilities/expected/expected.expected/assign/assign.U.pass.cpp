@@ -38,12 +38,14 @@
 #include "../../types.h"
 #include "test_macros.h"
 
-struct NotCopyConstructible {
+struct NotCopyConstructible
+{
   NotCopyConstructible(const NotCopyConstructible&)            = delete;
   NotCopyConstructible& operator=(const NotCopyConstructible&) = default;
 };
 
-struct NotCopyAssignable {
+struct NotCopyAssignable
+{
   NotCopyAssignable(const NotCopyAssignable&)            = default;
   NotCopyAssignable& operator=(const NotCopyAssignable&) = delete;
 };
@@ -60,21 +62,24 @@ static_assert(cuda::std::is_assignable_v<cuda::std::expected<int, int>&, cuda::s
 static_assert(cuda::std::is_assignable_v<cuda::std::expected<int, int>&, cuda::std::unexpected<int>>, "");
 
 // !is_constructible_v<T, U>
-struct NoCtorFromInt {
+struct NoCtorFromInt
+{
   __host__ __device__ NoCtorFromInt(int) = delete;
   __host__ __device__ NoCtorFromInt& operator=(int);
 };
 static_assert(!cuda::std::is_assignable_v<cuda::std::expected<NoCtorFromInt, int>&, int>, "");
 
 // !is_assignable_v<T&, U>
-struct NoAssignFromInt {
+struct NoAssignFromInt
+{
   __host__ __device__ explicit NoAssignFromInt(int);
   __host__ __device__ NoAssignFromInt& operator=(int) = delete;
 };
 static_assert(!cuda::std::is_assignable_v<cuda::std::expected<NoAssignFromInt, int>&, int>, "");
 
 template <bool moveNoexcept, bool convertNoexcept>
-struct MaybeNoexcept {
+struct MaybeNoexcept
+{
   __host__ __device__ explicit MaybeNoexcept(int) noexcept(convertNoexcept);
   __host__ __device__ MaybeNoexcept(MaybeNoexcept&&) noexcept(moveNoexcept);
   MaybeNoexcept& operator=(MaybeNoexcept&&) = default;
@@ -87,17 +92,23 @@ static_assert(cuda::std::is_assignable_v<cuda::std::expected<MaybeNoexcept<false
 
 // is_nothrow_constructible_v<T, U> && !is_nothrow_move_constructible_v<T> &&
 // !is_nothrow_move_constructible_v<E>
-static_assert(cuda::std::is_assignable_v<cuda::std::expected<MaybeNoexcept<false, true>, MaybeNoexcept<false, false>>&, int>, "");
+static_assert(
+    cuda::std::is_assignable_v<cuda::std::expected<MaybeNoexcept<false, true>, MaybeNoexcept<false, false>>&, int>, "");
 
 // !is_nothrow_constructible_v<T, U> && is_nothrow_move_constructible_v<T> &&
 // !is_nothrow_move_constructible_v<E>
-static_assert(cuda::std::is_assignable_v<cuda::std::expected<MaybeNoexcept<true, false>, MaybeNoexcept<false, false>>&, int>, "");
+static_assert(
+    cuda::std::is_assignable_v<cuda::std::expected<MaybeNoexcept<true, false>, MaybeNoexcept<false, false>>&, int>, "");
 
 // !is_nothrow_constructible_v<T, U> && !is_nothrow_move_constructible_v<T> &&
 // !is_nothrow_move_constructible_v<E>
-static_assert(!cuda::std::is_assignable_v<cuda::std::expected<MaybeNoexcept<false, false>, MaybeNoexcept<false, false>>&, int>, "");
+static_assert(
+    !cuda::std::is_assignable_v<cuda::std::expected<MaybeNoexcept<false, false>, MaybeNoexcept<false, false>>&, int>,
+    "");
 
-__host__ __device__ TEST_CONSTEXPR_CXX20 bool test() {
+__host__ __device__ TEST_CONSTEXPR_CXX20 bool
+test()
+{
   // If has_value() is true, equivalent to: val = cuda::std::forward<U>(v);
   // Copy
   {
@@ -302,10 +313,14 @@ __host__ __device__ TEST_CONSTEXPR_CXX20 bool test() {
   // Test default template argument.
   // Without it, the template parameter cannot be deduced from an initializer list
   {
-    struct Bar {
+    struct Bar
+    {
       int i;
       int j;
-      __host__ __device__ constexpr Bar(int ii, int jj) : i(ii), j(jj) {}
+      __host__ __device__ constexpr Bar(int ii, int jj)
+          : i(ii)
+          , j(jj)
+      {}
     };
 
     cuda::std::expected<Bar, int> e({5, 6});
@@ -317,7 +332,9 @@ __host__ __device__ TEST_CONSTEXPR_CXX20 bool test() {
   return true;
 }
 
-__host__ __device__ void testException() {
+__host__ __device__ void
+testException()
+{
 #ifndef TEST_HAS_NO_EXCEPTIONS
   cuda::std::expected<ThrowOnConvert, int> e1(cuda::std::unexpect, 5);
   try {
@@ -331,7 +348,9 @@ __host__ __device__ void testException() {
 #endif // TEST_HAS_NO_EXCEPTIONS
 }
 
-int main(int, char**) {
+int
+main(int, char**)
+{
   test();
 #if TEST_STD_VER > 17 && defined(_LIBCUDACXX_ADDRESSOF)
   static_assert(test());

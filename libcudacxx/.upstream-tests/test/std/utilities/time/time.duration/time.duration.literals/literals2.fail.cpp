@@ -15,11 +15,12 @@
 #include <cuda/std/chrono>
 #include <cuda/std/cassert>
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    using cuda::std::chrono::hours;
+  using cuda::std::chrono::hours;
 
-    hours foo  =  4h;  // should fail w/conversion operator not found
+  hours foo = 4h; // should fail w/conversion operator not found
 
   return 0;
 }

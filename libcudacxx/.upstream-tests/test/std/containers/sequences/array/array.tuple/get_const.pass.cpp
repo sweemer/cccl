@@ -19,25 +19,26 @@
 // Disable the missing braces warning for this reason.
 #include "disable_missing_braces_warning.h"
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    {
-        typedef double T;
-        typedef cuda::std::array<T, 3> C;
-        const C c = {1, 2, 3.5};
-        assert(cuda::std::get<0>(c) == 1);
-        assert(cuda::std::get<1>(c) == 2);
-        assert(cuda::std::get<2>(c) == 3.5);
-    }
+  {
+    typedef double T;
+    typedef cuda::std::array<T, 3> C;
+    const C c = {1, 2, 3.5};
+    assert(cuda::std::get<0>(c) == 1);
+    assert(cuda::std::get<1>(c) == 2);
+    assert(cuda::std::get<2>(c) == 3.5);
+  }
 #if TEST_STD_VER > 11
-    {
-        typedef double T;
-        typedef cuda::std::array<T, 3> C;
-        constexpr const C c = {1, 2, 3.5};
-        static_assert(cuda::std::get<0>(c) == 1, "");
-        static_assert(cuda::std::get<1>(c) == 2, "");
-        static_assert(cuda::std::get<2>(c) == 3.5, "");
-    }
+  {
+    typedef double T;
+    typedef cuda::std::array<T, 3> C;
+    constexpr const C c = {1, 2, 3.5};
+    static_assert(cuda::std::get<0>(c) == 1, "");
+    static_assert(cuda::std::get<1>(c) == 2, "");
+    static_assert(cuda::std::get<2>(c) == 3.5, "");
+  }
 #endif
 
   return 0;

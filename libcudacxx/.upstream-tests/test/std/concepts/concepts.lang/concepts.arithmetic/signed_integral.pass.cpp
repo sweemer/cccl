@@ -21,7 +21,9 @@
 using cuda::std::signed_integral;
 
 template <typename T>
-__host__ __device__ constexpr bool CheckSignedIntegralQualifiers() {
+__host__ __device__ constexpr bool
+CheckSignedIntegralQualifiers()
+{
   constexpr bool result = signed_integral<T>;
   static_assert(signed_integral<const T> == result, "");
   static_assert(signed_integral<volatile T> == result, "");
@@ -44,7 +46,7 @@ __host__ __device__ constexpr bool CheckSignedIntegralQualifiers() {
 
   static_assert(!signed_integral<T (*)()>, "");
   static_assert(!signed_integral<T (&)()>, "");
-  static_assert(!signed_integral<T(&&)()>, "");
+  static_assert(!signed_integral<T (&&)()>, "");
 
   return result;
 }
@@ -57,18 +59,14 @@ static_assert(CheckSignedIntegralQualifiers<long>(), "");
 static_assert(CheckSignedIntegralQualifiers<long long>(), "");
 
 // bool and character *may* be signed
-static_assert(CheckSignedIntegralQualifiers<wchar_t>() ==
-              cuda::std::is_signed_v<wchar_t>, "");
+static_assert(CheckSignedIntegralQualifiers<wchar_t>() == cuda::std::is_signed_v<wchar_t>, "");
 static_assert(CheckSignedIntegralQualifiers<bool>() == cuda::std::is_signed_v<bool>, "");
 static_assert(CheckSignedIntegralQualifiers<char>() == cuda::std::is_signed_v<char>, "");
 #if TEST_STD_VER > 17 && defined(__cpp_char8_t)
-static_assert(CheckSignedIntegralQualifiers<char8_t>() ==
-              cuda::std::is_signed_v<char8_t>, "");
+static_assert(CheckSignedIntegralQualifiers<char8_t>() == cuda::std::is_signed_v<char8_t>, "");
 #endif // TEST_STD_VER > 17 && defined(__cpp_char8_t)
-static_assert(CheckSignedIntegralQualifiers<char16_t>() ==
-              cuda::std::is_signed_v<char16_t>, "");
-static_assert(CheckSignedIntegralQualifiers<char32_t>() ==
-              cuda::std::is_signed_v<char32_t>, "");
+static_assert(CheckSignedIntegralQualifiers<char16_t>() == cuda::std::is_signed_v<char16_t>, "");
+static_assert(CheckSignedIntegralQualifiers<char32_t>() == cuda::std::is_signed_v<char32_t>, "");
 
 // integers that aren't signed integrals
 static_assert(!CheckSignedIntegralQualifiers<unsigned char>(), "");
@@ -100,4 +98,8 @@ static_assert(CheckSubsumption(0), "");
 static_assert(CheckSubsumption(0U), "");
 #endif // TEST_STD_VER > 17
 
-int main(int, char**) { return 0; }
+int
+main(int, char**)
+{
+  return 0;
+}

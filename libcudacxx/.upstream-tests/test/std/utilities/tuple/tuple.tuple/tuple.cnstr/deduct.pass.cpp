@@ -48,7 +48,8 @@
 // (8)  tuple(tuple&& t) -> decltype(t)
 // (9)  tuple(AT, A const&, tuple const& t) -> decltype(t)
 // (10) tuple(AT, A const&, tuple&& t) -> decltype(t)
-__host__ __device__ void test_primary_template()
+__host__ __device__ void
+test_primary_template()
 {
   // cuda::std::allocator not supported
   // const cuda::std::allocator<int> A;
@@ -68,7 +69,8 @@ __host__ __device__ void test_primary_template()
     cuda::std::tuple t1(p1);
     ASSERT_SAME_TYPE(decltype(t1), cuda::std::tuple<int, char>);
 
-    cuda::std::pair<int, cuda::std::tuple<char, long, void*>> p2(1, cuda::std::tuple<char, long, void*>('c', 3l, nullptr));
+    cuda::std::pair<int, cuda::std::tuple<char, long, void*>> p2(
+        1, cuda::std::tuple<char, long, void*>('c', 3l, nullptr));
     cuda::std::tuple t2(p2);
     ASSERT_SAME_TYPE(decltype(t2), cuda::std::tuple<int, cuda::std::tuple<char, long, void*>>);
 
@@ -124,9 +126,9 @@ __host__ __device__ void test_primary_template()
     cuda::std::tuple t1(AT, A, p1);
     ASSERT_SAME_TYPE(decltype(t1), cuda::std::tuple<int, char>);
 
-    cuda::std::pair<int, cuda::std::tuple<char, long, void*>> p2(1, cuda::std::tuple<char, long, void*>('c', 3l, nullptr));
-    cuda::std::tuple t2(AT, A, p2);
-    ASSERT_SAME_TYPE(decltype(t2), cuda::std::tuple<int, cuda::std::tuple<char, long, void*>>);
+    cuda::std::pair<int, cuda::std::tuple<char, long, void*>> p2(1, cuda::std::tuple<char, long, void*>('c', 3l,
+  nullptr)); cuda::std::tuple t2(AT, A, p2); ASSERT_SAME_TYPE(decltype(t2), cuda::std::tuple<int, cuda::std::tuple<char,
+  long, void*>>);
 
     int i = 3;
     cuda::std::pair<cuda::std::reference_wrapper<int>, char> p3(cuda::std::ref(i), 'c');
@@ -184,7 +186,8 @@ __host__ __device__ void test_primary_template()
 // (4)  tuple(tuple&&) -> tuple<>
 // (5)  tuple(AT, A const&, tuple const&) -> tuple<>
 // (6)  tuple(AT, A const&, tuple&&) -> tuple<>
-__host__ __device__ void test_empty_specialization()
+__host__ __device__ void
+test_empty_specialization()
 {
   // cuda::std::allocator not supported
   // cuda::std::allocator<int> A;
@@ -227,7 +230,9 @@ __host__ __device__ void test_empty_specialization()
   */
 }
 
-int main(int, char**) {
+int
+main(int, char**)
+{
   test_primary_template();
   test_empty_specialization();
 

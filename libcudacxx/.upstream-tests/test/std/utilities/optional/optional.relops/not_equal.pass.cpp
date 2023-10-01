@@ -20,26 +20,30 @@
 
 using cuda::std::optional;
 
-struct X {
+struct X
+{
   int i_;
 
-  __host__ __device__
-  constexpr X(int i) : i_(i) {}
+  __host__ __device__ constexpr X(int i)
+      : i_(i)
+  {}
 };
 
-__host__ __device__
-constexpr bool operator!=(const X& lhs, const X& rhs) {
+__host__ __device__ constexpr bool
+operator!=(const X& lhs, const X& rhs)
+{
   return lhs.i_ != rhs.i_;
 }
 
-__host__ __device__
-constexpr bool test() {
+__host__ __device__ constexpr bool
+test()
+{
   {
     typedef X T;
     typedef optional<T> O;
 
-    O o1;    // disengaged
-    O o2;    // disengaged
+    O o1; // disengaged
+    O o2; // disengaged
     O o3{1}; // engaged
     O o4{2}; // engaged
     O o5{1}; // engaged
@@ -89,16 +93,17 @@ constexpr bool test() {
     assert(!(O2(42) != o1));
   }
 
-
   return true;
 }
 
-int main(int, char**) {
+int
+main(int, char**)
+{
   test();
 #if TEST_STD_VER >= 17
-#if !(defined(TEST_COMPILER_CUDACC_BELOW_11_3) && defined(TEST_COMPILER_CLANG))
+#  if !(defined(TEST_COMPILER_CUDACC_BELOW_11_3) && defined(TEST_COMPILER_CLANG))
   static_assert(test());
-#endif // !(defined(TEST_COMPILER_CUDACC_BELOW_11_3) && defined(TEST_COMPILER_CLANG))
+#  endif // !(defined(TEST_COMPILER_CUDACC_BELOW_11_3) && defined(TEST_COMPILER_CLANG))
 #endif
 
   return 0;

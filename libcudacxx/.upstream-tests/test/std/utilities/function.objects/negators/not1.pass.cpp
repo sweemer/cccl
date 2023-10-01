@@ -16,11 +16,12 @@
 #include <cuda/std/functional>
 #include <cuda/std/cassert>
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    typedef cuda::std::logical_not<int> F;
-    assert(cuda::std::not1(F())(36));
-    assert(!cuda::std::not1(F())(0));
+  typedef cuda::std::logical_not<int> F;
+  assert(cuda::std::not1(F())(36));
+  assert(!cuda::std::not1(F())(0));
 
   return 0;
 }

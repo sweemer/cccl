@@ -18,10 +18,11 @@
 
 #include <cuda/std/chrono>
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    typedef cuda::std::chrono::duration<cuda::std::chrono::milliseconds> D;
-    D d;
+  typedef cuda::std::chrono::duration<cuda::std::chrono::milliseconds> D;
+  D d;
 
   return 0;
 }

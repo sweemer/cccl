@@ -19,8 +19,9 @@
 #include "read_write.h"
 
 template <class Out, class T>
-__host__ __device__
-constexpr bool check_indirectly_writable() {
+__host__ __device__ constexpr bool
+check_indirectly_writable()
+{
   constexpr bool result = cuda::std::indirectly_writable<Out, T>;
   static_assert(cuda::std::indirectly_writable<Out const, T> == result);
   return result;
@@ -52,7 +53,8 @@ static_assert(check_indirectly_writable<int*, double>());
 static_assert(check_indirectly_writable<int**, int*>());
 static_assert(!check_indirectly_writable<int**, int>());
 
-int main(int, char**)
+int
+main(int, char**)
 {
   return 0;
 }

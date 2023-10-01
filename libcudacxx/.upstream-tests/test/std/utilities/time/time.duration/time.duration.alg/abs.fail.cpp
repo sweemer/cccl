@@ -23,9 +23,10 @@
 
 typedef cuda::std::chrono::duration<unsigned> unsigned_secs;
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    cuda::std::chrono::abs(unsigned_secs(0));
+  cuda::std::chrono::abs(unsigned_secs(0));
 
   return 0;
 }

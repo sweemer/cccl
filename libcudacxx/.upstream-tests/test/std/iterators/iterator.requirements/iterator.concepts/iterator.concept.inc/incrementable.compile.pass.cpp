@@ -42,7 +42,8 @@ static_assert(!cuda::std::incrementable<noncopyable_with_difference_type>);
 static_assert(!cuda::std::incrementable<noncopyable_without_difference_type>);
 static_assert(!cuda::std::incrementable<noncopyable_with_difference_type_and_minus>);
 
-int main(int, char**)
+int
+main(int, char**)
 {
   return 0;
 }

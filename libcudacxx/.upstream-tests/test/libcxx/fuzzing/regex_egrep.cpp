@@ -13,24 +13,22 @@
 #include <cuda/std/cassert>
 #include <cuda/std/cstring> // for strlen
 
-const char * test_cases[] = {
-	"",
-	"s",
-	"b*c",
-	"ba?sf"
-	"lka*ea",
-	"adsf*kas;lnc441[0-9]1r34525234"
-	};
+const char* test_cases[] = {"",
+    "s",
+    "b*c",
+    "ba?sf"
+    "lka*ea",
+    "adsf*kas;lnc441[0-9]1r34525234"};
 
-const size_t k_num_tests = sizeof(test_cases)/sizeof(test_cases[0]);
+const size_t k_num_tests = sizeof(test_cases) / sizeof(test_cases[0]);
 
-int main(int, char**)
+int
+main(int, char**)
 {
-	for (size_t i = 0; i < k_num_tests; ++i)
-		{
-		const size_t   size = cuda::std::strlen(test_cases[i]);
-		const uint8_t *data = (const uint8_t *) test_cases[i];
-		assert(0 == fuzzing::regex_egrep(data, size));
-		}
-	return 0;
+  for (size_t i = 0; i < k_num_tests; ++i) {
+    const size_t size   = cuda::std::strlen(test_cases[i]);
+    const uint8_t* data = (const uint8_t*) test_cases[i];
+    assert(0 == fuzzing::regex_egrep(data, size));
+  }
+  return 0;
 }

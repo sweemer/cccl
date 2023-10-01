@@ -17,10 +17,11 @@
 
 #include <cuda/std/chrono>
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    typedef cuda::std::chrono::time_point<cuda::std::chrono::system_clock, int> T;
-    T t;
+  typedef cuda::std::chrono::time_point<cuda::std::chrono::system_clock, int> T;
+  T t;
 
   return 0;
 }

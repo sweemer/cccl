@@ -21,7 +21,9 @@
 using cuda::std::unsigned_integral;
 
 template <typename T>
-__host__ __device__ constexpr bool CheckUnsignedIntegralQualifiers() {
+__host__ __device__ constexpr bool
+CheckUnsignedIntegralQualifiers()
+{
   constexpr bool result = unsigned_integral<T>;
   static_assert(unsigned_integral<const T> == result, "");
   static_assert(unsigned_integral<volatile T> == result, "");
@@ -44,7 +46,7 @@ __host__ __device__ constexpr bool CheckUnsignedIntegralQualifiers() {
 
   static_assert(!unsigned_integral<T (*)()>, "");
   static_assert(!unsigned_integral<T (&)()>, "");
-  static_assert(!unsigned_integral<T(&&)()>, "");
+  static_assert(!unsigned_integral<T (&&)()>, "");
 
   return result;
 }
@@ -57,20 +59,14 @@ static_assert(CheckUnsignedIntegralQualifiers<unsigned long>(), "");
 static_assert(CheckUnsignedIntegralQualifiers<unsigned long long>(), "");
 
 // Whether bool and character types are signed or unsigned is impl-defined
-static_assert(CheckUnsignedIntegralQualifiers<wchar_t>() ==
-              !cuda::std::is_signed_v<wchar_t>, "");
-static_assert(CheckUnsignedIntegralQualifiers<bool>() ==
-              !cuda::std::is_signed_v<bool>, "");
-static_assert(CheckUnsignedIntegralQualifiers<char>() ==
-              !cuda::std::is_signed_v<char>, "");
+static_assert(CheckUnsignedIntegralQualifiers<wchar_t>() == !cuda::std::is_signed_v<wchar_t>, "");
+static_assert(CheckUnsignedIntegralQualifiers<bool>() == !cuda::std::is_signed_v<bool>, "");
+static_assert(CheckUnsignedIntegralQualifiers<char>() == !cuda::std::is_signed_v<char>, "");
 #if TEST_STD_VER > 17 && defined(__cpp_char8_t)
-static_assert(CheckUnsignedIntegralQualifiers<char8_t>() ==
-              !cuda::std::is_signed_v<char8_t>, "");
+static_assert(CheckUnsignedIntegralQualifiers<char8_t>() == !cuda::std::is_signed_v<char8_t>, "");
 #endif // TEST_STD_VER > 17 && defined(__cpp_char8_t)
-static_assert(CheckUnsignedIntegralQualifiers<char16_t>() ==
-              !cuda::std::is_signed_v<char16_t>, "");
-static_assert(CheckUnsignedIntegralQualifiers<char32_t>() ==
-              !cuda::std::is_signed_v<char32_t>, "");
+static_assert(CheckUnsignedIntegralQualifiers<char16_t>() == !cuda::std::is_signed_v<char16_t>, "");
+static_assert(CheckUnsignedIntegralQualifiers<char32_t>() == !cuda::std::is_signed_v<char32_t>, "");
 
 // extended integers
 #ifndef TEST_HAS_NO_INT128_T
@@ -101,4 +97,8 @@ static_assert(CheckSubsumption(0), "");
 static_assert(CheckSubsumption(0U), "");
 #endif // TEST_STD_VER > 17
 
-int main(int, char**) { return 0; }
+int
+main(int, char**)
+{
+  return 0;
+}

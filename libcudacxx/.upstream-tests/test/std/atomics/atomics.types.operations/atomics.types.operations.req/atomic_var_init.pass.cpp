@@ -20,10 +20,11 @@
 
 #include "test_macros.h"
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    cuda::std::atomic<int> v = ATOMIC_VAR_INIT(5);
-    assert(v == 5);
+  cuda::std::atomic<int> v = ATOMIC_VAR_INIT(5);
+  assert(v == 5);
 
   return 0;
 }

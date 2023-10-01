@@ -33,16 +33,17 @@ static_assert(!cuda::std::weakly_incrementable<int (&)()>);
 static_assert(!cuda::std::weakly_incrementable<bool>);
 #endif
 
-struct S {};
+struct S
+{};
 static_assert(!cuda::std::weakly_incrementable<int S::*>);
 
-#define CHECK_POINTER_TO_MEMBER_FUNCTIONS(qualifier)                                                                   \
-  static_assert(!cuda::std::weakly_incrementable<int (S::*)() qualifier>);                                         \
-  static_assert(!cuda::std::weakly_incrementable<int (S::*)() qualifier noexcept>);                                \
-  static_assert(!cuda::std::weakly_incrementable<int (S::*)() qualifier&>);                                        \
-  static_assert(!cuda::std::weakly_incrementable<int (S::*)() qualifier & noexcept>);                              \
-  static_assert(!cuda::std::weakly_incrementable<int (S::*)() qualifier&&>);                                       \
-  static_assert(!cuda::std::weakly_incrementable < int (S::*)() qualifier&& noexcept >);
+#define CHECK_POINTER_TO_MEMBER_FUNCTIONS(qualifier)                                  \
+  static_assert(!cuda::std::weakly_incrementable<int (S::*)() qualifier>);            \
+  static_assert(!cuda::std::weakly_incrementable<int (S::*)() qualifier noexcept>);   \
+  static_assert(!cuda::std::weakly_incrementable<int (S::*)() qualifier&>);           \
+  static_assert(!cuda::std::weakly_incrementable<int (S::*)() qualifier & noexcept>); \
+  static_assert(!cuda::std::weakly_incrementable<int (S::*)() qualifier&&>);          \
+  static_assert(!cuda::std::weakly_incrementable < int(S::*)() qualifier&& noexcept >);
 
 #define NO_QUALIFIER
 CHECK_POINTER_TO_MEMBER_FUNCTIONS(NO_QUALIFIER);
@@ -72,7 +73,8 @@ static_assert(cuda::std::weakly_incrementable<noncopyable_without_difference_typ
 static_assert(cuda::std::weakly_incrementable<noncopyable_with_difference_type_and_minus>);
 #endif // TEST_COMPILER_MSVC_2017
 
-int main(int, char**)
+int
+main(int, char**)
 {
   return 0;
 }

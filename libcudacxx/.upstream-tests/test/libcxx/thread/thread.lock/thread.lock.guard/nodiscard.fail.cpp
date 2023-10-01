@@ -30,9 +30,14 @@
 #define _LIBCUDACXX_ENABLE_NODISCARD
 #include <cuda/std/mutex>
 
-int main(int, char**) {
-    cuda::std::mutex m;
-    cuda::std::lock_guard<cuda::std::mutex>{m}; // expected-error{{ignoring temporary created by a constructor declared with 'nodiscard' attribute}}
-    cuda::std::lock_guard<cuda::std::mutex>{m, cuda::std::adopt_lock}; // expected-error{{ignoring temporary created by a constructor declared with 'nodiscard' attribute}}
-    return 0;
+int
+main(int, char**)
+{
+  cuda::std::mutex m;
+  cuda::std::lock_guard<cuda::std::mutex>{
+      m}; // expected-error{{ignoring temporary created by a constructor declared with 'nodiscard' attribute}}
+  cuda::std::lock_guard<cuda::std::mutex>{
+      m, cuda::std::adopt_lock}; // expected-error{{ignoring temporary created by a constructor declared with
+                                 // 'nodiscard' attribute}}
+  return 0;
 }

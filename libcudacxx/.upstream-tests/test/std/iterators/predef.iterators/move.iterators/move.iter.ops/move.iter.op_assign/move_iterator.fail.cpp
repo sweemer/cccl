@@ -23,22 +23,24 @@
 #include <cuda/std/iterator>
 
 template <class It, class U>
-__host__ __device__
-void
+__host__ __device__ void
 test(U u)
 {
-    const cuda::std::move_iterator<U> r2(u);
-    cuda::std::move_iterator<It> r1;
-    r1 = r2;
+  const cuda::std::move_iterator<U> r2(u);
+  cuda::std::move_iterator<It> r1;
+  r1 = r2;
 }
 
-struct base {};
-struct derived {};
+struct base
+{};
+struct derived
+{};
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    derived d;
-    test<base*>(&d);
+  derived d;
+  test<base*>(&d);
 
   return 0;
 }

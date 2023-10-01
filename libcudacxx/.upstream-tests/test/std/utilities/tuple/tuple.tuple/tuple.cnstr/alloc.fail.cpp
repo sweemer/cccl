@@ -6,7 +6,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-// UNSUPPORTED: c++98, c++03 
+// UNSUPPORTED: c++98, c++03
 // UNSUPPORTED: nvrtc
 
 // <cuda/std/tuple>
@@ -21,13 +21,20 @@
 
 #include <cuda/std/tuple>
 
+struct ExplicitDefault
+{
+  __host__ __device__ explicit ExplicitDefault() {}
+};
 
-struct ExplicitDefault { __host__ __device__ explicit ExplicitDefault() { } };
-
-__host__ __device__ std::tuple<ExplicitDefault> explicit_default_test() {
-    return {cuda::std::allocator_arg, cuda::std::allocator<int>()}; // expected-error {{chosen constructor is explicit in copy-initialization}}
+__host__ __device__ std::tuple<ExplicitDefault>
+explicit_default_test()
+{
+  return {cuda::std::allocator_arg,
+      cuda::std::allocator<int>()}; // expected-error {{chosen constructor is explicit in copy-initialization}}
 }
 
-int main(int, char**) {
-    return 0;
+int
+main(int, char**)
+{
+  return 0;
 }

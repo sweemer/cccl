@@ -24,33 +24,35 @@
 #include "test_iterators.h"
 
 template <class It, class U>
-__host__ __device__
-void
+__host__ __device__ void
 test(U u)
 {
-    const cuda::std::reverse_iterator<U> r2(u);
-    cuda::std::reverse_iterator<It> r1 = r2;
-    assert(base(r1.base()) == base(u));
+  const cuda::std::reverse_iterator<U> r2(u);
+  cuda::std::reverse_iterator<It> r1 = r2;
+  assert(base(r1.base()) == base(u));
 }
 
-struct Base {};
-struct Derived : Base {};
+struct Base
+{};
+struct Derived : Base
+{};
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    Derived d;
+  Derived d;
 
-    test<bidirectional_iterator<Base*> >(bidirectional_iterator<Derived*>(&d));
-    test<random_access_iterator<const Base*> >(random_access_iterator<Derived*>(&d));
-    test<Base*>(&d);
+  test<bidirectional_iterator<Base*> >(bidirectional_iterator<Derived*>(&d));
+  test<random_access_iterator<const Base*> >(random_access_iterator<Derived*>(&d));
+  test<Base*>(&d);
 
 #if TEST_STD_VER > 14
-    {
-        constexpr const Derived *p = nullptr;
-        constexpr cuda::std::reverse_iterator<const Derived *>     it1 = cuda::std::make_reverse_iterator(p);
-        constexpr cuda::std::reverse_iterator<const Base *>        it2(it1);
-        static_assert(it2.base() == p);
-    }
+  {
+    constexpr const Derived* p                                = nullptr;
+    constexpr cuda::std::reverse_iterator<const Derived*> it1 = cuda::std::make_reverse_iterator(p);
+    constexpr cuda::std::reverse_iterator<const Base*> it2(it1);
+    static_assert(it2.base() == p);
+  }
 #endif
 
   return 0;

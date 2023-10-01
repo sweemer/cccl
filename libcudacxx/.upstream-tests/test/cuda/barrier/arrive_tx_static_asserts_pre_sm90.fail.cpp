@@ -16,21 +16,19 @@
 
 #include <cuda/barrier>
 
-int main(int, char**){
-    NV_IF_TARGET(
-        NV_IS_DEVICE, (
-            __shared__ cuda::barrier<cuda::thread_scope_block> bar;
-            if (threadIdx.x == 0) {
-                init(&bar, blockDim.x);
-            }
-            __syncthreads();
+int
+main(int, char**)
+{
+  NV_IF_TARGET(NV_IS_DEVICE,
+      (__shared__ cuda::barrier<cuda::thread_scope_block> bar;
+          if (threadIdx.x == 0) { init(&bar, blockDim.x); } __syncthreads();
 
-            // barrier_arrive_tx should fail on SM70 and SM80, because it is hidden.
-            auto token = cuda::device::barrier_arrive_tx(bar, 1, 0);
+          // barrier_arrive_tx should fail on SM70 and SM80, because it is hidden.
+          auto token = cuda::device::barrier_arrive_tx(bar, 1, 0);
 
 #if defined(__CUDA_MINIMUM_ARCH__) && 900 <= __CUDA_MINIMUM_ARCH__
-            static_assert(false, "Fail manually for SM90 and up.");
+          static_assert(false, "Fail manually for SM90 and up.");
 #endif // __CUDA_MINIMUM_ARCH__
-    ));
-    return 0;
+          ));
+  return 0;
 }

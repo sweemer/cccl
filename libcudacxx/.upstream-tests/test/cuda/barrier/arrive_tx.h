@@ -21,63 +21,59 @@
 // Suppress warning about barrier in shared memory
 TEST_NV_DIAG_SUPPRESS(static_var_with_dynamic_init)
 
-template<typename Barrier>
-inline __device__
-void mbarrier_complete_tx(
-  Barrier &b, int transaction_count)
+template <typename Barrier>
+inline __device__ void
+mbarrier_complete_tx(Barrier& b, int transaction_count)
 {
-  NV_DISPATCH_TARGET(
-    NV_PROVIDES_SM_90, (
-        if (__isShared(cuda::device::barrier_native_handle(b))) {
+  NV_DISPATCH_TARGET(NV_PROVIDES_SM_90,
+      (
+          if (__isShared(cuda::device::barrier_native_handle(b))) {
             asm volatile(
-              "mbarrier.complete_tx.relaxed.cta.shared::cta.b64 [%0], %1;"
-              :
-              : "r"((unsigned int) __cvta_generic_to_shared(cuda::device::barrier_native_handle(b))),
+                "mbarrier.complete_tx.relaxed.cta.shared::cta.b64 [%0], %1;"
+                :
+                : "r"((unsigned int) __cvta_generic_to_shared(cuda::device::barrier_native_handle(b))),
                 "r"(transaction_count)
-              : "memory");
-        } else {
-          __trap();
-        }
-    ), NV_ANY_TARGET, (
-      // On architectures pre-SM90 (and on host), we drop the transaction count
-      // update. The barriers do not keep track of transaction counts.
-      __trap();
-    )
-  );
+                : "memory");
+          } else { __trap(); }),
+      NV_ANY_TARGET,
+      (
+          // On architectures pre-SM90 (and on host), we drop the transaction count
+          // update. The barriers do not keep track of transaction counts.
+          __trap();));
 }
 
-template<typename Barrier>
-__device__
-void thread(Barrier& b, int arrives_per_thread)
+template <typename Barrier>
+__device__ void
+thread(Barrier& b, int arrives_per_thread)
 {
   constexpr int tx_count = 1;
-  auto tok = cuda::device::barrier_arrive_tx(b, arrives_per_thread, tx_count);
+  auto tok               = cuda::device::barrier_arrive_tx(b, arrives_per_thread, tx_count);
   // Manually increase the transaction count of the barrier.
   mbarrier_complete_tx(b, tx_count);
 
   b.wait(cuda::std::move(tok));
 }
 
-__device__
-void test()
+__device__ void
+test()
 {
-  NV_DISPATCH_TARGET(
-    NV_IS_DEVICE, (
-      // Run all threads, each arriving with arrival count 1
-      constexpr auto block = cuda::thread_scope_block;
+  NV_DISPATCH_TARGET(NV_IS_DEVICE,
+      (
+          // Run all threads, each arriving with arrival count 1
+          constexpr auto block = cuda::thread_scope_block;
 
-      __shared__ cuda::barrier<block> bar_1;
-      init(&bar_1, (int) blockDim.x);
-      __syncthreads();
-      thread(bar_1, 1);
+          __shared__ cuda::barrier<block>
+              bar_1;
+          init(&bar_1, (int) blockDim.x);
+          __syncthreads();
+          thread(bar_1, 1);
 
-      // Run all threads, each arriving with arrival count 2
-      __shared__ cuda::barrier<block> bar_2;
-      init(&bar_2, (int) 2 * blockDim.x);
-      __syncthreads();
-      thread(bar_2, 2);
-    )
-  );
+          // Run all threads, each arriving with arrival count 2
+          __shared__ cuda::barrier<block>
+              bar_2;
+          init(&bar_2, (int) 2 * blockDim.x);
+          __syncthreads();
+          thread(bar_2, 2);));
 }
 
 #endif // TEST_ARRIVE_TX_H_

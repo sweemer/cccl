@@ -20,54 +20,55 @@ template <class T>
 __host__ __device__ void
 test()
 {
-    {
+  {
     const cuda::std::complex<T> c;
     assert(c.real() == 0);
     assert(c.imag() == 0);
-    }
-    {
+  }
+  {
     const cuda::std::complex<T> c = 7.5;
     assert(c.real() == 7.5);
     assert(c.imag() == 0);
-    }
-    {
+  }
+  {
     const cuda::std::complex<T> c(8.5);
     assert(c.real() == 8.5);
     assert(c.imag() == 0);
-    }
-    {
+  }
+  {
     const cuda::std::complex<T> c(10.5, -9.5);
     assert(c.real() == 10.5);
     assert(c.imag() == -9.5);
-    }
-    {
+  }
+  {
     constexpr cuda::std::complex<T> c;
     static_assert(c.real() == 0, "");
     static_assert(c.imag() == 0, "");
-    }
-    {
+  }
+  {
     constexpr cuda::std::complex<T> c = 7.5;
     static_assert(c.real() == 7.5, "");
     static_assert(c.imag() == 0, "");
-    }
-    {
+  }
+  {
     constexpr cuda::std::complex<T> c(8.5);
     static_assert(c.real() == 8.5, "");
     static_assert(c.imag() == 0, "");
-    }
-    {
+  }
+  {
     constexpr cuda::std::complex<T> c(10.5, -9.5);
     static_assert(c.real() == 10.5, "");
     static_assert(c.imag() == -9.5, "");
-    }
+  }
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    test<float>();
-    test<double>();
-// CUDA treats long double as double
-//  test<long double>();
+  test<float>();
+  test<double>();
+  // CUDA treats long double as double
+  //  test<long double>();
 
   return 0;
 }

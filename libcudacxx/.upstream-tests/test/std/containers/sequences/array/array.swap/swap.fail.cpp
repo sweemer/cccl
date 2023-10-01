@@ -19,13 +19,16 @@
 // Disable the missing braces warning for this reason.
 #include "disable_missing_braces_warning.h"
 
-int main(int, char**) {
+int
+main(int, char**)
+{
   {
     typedef double T;
     typedef cuda::std::array<const T, 0> C;
-    C c = {};
+    C c  = {};
     C c2 = {};
-    // expected-error-re@array:* {{{{(static_assert|static assertion)}} failed {{.*}}{{"?}}cannot swap zero-sized array of type 'const T'{{"?}}}}
+    // expected-error-re@array:* {{{{(static_assert|static assertion)}} failed {{.*}}{{"?}}cannot swap zero-sized array
+    // of type 'const T'{{"?}}}}
     c.swap(c2); // expected-note {{requested here}}
   }
 

@@ -13,10 +13,11 @@
 
 #include "test_macros.h"
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    cuda::std::complex<double> d;
-    unused(d);
+  cuda::std::complex<double> d;
+  unused(d);
 
   return 0;
 }

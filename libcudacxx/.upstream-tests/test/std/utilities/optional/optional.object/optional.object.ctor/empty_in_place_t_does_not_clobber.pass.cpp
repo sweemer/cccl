@@ -25,14 +25,18 @@
 
 using cuda::std::optional;
 
-struct Wrapped {
-  struct Inner {
+struct Wrapped
+{
+  struct Inner
+  {
     bool Dummy = true;
   };
   cuda::std::optional<Inner> inner;
 };
 
-int main(int, char**) {
+int
+main(int, char**)
+{
   static_assert(cuda::std::is_default_constructible<Wrapped::Inner>::value, "");
   Wrapped w;
   w.inner.emplace();

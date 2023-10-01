@@ -20,14 +20,18 @@
 #include "test_macros.h"
 
 namespace adl {
-  struct A {};
-  __host__ __device__ void cref(A) {}
-}
+struct A
+{};
+__host__ __device__ void
+cref(A)
+{}
+} // namespace adl
 
-__host__ __device__ TEST_CONSTEXPR_CXX20 bool test()
+__host__ __device__ TEST_CONSTEXPR_CXX20 bool
+test()
 {
   {
-    const int i = 0;
+    const int i                                = 0;
     cuda::std::reference_wrapper<const int> r1 = cuda::std::cref(i);
     cuda::std::reference_wrapper<const int> r2 = cuda::std::cref(r1);
     assert(&r2.get() == &i);
@@ -41,7 +45,8 @@ __host__ __device__ TEST_CONSTEXPR_CXX20 bool test()
   return true;
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
   test();
 #if TEST_STD_VER > 17 && !defined(__CUDACC_RTC__)

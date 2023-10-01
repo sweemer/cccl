@@ -20,9 +20,10 @@
 
 #include <cuda/std/optional>
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    cuda::std::nullopt_t n = {};
+  cuda::std::nullopt_t n = {};
 
   return 0;
 }

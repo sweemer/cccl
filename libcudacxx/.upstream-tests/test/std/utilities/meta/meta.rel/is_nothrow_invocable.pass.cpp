@@ -21,48 +21,66 @@
 
 #include "test_macros.h"
 
-struct Tag {};
+struct Tag
+{};
 
-struct Implicit {
+struct Implicit
+{
   Implicit(int) noexcept {}
 };
 
-struct ThrowsImplicit {
+struct ThrowsImplicit
+{
   ThrowsImplicit(int) {}
 };
 
-struct Explicit {
+struct Explicit
+{
   explicit Explicit(int) noexcept {}
 };
 
 template <bool IsNoexcept, class Ret, class... Args>
-struct CallObject {
+struct CallObject
+{
   Ret operator()(Args&&...) const noexcept(IsNoexcept);
 };
 
-struct Sink {
+struct Sink
+{
   template <class... Args>
-  void operator()(Args&&...) const noexcept {}
+  void
+  operator()(Args&&...) const noexcept
+  {}
 };
 
 template <class Fn, class... Args>
-constexpr bool throws_invocable() {
-  return cuda::std::is_invocable<Fn, Args...>::value &&
-         !cuda::std::is_nothrow_invocable<Fn, Args...>::value;
+constexpr bool
+throws_invocable()
+{
+  return cuda::std::is_invocable<Fn, Args...>::value && !cuda::std::is_nothrow_invocable<Fn, Args...>::value;
 }
 
 template <class Ret, class Fn, class... Args>
-constexpr bool throws_invocable_r() {
-  return cuda::std::is_invocable_r<Ret, Fn, Args...>::value &&
-         !cuda::std::is_nothrow_invocable_r<Ret, Fn, Args...>::value;
+constexpr bool
+throws_invocable_r()
+{
+  return cuda::std::is_invocable_r<Ret, Fn, Args...>::value
+      && !cuda::std::is_nothrow_invocable_r<Ret, Fn, Args...>::value;
 }
 
 // FIXME(EricWF) Don't test the where noexcept is *not* part of the type system
 // once implementations have caught up.
-void test_noexcept_function_pointers() {
-  struct Dummy {
-    void foo() noexcept {}
-    static void bar() noexcept {}
+void
+test_noexcept_function_pointers()
+{
+  struct Dummy
+  {
+    void
+    foo() noexcept
+    {}
+    static void
+    bar() noexcept
+    {}
   };
 #if !defined(__cpp_noexcept_function_type)
   {
@@ -76,14 +94,15 @@ void test_noexcept_function_pointers() {
     // Check that PMF's and function pointers actually work and that
     // is_nothrow_invocable returns true for noexcept PMF's and function
     // pointers.
-    static_assert(
-        cuda::std::is_nothrow_invocable<decltype(&Dummy::foo), Dummy&>::value, "");
+    static_assert(cuda::std::is_nothrow_invocable<decltype(&Dummy::foo), Dummy&>::value, "");
     static_assert(cuda::std::is_nothrow_invocable<decltype(&Dummy::bar)>::value, "");
   }
 #endif
 }
 
-int main(int, char**) {
+int
+main(int, char**)
+{
   using AbominableFunc = void(...) const noexcept;
   //  Non-callable things
   {
@@ -106,30 +125,24 @@ int main(int, char**) {
     static_assert(!cuda::std::is_nothrow_invocable<const int&>::value, "");
     static_assert(!cuda::std::is_nothrow_invocable<int&&>::value, "");
 
-    static_assert(!cuda::std::is_nothrow_invocable<int, cuda::std::vector<int> >::value,
-                  "");
-    static_assert(!cuda::std::is_nothrow_invocable<int, cuda::std::vector<int*> >::value,
-                  "");
-    static_assert(!cuda::std::is_nothrow_invocable<int, cuda::std::vector<int**> >::value,
-                  "");
+    static_assert(!cuda::std::is_nothrow_invocable<int, cuda::std::vector<int> >::value, "");
+    static_assert(!cuda::std::is_nothrow_invocable<int, cuda::std::vector<int*> >::value, "");
+    static_assert(!cuda::std::is_nothrow_invocable<int, cuda::std::vector<int**> >::value, "");
 
     static_assert(!cuda::std::is_nothrow_invocable<AbominableFunc>::value, "");
 
     //  with parameters
     static_assert(!cuda::std::is_nothrow_invocable<int, int>::value, "");
     static_assert(!cuda::std::is_nothrow_invocable<int, double, float>::value, "");
-    static_assert(!cuda::std::is_nothrow_invocable<int, char, float, double>::value,
-                  "");
+    static_assert(!cuda::std::is_nothrow_invocable<int, char, float, double>::value, "");
     static_assert(!cuda::std::is_nothrow_invocable<Sink, AbominableFunc>::value, "");
     static_assert(!cuda::std::is_nothrow_invocable<Sink, void>::value, "");
-    static_assert(!cuda::std::is_nothrow_invocable<Sink, const volatile void>::value,
-                  "");
+    static_assert(!cuda::std::is_nothrow_invocable<Sink, const volatile void>::value, "");
 
     static_assert(!cuda::std::is_nothrow_invocable_r<int, void>::value, "");
     static_assert(!cuda::std::is_nothrow_invocable_r<int, const void>::value, "");
     static_assert(!cuda::std::is_nothrow_invocable_r<int, volatile void>::value, "");
-    static_assert(!cuda::std::is_nothrow_invocable_r<int, const volatile void>::value,
-                  "");
+    static_assert(!cuda::std::is_nothrow_invocable_r<int, const volatile void>::value, "");
     static_assert(!cuda::std::is_nothrow_invocable_r<int, cuda::std::nullptr_t>::value, "");
     static_assert(!cuda::std::is_nothrow_invocable_r<int, int>::value, "");
     static_assert(!cuda::std::is_nothrow_invocable_r<int, double>::value, "");
@@ -145,27 +158,18 @@ int main(int, char**) {
     static_assert(!cuda::std::is_nothrow_invocable_r<int, const int&>::value, "");
     static_assert(!cuda::std::is_nothrow_invocable_r<int, int&&>::value, "");
 
-    static_assert(!cuda::std::is_nothrow_invocable_r<int, cuda::std::vector<int> >::value,
-                  "");
-    static_assert(!cuda::std::is_nothrow_invocable_r<int, cuda::std::vector<int*> >::value,
-                  "");
-    static_assert(!cuda::std::is_nothrow_invocable_r<int, cuda::std::vector<int**> >::value,
-                  "");
-    static_assert(!cuda::std::is_nothrow_invocable_r<void, AbominableFunc>::value,
-                  "");
+    static_assert(!cuda::std::is_nothrow_invocable_r<int, cuda::std::vector<int> >::value, "");
+    static_assert(!cuda::std::is_nothrow_invocable_r<int, cuda::std::vector<int*> >::value, "");
+    static_assert(!cuda::std::is_nothrow_invocable_r<int, cuda::std::vector<int**> >::value, "");
+    static_assert(!cuda::std::is_nothrow_invocable_r<void, AbominableFunc>::value, "");
 
     //  with parameters
     static_assert(!cuda::std::is_nothrow_invocable_r<int, int, int>::value, "");
-    static_assert(!cuda::std::is_nothrow_invocable_r<int, int, double, float>::value,
-                  "");
-    static_assert(
-        !cuda::std::is_nothrow_invocable_r<int, int, char, float, double>::value, "");
-    static_assert(
-        !cuda::std::is_nothrow_invocable_r<void, Sink, AbominableFunc>::value, "");
+    static_assert(!cuda::std::is_nothrow_invocable_r<int, int, double, float>::value, "");
+    static_assert(!cuda::std::is_nothrow_invocable_r<int, int, char, float, double>::value, "");
+    static_assert(!cuda::std::is_nothrow_invocable_r<void, Sink, AbominableFunc>::value, "");
     static_assert(!cuda::std::is_nothrow_invocable_r<void, Sink, void>::value, "");
-    static_assert(
-        !cuda::std::is_nothrow_invocable_r<void, Sink, const volatile void>::value,
-        "");
+    static_assert(!cuda::std::is_nothrow_invocable_r<void, Sink, const volatile void>::value, "");
   }
 
   {
@@ -173,24 +177,21 @@ int main(int, char**) {
     using Fn = CallObject<true, int>;
     static_assert(cuda::std::is_nothrow_invocable_r<Implicit, Fn>::value, "");
     static_assert(cuda::std::is_nothrow_invocable_r<double, Fn>::value, "");
-    static_assert(cuda::std::is_nothrow_invocable_r<const volatile void, Fn>::value,
-                  "");
+    static_assert(cuda::std::is_nothrow_invocable_r<const volatile void, Fn>::value, "");
     static_assert(throws_invocable_r<ThrowsImplicit, Fn>(), "");
     static_assert(!cuda::std::is_nothrow_invocable<Fn(), Explicit>(), "");
   }
   {
     // Check that the conversion to the parameters is properly checked
     using Fn = CallObject<true, void, const Implicit&, const ThrowsImplicit&>;
-    static_assert(
-        cuda::std::is_nothrow_invocable<Fn, Implicit&, ThrowsImplicit&>::value, "");
-    static_assert(cuda::std::is_nothrow_invocable<Fn, int, ThrowsImplicit&>::value,
-                  "");
+    static_assert(cuda::std::is_nothrow_invocable<Fn, Implicit&, ThrowsImplicit&>::value, "");
+    static_assert(cuda::std::is_nothrow_invocable<Fn, int, ThrowsImplicit&>::value, "");
     static_assert(throws_invocable<Fn, int, int>(), "");
     static_assert(!cuda::std::is_nothrow_invocable<Fn>::value, "");
   }
   {
     // Check that the noexcept-ness of function objects is checked.
-    using Fn = CallObject<true, void>;
+    using Fn  = CallObject<true, void>;
     using Fn2 = CallObject<false, void>;
     static_assert(cuda::std::is_nothrow_invocable<Fn>::value, "");
     static_assert(throws_invocable<Fn2>(), "");

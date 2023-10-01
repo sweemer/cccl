@@ -15,7 +15,9 @@
 
 #include "utils.h"
 
-__host__ __device__ __noinline__ void test_access_property_fail() {
+__host__ __device__ __noinline__ void
+test_access_property_fail()
+{
   cuda::access_property o = cuda::access_property::normal{};
   // Test implicit conversion fails
   std::uint64_t x;
@@ -23,9 +25,9 @@ __host__ __device__ __noinline__ void test_access_property_fail() {
   unused(o);
 }
 
-int main(int argc, char ** argv)
+int
+main(int argc, char** argv)
 {
   test_access_property_fail();
   return 0;
 }
-

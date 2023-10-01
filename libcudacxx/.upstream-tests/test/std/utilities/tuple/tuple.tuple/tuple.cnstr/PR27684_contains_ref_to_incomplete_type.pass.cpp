@@ -6,8 +6,6 @@
 //
 //===----------------------------------------------------------------------===//
 
-
-
 // UNSUPPORTED: c++98, c++03
 // UNSUPPORTED: msvc
 
@@ -34,24 +32,27 @@ TEST_ACCESSIBLE extern IncompleteType inc2;
 TEST_ACCESSIBLE IncompleteType const& cinc1 = inc1;
 TEST_ACCESSIBLE IncompleteType const& cinc2 = inc2;
 
-int main(int, char**) {
-    using IT = IncompleteType;
-    { // try calling tuple(Tp const&...)
-        using Tup = cuda::std::tuple<const IT&, const IT&>;
-        Tup t(cinc1, cinc2);
-        assert(&cuda::std::get<0>(t) == &inc1);
-        assert(&cuda::std::get<1>(t) == &inc2);
-    }
-    { // try calling tuple(Up&&...)
-        using Tup = cuda::std::tuple<const IT&, const IT&>;
-        Tup t(inc1, inc2);
-        assert(&cuda::std::get<0>(t) == &inc1);
-        assert(&cuda::std::get<1>(t) == &inc2);
-    }
+int
+main(int, char**)
+{
+  using IT = IncompleteType;
+  { // try calling tuple(Tp const&...)
+    using Tup = cuda::std::tuple<const IT&, const IT&>;
+    Tup t(cinc1, cinc2);
+    assert(&cuda::std::get<0>(t) == &inc1);
+    assert(&cuda::std::get<1>(t) == &inc2);
+  }
+  { // try calling tuple(Up&&...)
+    using Tup = cuda::std::tuple<const IT&, const IT&>;
+    Tup t(inc1, inc2);
+    assert(&cuda::std::get<0>(t) == &inc1);
+    assert(&cuda::std::get<1>(t) == &inc2);
+  }
 
   return 0;
 }
 
-struct IncompleteType {};
+struct IncompleteType
+{};
 TEST_ACCESSIBLE IncompleteType inc1;
 TEST_ACCESSIBLE IncompleteType inc2;

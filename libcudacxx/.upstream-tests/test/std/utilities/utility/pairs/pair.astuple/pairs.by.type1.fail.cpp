@@ -14,11 +14,12 @@
 
 #include <cuda/std/cassert>
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    typedef cuda::std::complex<float> cf;
-    auto t1 = cuda::std::make_pair<int, double> ( 42, 3.4 );
-    assert (( cuda::std::get<cf>(t1) == cf {1,2} ));  // no such type
+  typedef cuda::std::complex<float> cf;
+  auto t1 = cuda::std::make_pair<int, double>(42, 3.4);
+  assert((cuda::std::get<cf>(t1) == cf{1, 2})); // no such type
 
   return 0;
 }

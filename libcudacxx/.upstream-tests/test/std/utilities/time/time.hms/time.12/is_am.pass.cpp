@@ -16,21 +16,24 @@
 
 #include "test_macros.h"
 
-int main(int, char**)
+int
+main(int, char**)
 {
-	using hours = cuda::std::chrono::hours;
-	ASSERT_SAME_TYPE(bool, decltype(cuda::std::chrono::is_am(cuda::std::declval<hours>())));
-	ASSERT_NOEXCEPT(                cuda::std::chrono::is_am(cuda::std::declval<hours>()));
+  using hours = cuda::std::chrono::hours;
+  ASSERT_SAME_TYPE(bool, decltype(cuda::std::chrono::is_am(cuda::std::declval<hours>())));
+  ASSERT_NOEXCEPT(cuda::std::chrono::is_am(cuda::std::declval<hours>()));
 
-	static_assert( cuda::std::chrono::is_am(hours( 0)), "");
-	static_assert( cuda::std::chrono::is_am(hours(11)), "");
-	static_assert(!cuda::std::chrono::is_am(hours(12)), "");
-	static_assert(!cuda::std::chrono::is_am(hours(23)), "");
-	
-	for (int i = 0; i < 12; ++i)
-		assert( cuda::std::chrono::is_am(hours(i)));
-	for (int i = 12; i < 24; ++i)
-		assert(!cuda::std::chrono::is_am(hours(i)));
+  static_assert(cuda::std::chrono::is_am(hours(0)), "");
+  static_assert(cuda::std::chrono::is_am(hours(11)), "");
+  static_assert(!cuda::std::chrono::is_am(hours(12)), "");
+  static_assert(!cuda::std::chrono::is_am(hours(23)), "");
 
-    return 0;
+  for (int i = 0; i < 12; ++i) {
+    assert(cuda::std::chrono::is_am(hours(i)));
+  }
+  for (int i = 12; i < 24; ++i) {
+    assert(!cuda::std::chrono::is_am(hours(i)));
+  }
+
+  return 0;
 }

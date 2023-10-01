@@ -15,9 +15,13 @@
 
 #include <cuda/std/utility>
 
-struct S {int i;};
+struct S
+{
+  int i;
+};
 
-int main(int, char**)
+int
+main(int, char**)
 {
   cuda::std::as_const(S{});
 

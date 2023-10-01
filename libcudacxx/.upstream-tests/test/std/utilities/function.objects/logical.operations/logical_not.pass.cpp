@@ -21,39 +21,49 @@
 // ensure that we allow `__device__` functions too
 struct with_device_op
 {
-    __device__ friend constexpr with_device_op operator!(const with_device_op&) { return {}; }
-    __device__ constexpr operator bool() const { return true; }
+  __device__ friend constexpr with_device_op
+  operator!(const with_device_op&)
+  {
+    return {};
+  }
+  __device__ constexpr
+  operator bool() const
+  {
+    return true;
+  }
 };
 
-__global__
-void test_global_kernel() {
-    const cuda::std::logical_not<with_device_op> f;
-    assert(f({}));
+__global__ void
+test_global_kernel()
+{
+  const cuda::std::logical_not<with_device_op> f;
+  assert(f({}));
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    typedef cuda::std::logical_not<int> F;
-    const F f = F();
+  typedef cuda::std::logical_not<int> F;
+  const F f = F();
 #if TEST_STD_VER <= 17
-    static_assert((cuda::std::is_same<F::argument_type, int>::value), "" );
-    static_assert((cuda::std::is_same<F::result_type, bool>::value), "" );
+  static_assert((cuda::std::is_same<F::argument_type, int>::value), "");
+  static_assert((cuda::std::is_same<F::result_type, bool>::value), "");
 #endif
-    assert(!f(36));
-    assert(f(0));
+  assert(!f(36));
+  assert(f(0));
 #if TEST_STD_VER > 11
-    typedef cuda::std::logical_not<> F2;
-    const F2 f2 = F2();
-    assert(!f2(36));
-    assert( f2(0));
-    assert(!f2(36L));
-    assert( f2(0L));
+  typedef cuda::std::logical_not<> F2;
+  const F2 f2 = F2();
+  assert(!f2(36));
+  assert(f2(0));
+  assert(!f2(36L));
+  assert(f2(0L));
 
-    constexpr bool foo = cuda::std::logical_not<int> () (36);
-    static_assert ( !foo, "" );
+  constexpr bool foo = cuda::std::logical_not<int>()(36);
+  static_assert(!foo, "");
 
-    constexpr bool bar = cuda::std::logical_not<> () (36);
-    static_assert ( !bar, "" );
+  constexpr bool bar = cuda::std::logical_not<>()(36);
+  static_assert(!bar, "");
 #endif
 
   return 0;

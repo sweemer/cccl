@@ -17,17 +17,19 @@
 #include "test_macros.h"
 
 #ifdef TEST_HAS_C11_FEATURES
-# ifndef _LIBCUDACXX_HAS_C11_FEATURES
-#  error "TEST_HAS_C11_FEATURES is defined, but _LIBCUDACXX_HAS_C11_FEATURES is not"
-# endif
+#  ifndef _LIBCUDACXX_HAS_C11_FEATURES
+#    error "TEST_HAS_C11_FEATURES is defined, but _LIBCUDACXX_HAS_C11_FEATURES is not"
+#  endif
 #endif
 
 #ifdef _LIBCUDACXX_HAS_C11_FEATURES
-# ifndef TEST_HAS_C11_FEATURES
-#  error "_LIBCUDACXX_HAS_C11_FEATURES is defined, but TEST_HAS_C11_FEATURES is not"
-# endif
+#  ifndef TEST_HAS_C11_FEATURES
+#    error "_LIBCUDACXX_HAS_C11_FEATURES is defined, but TEST_HAS_C11_FEATURES is not"
+#  endif
 #endif
 
-int main(int, char**) {
+int
+main(int, char**)
+{
   return 0;
 }

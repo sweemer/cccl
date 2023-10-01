@@ -22,22 +22,24 @@
 #include <cuda/std/iterator>
 
 template <class It, class U>
-__host__ __device__
-void
+__host__ __device__ void
 test(U u)
 {
-    cuda::std::reverse_iterator<U> r2(u);
-    cuda::std::reverse_iterator<It> r1 = r2;
+  cuda::std::reverse_iterator<U> r2(u);
+  cuda::std::reverse_iterator<It> r1 = r2;
 }
 
-struct base {};
-struct derived {};
+struct base
+{};
+struct derived
+{};
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    derived d;
+  derived d;
 
-    test<base*>(&d);
+  test<base*>(&d);
 
   return 0;
 }

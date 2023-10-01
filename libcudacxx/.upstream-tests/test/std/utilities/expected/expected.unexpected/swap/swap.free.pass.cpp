@@ -24,25 +24,30 @@
 #include "test_macros.h"
 
 // test noexcept
-struct NoexceptSwap {
+struct NoexceptSwap
+{
   __host__ __device__ friend void swap(NoexceptSwap&, NoexceptSwap&) noexcept;
 };
 
-struct MayThrowSwap {
+struct MayThrowSwap
+{
   __host__ __device__ friend void swap(MayThrowSwap&, MayThrowSwap&);
 };
 
-template<class T, class = void>
+template <class T, class = void>
 constexpr bool ADLSwapNoexcept = false;
 
-template<class T>
-constexpr bool ADLSwapNoexcept<T, cuda::std::void_t<decltype(swap(cuda::std::declval<T&>(), cuda::std::declval<T&>()))>> = noexcept(swap(cuda::std::declval<T&>(), cuda::std::declval<T&>()));
+template <class T>
+constexpr bool
+    ADLSwapNoexcept<T, cuda::std::void_t<decltype(swap(cuda::std::declval<T&>(), cuda::std::declval<T&>()))>> =
+        noexcept(swap(cuda::std::declval<T&>(), cuda::std::declval<T&>()));
 
 static_assert(ADLSwapNoexcept<cuda::std::unexpected<NoexceptSwap>>, "");
 static_assert(!ADLSwapNoexcept<cuda::std::unexpected<MayThrowSwap>>, "");
 
 // test constraint
-struct NonSwappable {
+struct NonSwappable
+{
   NonSwappable& operator=(const NonSwappable&) = delete;
 };
 
@@ -50,14 +55,23 @@ static_assert(cuda::std::is_swappable_v<cuda::std::unexpected<int>>, "");
 static_assert(cuda::std::is_swappable_v<cuda::std::unexpected<MayThrowSwap>>, "");
 static_assert(!cuda::std::is_swappable_v<cuda::std::unexpected<NonSwappable>>, "");
 
-struct ADLSwap {
-  __host__ __device__ constexpr ADLSwap(int ii) : i(ii) {}
+struct ADLSwap
+{
+  __host__ __device__ constexpr ADLSwap(int ii)
+      : i(ii)
+  {}
   ADLSwap& operator=(const ADLSwap&) = delete;
   int i;
-  __host__ __device__ constexpr friend void swap(ADLSwap& x, ADLSwap& y) { cuda::std::swap(x.i, y.i); }
+  __host__ __device__ constexpr friend void
+  swap(ADLSwap& x, ADLSwap& y)
+  {
+    cuda::std::swap(x.i, y.i);
+  }
 };
 
-__host__ __device__ constexpr bool test() {
+__host__ __device__ constexpr bool
+test()
+{
   cuda::std::unexpected<ADLSwap> unex1(5);
   cuda::std::unexpected<ADLSwap> unex2(6);
   swap(unex1, unex2);
@@ -66,7 +80,9 @@ __host__ __device__ constexpr bool test() {
   return true;
 }
 
-int main(int, char**) {
+int
+main(int, char**)
+{
   test();
   static_assert(test(), "");
   return 0;

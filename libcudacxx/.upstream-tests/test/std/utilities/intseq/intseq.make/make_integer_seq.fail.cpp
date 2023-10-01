@@ -24,7 +24,8 @@
 
 #include "test_macros.h"
 
-int main(int, char**)
+int
+main(int, char**)
 {
   typedef cuda::std::make_integer_sequence<int, -3> MakeSeqT;
 
@@ -33,7 +34,8 @@ int main(int, char**)
 #if TEST_HAS_BUILTIN(__make_integer_seq) && !defined(_LIBCUDACXX_TESTING_FALLBACK_MAKE_INTEGER_SEQUENCE)
   MakeSeqT i; // expected-error@*:* {{integer sequences must have non-negative sequence length}}
 #else
-  MakeSeqT i; // expected-error-re@*:* {{{{(static_assert|static assertion)}} failed{{.*}}cuda::std::make_integer_sequence must have a non-negative sequence length}}
+  MakeSeqT i; // expected-error-re@*:* {{{{(static_assert|static assertion)}}
+              // failed{{.*}}cuda::std::make_integer_sequence must have a non-negative sequence length}}
 #endif
 
   return 0;

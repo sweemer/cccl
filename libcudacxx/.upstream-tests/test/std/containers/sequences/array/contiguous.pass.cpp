@@ -16,20 +16,22 @@
 #include "test_macros.h"
 
 template <class C>
-__host__ __device__
-void test_contiguous ( const C &c )
+__host__ __device__ void
+test_contiguous(const C& c)
 {
-    for ( size_t i = 0; i < c.size(); ++i )
-        assert ( *(c.begin() + i) == *(cuda::std::addressof(*c.begin()) + i));
+  for (size_t i = 0; i < c.size(); ++i) {
+    assert(*(c.begin() + i) == *(cuda::std::addressof(*c.begin()) + i));
+  }
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    {
-        typedef double T;
-        typedef cuda::std::array<T, 3> C;
-        test_contiguous (C());
-    }
+  {
+    typedef double T;
+    typedef cuda::std::array<T, 3> C;
+    test_contiguous(C());
+  }
 
   return 0;
 }

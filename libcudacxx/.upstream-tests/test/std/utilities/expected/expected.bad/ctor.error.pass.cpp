@@ -26,7 +26,9 @@
 static_assert(cuda::std::convertible_to<int, int>);
 static_assert(!cuda::std::convertible_to<int, cuda::std::bad_expected_access<int>>);
 
-int main(int, char**) {
+int
+main(int, char**)
+{
   cuda::std::bad_expected_access<MoveOnly> b(MoveOnly{3});
   assert(b.error().get() == 3);
 

@@ -24,7 +24,9 @@ namespace cde = cuda::device::experimental;
 
 // Kernels below are intended to be compiled, but not run. This is to check if
 // all generated PTX is valid.
-__global__ void test_bulk_tensor(CUtensorMap* map) {
+__global__ void
+test_bulk_tensor(CUtensorMap* map)
+{
   __shared__ int smem;
   __shared__ barrier bar;
 
@@ -41,14 +43,18 @@ __global__ void test_bulk_tensor(CUtensorMap* map) {
   cde::cp_async_bulk_tensor_5d_shared_to_global(map, 0, 0, 0, 0, 0, &smem);
 }
 
-__global__ void test_bulk(void * gmem) {
+__global__ void
+test_bulk(void* gmem)
+{
   __shared__ int smem;
   __shared__ barrier bar;
   cde::cp_async_bulk_global_to_shared(&smem, gmem, 1024, bar);
   cde::cp_async_bulk_shared_to_global(gmem, &smem, 1024);
 }
 
-__global__ void test_fences_async_group(void * gmem) {
+__global__ void
+test_fences_async_group(void* gmem)
+{
   cde::fence_proxy_async_shared_cta();
 
   cde::cp_async_bulk_commit_group();
@@ -64,6 +70,8 @@ __global__ void test_fences_async_group(void * gmem) {
   cde::cp_async_bulk_wait_group_read<8>();
 }
 
-int main(int, char**){
-    return 0;
+int
+main(int, char**)
+{
+  return 0;
 }

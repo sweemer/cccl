@@ -18,15 +18,14 @@
 
 struct A
 {
-    double data_;
+  double data_;
 };
 
 template <class F>
-__host__ __device__
-void
+__host__ __device__ void
 test(F f)
 {
-    {
+  {
     A a;
     f(a) = 5;
     assert(a.data_ == 5);
@@ -36,12 +35,13 @@ test(F f)
     const A* cap = ap;
     assert(f(cap) == f(ap));
     f(cap) = 7;
-    }
+  }
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    test(cuda::std::mem_fn(&A::data_));
+  test(cuda::std::mem_fn(&A::data_));
 
   return 0;
 }

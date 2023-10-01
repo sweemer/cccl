@@ -21,26 +21,26 @@
 #include "test_iterators.h"
 
 template <class It>
-__host__ __device__
-void
+__host__ __device__ void
 test()
 {
-    cuda::std::reverse_iterator<It> r;
-    unused(r);
+  cuda::std::reverse_iterator<It> r;
+  unused(r);
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    test<bidirectional_iterator<const char*> >();
-    test<random_access_iterator<char*> >();
-    test<char*>();
-    test<const char*>();
+  test<bidirectional_iterator<const char*> >();
+  test<random_access_iterator<char*> >();
+  test<char*>();
+  test<const char*>();
 
 #if TEST_STD_VER > 14
-    {
-        constexpr cuda::std::reverse_iterator<const char *> it;
-        (void)it;
-    }
+  {
+    constexpr cuda::std::reverse_iterator<const char*> it;
+    (void) it;
+  }
 #endif
 
   return 0;

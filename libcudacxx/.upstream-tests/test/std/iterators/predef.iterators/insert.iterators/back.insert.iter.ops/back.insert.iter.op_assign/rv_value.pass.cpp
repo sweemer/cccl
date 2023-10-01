@@ -20,30 +20,31 @@
 #include <cuda/std/iterator>
 
 #if defined(_LIBCUDACXX_HAS_VECTOR)
-#include <cuda/std/vector>
-#include <cuda/std/memory>
-#include <cuda/std/cassert>
+#  include <cuda/std/vector>
+#  include <cuda/std/memory>
+#  include <cuda/std/cassert>
 
-#include "test_macros.h"
+#  include "test_macros.h"
 
 template <class C>
-__host__ __device__
-void
+__host__ __device__ void
 test(C c)
 {
-    cuda::std::back_insert_iterator<C> i(c);
-    i = typename C::value_type();
-    assert(c.back() == typename C::value_type());
+  cuda::std::back_insert_iterator<C> i(c);
+  i = typename C::value_type();
+  assert(c.back() == typename C::value_type());
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    test(cuda::std::vector<cuda::std::unique_ptr<int> >());
+  test(cuda::std::vector<cuda::std::unique_ptr<int> >());
 
   return 0;
 }
 #else
-int main(int, char**)
+int
+main(int, char**)
 {
   return 0;
 }

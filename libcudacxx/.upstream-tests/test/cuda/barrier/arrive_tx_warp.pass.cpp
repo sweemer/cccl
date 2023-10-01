@@ -15,19 +15,17 @@
 
 #include "arrive_tx.h"
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    NV_DISPATCH_TARGET(
-        NV_IS_HOST, (
-        // Required by concurrent_agents_launch to know how many we're
-        // launching. This can only be an int, because the nvrtc tests use grep
-        // to figure out how many threads to launch.
-        cuda_thread_count = 32;
-        ),
-        NV_IS_DEVICE, (
-            test();
-        )
-    );
+  NV_DISPATCH_TARGET(NV_IS_HOST,
+      (
+          // Required by concurrent_agents_launch to know how many we're
+          // launching. This can only be an int, because the nvrtc tests use grep
+          // to figure out how many threads to launch.
+          cuda_thread_count = 32;),
+      NV_IS_DEVICE,
+      (test();));
 
-    return 0;
+  return 0;
 }

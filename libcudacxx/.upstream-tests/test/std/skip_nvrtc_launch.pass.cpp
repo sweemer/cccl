@@ -18,14 +18,13 @@
 
 // This is a test of the NVRTC_SKIP_KERNEL_RUN tag that indicates that a test
 // should compiler under NVRTC, but should not be run.
-int main(int, char**)
+int
+main(int, char**)
 {
-  NV_DISPATCH_TARGET(
-        NV_IS_DEVICE, (
+  NV_DISPATCH_TARGET(NV_IS_DEVICE,
+      (
           // Ensure that code fails at runtime when run under NVRTC.
-          assert(false);
-        )
-    );
+          assert(false);));
 
   return 0;
 }

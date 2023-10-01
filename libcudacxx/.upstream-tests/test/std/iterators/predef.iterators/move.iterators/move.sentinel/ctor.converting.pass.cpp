@@ -21,16 +21,18 @@
 #include <cuda/std/cassert>
 #include <cuda/std/concepts>
 
-struct NonConvertible {
-    __host__ __device__ explicit NonConvertible();
-    __host__ __device__ NonConvertible(int i);
-    __host__ __device__ explicit NonConvertible(long i) = delete;
+struct NonConvertible
+{
+  __host__ __device__ explicit NonConvertible();
+  __host__ __device__ NonConvertible(int i);
+  __host__ __device__ explicit NonConvertible(long i) = delete;
 };
 static_assert(cuda::std::semiregular<NonConvertible>);
 static_assert(cuda::std::is_convertible_v<long, NonConvertible>);
 static_assert(!cuda::std::convertible_to<long, NonConvertible>);
 
-__host__ __device__ constexpr bool test()
+__host__ __device__ constexpr bool
+test()
 {
   // Constructing from an lvalue.
   {
@@ -47,16 +49,18 @@ __host__ __device__ constexpr bool test()
 
   // SFINAE checks.
   {
-    static_assert( cuda::std::is_convertible_v<cuda::std::move_sentinel<int>, cuda::std::move_sentinel<long>>);
-    static_assert( cuda::std::is_convertible_v<cuda::std::move_sentinel<int*>, cuda::std::move_sentinel<const int*>>);
+    static_assert(cuda::std::is_convertible_v<cuda::std::move_sentinel<int>, cuda::std::move_sentinel<long>>);
+    static_assert(cuda::std::is_convertible_v<cuda::std::move_sentinel<int*>, cuda::std::move_sentinel<const int*>>);
     static_assert(!cuda::std::is_convertible_v<cuda::std::move_sentinel<const int*>, cuda::std::move_sentinel<int*>>);
-    static_assert( cuda::std::is_convertible_v<cuda::std::move_sentinel<int>, cuda::std::move_sentinel<NonConvertible>>);
-    static_assert(!cuda::std::is_convertible_v<cuda::std::move_sentinel<long>, cuda::std::move_sentinel<NonConvertible>>);
+    static_assert(cuda::std::is_convertible_v<cuda::std::move_sentinel<int>, cuda::std::move_sentinel<NonConvertible>>);
+    static_assert(
+        !cuda::std::is_convertible_v<cuda::std::move_sentinel<long>, cuda::std::move_sentinel<NonConvertible>>);
   }
   return true;
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
   test();
   static_assert(test());

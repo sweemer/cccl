@@ -15,7 +15,9 @@
 
 #include <cuda/std/span>
 
-void test() {
+void
+test()
+{
   cuda::std::span<int> s1;
   s1.empty(); // expected-warning {{ignoring return value of function declared with 'nodiscard' attribute}}
 
@@ -24,7 +26,8 @@ void test() {
   s2.empty(); // expected-warning {{ignoring return value of function declared with 'nodiscard' attribute}}
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
   return 0;
 }

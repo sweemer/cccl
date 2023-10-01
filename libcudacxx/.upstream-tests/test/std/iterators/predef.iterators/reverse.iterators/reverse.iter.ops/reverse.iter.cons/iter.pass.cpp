@@ -22,27 +22,27 @@
 #include "test_iterators.h"
 
 template <class It>
-__host__ __device__
-void
+__host__ __device__ void
 test(It i)
 {
-    cuda::std::reverse_iterator<It> r(i);
-    assert(r.base() == i);
+  cuda::std::reverse_iterator<It> r(i);
+  assert(r.base() == i);
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    const char s[] = "123";
-    test(bidirectional_iterator<const char*>(s));
-    test(random_access_iterator<const char*>(s));
-    test(s);
+  const char s[] = "123";
+  test(bidirectional_iterator<const char*>(s));
+  test(random_access_iterator<const char*>(s));
+  test(s);
 
 #if TEST_STD_VER > 14
-    {
-        constexpr const char *p = "123456789";
-        constexpr cuda::std::reverse_iterator<const char *> it(p);
-        static_assert(it.base() == p);
-    }
+  {
+    constexpr const char* p = "123456789";
+    constexpr cuda::std::reverse_iterator<const char*> it(p);
+    static_assert(it.base() == p);
+  }
 #endif
 
   return 0;

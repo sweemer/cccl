@@ -14,6 +14,8 @@
 
 static_assert(cuda::std::is_same_v<decltype(cuda::std::unreachable()), void>);
 
-int main(int, char**) {
+int
+main(int, char**)
+{
   return 0;
 }

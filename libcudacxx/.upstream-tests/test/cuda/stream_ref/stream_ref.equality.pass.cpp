@@ -15,16 +15,17 @@
 #include <cuda/stream_ref>
 #include <cuda/std/cassert>
 
-int main(int argc, char** argv) {
-    NV_IF_TARGET(NV_IS_HOST,(
-      cuda::stream_ref left{reinterpret_cast<cudaStream_t>(42)};
-      cuda::stream_ref right{reinterpret_cast<cudaStream_t>(1337)};
-      static_assert(noexcept(left == right), "");
-      static_assert(noexcept(left != right), "");
+int
+main(int argc, char** argv)
+{
+  NV_IF_TARGET(NV_IS_HOST,
+      (cuda::stream_ref left{reinterpret_cast<cudaStream_t>(42)};
+          cuda::stream_ref right{reinterpret_cast<cudaStream_t>(1337)};
+          static_assert(noexcept(left == right), "");
+          static_assert(noexcept(left != right), "");
 
-      assert(left == left);
-      assert(left != right);
-    ))
+          assert(left == left);
+          assert(left != right);))
 
-    return 0;
+  return 0;
 }

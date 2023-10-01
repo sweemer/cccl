@@ -25,18 +25,19 @@ template <class T>
 __host__ __device__ void
 test()
 {
-    typedef cuda::std::complex<T> C;
+  typedef cuda::std::complex<T> C;
 
-    static_assert(sizeof(C) == (sizeof(T)*2), "wrong size");
-    static_assert(alignof(C) == (alignof(T)*2), "misaligned");
+  static_assert(sizeof(C) == (sizeof(T) * 2), "wrong size");
+  static_assert(alignof(C) == (alignof(T) * 2), "misaligned");
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    test<float>();
-    test<double>();
-// CUDA treats long double as double
-//  test<long double>();
+  test<float>();
+  test<double>();
+  // CUDA treats long double as double
+  //  test<long double>();
 
   return 0;
 }

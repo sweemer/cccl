@@ -22,7 +22,8 @@
 #include "MoveOnly.h"
 #include "pointer_comparison_test_helper.h"
 
-struct NotEqualityComparable {
+struct NotEqualityComparable
+{
   __host__ __device__ friend bool operator==(const NotEqualityComparable&, const NotEqualityComparable&);
   __host__ __device__ friend bool operator!=(const NotEqualityComparable&, const NotEqualityComparable&) = delete;
 };
@@ -31,7 +32,7 @@ static_assert(!cuda::std::is_invocable_v<cuda::std::ranges::equal_to, NotEqualit
 #if !defined(TEST_COMPILER_MSVC) || TEST_STD_VER > 17 // MSVC considers implict conversions in C++17
 static_assert(!cuda::std::is_invocable_v<cuda::std::ranges::equal_to, int, MoveOnly>);
 #endif // !defined(TEST_COMPILER_MSVC) || TEST_STD_VER > 17
-static_assert( cuda::std::is_invocable_v<cuda::std::ranges::equal_to, explicit_operators, explicit_operators>);
+static_assert(cuda::std::is_invocable_v<cuda::std::ranges::equal_to, explicit_operators, explicit_operators>);
 
 #if TEST_STD_VER > 17
 static_assert(requires { typename cuda::std::ranges::equal_to::is_transparent; });
@@ -43,7 +44,9 @@ inline constexpr bool is_transparent<T, cuda::std::void_t<typename T::is_transpa
 static_assert(is_transparent<cuda::std::ranges::equal_to>);
 #endif
 
-__host__ __device__ constexpr bool test() {
+__host__ __device__ constexpr bool
+test()
+{
   auto fn = cuda::std::ranges::equal_to();
 
 #if !defined(TEST_COMPILER_CUDACC_BELOW_11_3) && !defined(TEST_COMPILER_MSVC_2017)
@@ -64,8 +67,9 @@ __host__ __device__ constexpr bool test() {
   return true;
 }
 
-int main(int, char**) {
-
+int
+main(int, char**)
+{
   test();
   static_assert(test());
 

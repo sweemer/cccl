@@ -13,7 +13,6 @@
 //  constexpr month& operator--() noexcept;
 //  constexpr month operator--(int) noexcept;
 
-
 #include <cuda/std/chrono>
 #include <cuda/std/type_traits>
 #include <cassert>
@@ -21,35 +20,41 @@
 #include "test_macros.h"
 
 template <typename M>
-__host__ __device__
-constexpr bool testConstexpr()
+__host__ __device__ constexpr bool
+testConstexpr()
 {
-    M m1{10};
-    if (static_cast<unsigned>(--m1) != 9) return false;
-    if (static_cast<unsigned>(m1--) != 9) return false;
-    if (static_cast<unsigned>(m1)   != 8) return false;
-    return true;
+  M m1{10};
+  if (static_cast<unsigned>(--m1) != 9) {
+    return false;
+  }
+  if (static_cast<unsigned>(m1--) != 9) {
+    return false;
+  }
+  if (static_cast<unsigned>(m1) != 8) {
+    return false;
+  }
+  return true;
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    using month = cuda::std::chrono::month;
+  using month = cuda::std::chrono::month;
 
-    ASSERT_NOEXCEPT(--(cuda::std::declval<month&>())  );
-    ASSERT_NOEXCEPT(  (cuda::std::declval<month&>())--);
+  ASSERT_NOEXCEPT(--(cuda::std::declval<month&>()));
+  ASSERT_NOEXCEPT((cuda::std::declval<month&>())--);
 
-    ASSERT_SAME_TYPE(month , decltype(  std::declval<month&>()--));
-    ASSERT_SAME_TYPE(month&, decltype(--std::declval<month&>()  ));
+  ASSERT_SAME_TYPE(month, decltype(std::declval<month&>()--));
+  ASSERT_SAME_TYPE(month&, decltype(--std::declval<month&>()));
 
-    static_assert(testConstexpr<month>(), "");
+  static_assert(testConstexpr<month>(), "");
 
-    for (unsigned i = 10; i <= 20; ++i)
-    {
-        month month(i);
-        assert(static_cast<unsigned>(--month) == i - 1);
-        assert(static_cast<unsigned>(month--) == i - 1);
-        assert(static_cast<unsigned>(month)   == i - 2);
-    }
+  for (unsigned i = 10; i <= 20; ++i) {
+    month month(i);
+    assert(static_cast<unsigned>(--month) == i - 1);
+    assert(static_cast<unsigned>(month--) == i - 1);
+    assert(static_cast<unsigned>(month) == i - 2);
+  }
 
   return 0;
 }

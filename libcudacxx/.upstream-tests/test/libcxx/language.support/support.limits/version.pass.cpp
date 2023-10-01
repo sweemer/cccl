@@ -13,11 +13,11 @@
 #include "test_macros.h"
 
 #if !defined(_LIBCUDACXX_VERSION)
-#error "_LIBCUDACXX_VERSION must be defined after including <cuda/std/version>"
+#  error "_LIBCUDACXX_VERSION must be defined after including <cuda/std/version>"
 #endif
 
-int main(int, char**)
+int
+main(int, char**)
 {
-
   return 0;
 }

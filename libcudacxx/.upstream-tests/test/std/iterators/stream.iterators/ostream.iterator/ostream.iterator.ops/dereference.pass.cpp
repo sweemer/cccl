@@ -15,22 +15,24 @@
 
 #include <cuda/std/iterator>
 #if defined(_LIBCUDACXX_HAS_SSTREAM)
-#include <cuda/std/sstream>
-#include <cuda/std/cassert>
+#  include <cuda/std/sstream>
+#  include <cuda/std/cassert>
 
-#include "test_macros.h"
+#  include "test_macros.h"
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    cuda::std::ostringstream os;
-    cuda::std::ostream_iterator<int> i(os);
-    cuda::std::ostream_iterator<int>& iref = *i;
-    assert(&iref == &i);
+  cuda::std::ostringstream os;
+  cuda::std::ostream_iterator<int> i(os);
+  cuda::std::ostream_iterator<int>& iref = *i;
+  assert(&iref == &i);
 
   return 0;
 }
 #else
-int main(int, char**)
+int
+main(int, char**)
 {
   return 0;
 }

@@ -27,50 +27,54 @@
 #include "test_iterators.h"
 
 template <class It>
-__host__ __device__
-void
+__host__ __device__ void
 test(It i, typename cuda::std::iterator_traits<It>::difference_type n, It x)
 {
-    cuda::std::advance(i, n);
-    assert(i == x);
+  cuda::std::advance(i, n);
+  assert(i == x);
 }
 
 #if TEST_STD_VER > 14
 template <class It>
-__host__ __device__
-constexpr bool
+__host__ __device__ constexpr bool
 constepxr_test(It i, typename cuda::std::iterator_traits<It>::difference_type n, It x)
 {
-    cuda::std::advance(i, n);
-    return i == x;
+  cuda::std::advance(i, n);
+  return i == x;
 }
 #endif
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    {
+  {
     const char* s = "1234567890";
-    test(cpp17_input_iterator<const char*>(s), 10, cpp17_input_iterator<const char*>(s+10));
-    test(forward_iterator<const char*>(s), 10, forward_iterator<const char*>(s+10));
-    test(bidirectional_iterator<const char*>(s+5), 5, bidirectional_iterator<const char*>(s+10));
-    test(bidirectional_iterator<const char*>(s+5), -5, bidirectional_iterator<const char*>(s));
-    test(random_access_iterator<const char*>(s+5), 5, random_access_iterator<const char*>(s+10));
-    test(random_access_iterator<const char*>(s+5), -5, random_access_iterator<const char*>(s));
-    test(s+5, 5, s+10);
-    test(s+5, -5, s);
-    }
+    test(cpp17_input_iterator<const char*>(s), 10, cpp17_input_iterator<const char*>(s + 10));
+    test(forward_iterator<const char*>(s), 10, forward_iterator<const char*>(s + 10));
+    test(bidirectional_iterator<const char*>(s + 5), 5, bidirectional_iterator<const char*>(s + 10));
+    test(bidirectional_iterator<const char*>(s + 5), -5, bidirectional_iterator<const char*>(s));
+    test(random_access_iterator<const char*>(s + 5), 5, random_access_iterator<const char*>(s + 10));
+    test(random_access_iterator<const char*>(s + 5), -5, random_access_iterator<const char*>(s));
+    test(s + 5, 5, s + 10);
+    test(s + 5, -5, s);
+  }
 #if TEST_STD_VER > 14
-    {
+  {
     constexpr const char* s = "1234567890";
-    static_assert( constepxr_test(cpp17_input_iterator<const char*>(s), 10, cpp17_input_iterator<const char*>(s+10)), "" );
-    static_assert( constepxr_test(forward_iterator<const char*>(s), 10, forward_iterator<const char*>(s+10)), "" );
-    static_assert( constepxr_test(bidirectional_iterator<const char*>(s+5), 5, bidirectional_iterator<const char*>(s+10)), "" );
-    static_assert( constepxr_test(bidirectional_iterator<const char*>(s+5), -5, bidirectional_iterator<const char*>(s)), "" );
-    static_assert( constepxr_test(random_access_iterator<const char*>(s+5), 5, random_access_iterator<const char*>(s+10)), "" );
-    static_assert( constepxr_test(random_access_iterator<const char*>(s+5), -5, random_access_iterator<const char*>(s)), "" );
-    static_assert( constepxr_test(s+5, 5, s+10), "" );
-    static_assert( constepxr_test(s+5, -5, s), "" );
-    }
+    static_assert(
+        constepxr_test(cpp17_input_iterator<const char*>(s), 10, cpp17_input_iterator<const char*>(s + 10)), "");
+    static_assert(constepxr_test(forward_iterator<const char*>(s), 10, forward_iterator<const char*>(s + 10)), "");
+    static_assert(
+        constepxr_test(bidirectional_iterator<const char*>(s + 5), 5, bidirectional_iterator<const char*>(s + 10)), "");
+    static_assert(
+        constepxr_test(bidirectional_iterator<const char*>(s + 5), -5, bidirectional_iterator<const char*>(s)), "");
+    static_assert(
+        constepxr_test(random_access_iterator<const char*>(s + 5), 5, random_access_iterator<const char*>(s + 10)), "");
+    static_assert(
+        constepxr_test(random_access_iterator<const char*>(s + 5), -5, random_access_iterator<const char*>(s)), "");
+    static_assert(constepxr_test(s + 5, 5, s + 10), "");
+    static_assert(constepxr_test(s + 5, -5, s), "");
+  }
 #endif
 
   return 0;

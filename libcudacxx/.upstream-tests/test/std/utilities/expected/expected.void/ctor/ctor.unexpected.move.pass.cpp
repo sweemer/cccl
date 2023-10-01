@@ -35,36 +35,54 @@ static_assert(cuda::std::is_constructible_v<cuda::std::expected<void, int>, cuda
 static_assert(cuda::std::is_constructible_v<cuda::std::expected<void, MoveOnly>, cuda::std::unexpected<MoveOnly>>, "");
 
 // !is_constructible_v<E, GF>
-struct foo {};
+struct foo
+{};
 static_assert(!cuda::std::is_constructible_v<cuda::std::expected<void, int>, cuda::std::unexpected<foo>>, "");
 
 // explicit(!is_convertible_v<G, E>)
-struct NotConvertible {
+struct NotConvertible
+{
   __host__ __device__ explicit NotConvertible(int);
 };
 static_assert(cuda::std::is_convertible_v<cuda::std::unexpected<int>&&, cuda::std::expected<void, int>>, "");
-static_assert(!cuda::std::is_convertible_v<cuda::std::unexpected<int>&&, cuda::std::expected<void, NotConvertible>>, "");
+static_assert(
+    !cuda::std::is_convertible_v<cuda::std::unexpected<int>&&, cuda::std::expected<void, NotConvertible>>, "");
 
-struct MyInt {
+struct MyInt
+{
   int i;
-  __host__ __device__ constexpr MyInt(int ii) : i(ii) {}
+  __host__ __device__ constexpr MyInt(int ii)
+      : i(ii)
+  {}
 #if TEST_STD_VER > 17
   __host__ __device__ friend constexpr bool operator==(const MyInt&, const MyInt&) = default;
 #else
-  __host__ __device__ friend constexpr bool operator==(const MyInt& lhs, const MyInt& rhs) noexcept { return lhs.i == rhs.i; };
-  __host__ __device__ friend constexpr bool operator!=(const MyInt& lhs, const MyInt& rhs) noexcept { return lhs.i != rhs.i; };
+  __host__ __device__ friend constexpr bool
+  operator==(const MyInt& lhs, const MyInt& rhs) noexcept
+  {
+    return lhs.i == rhs.i;
+  };
+  __host__ __device__ friend constexpr bool
+  operator!=(const MyInt& lhs, const MyInt& rhs) noexcept
+  {
+    return lhs.i != rhs.i;
+  };
 #endif // TEST_STD_VER > 17
 };
 
 template <class Err>
-__host__ __device__ constexpr void testInt() {
+__host__ __device__ constexpr void
+testInt()
+{
   cuda::std::unexpected<int> u(5);
   cuda::std::expected<void, Err> e(cuda::std::move(u));
   assert(!e.has_value());
   assert(e.error() == 5);
 }
 
-__host__ __device__ constexpr void testMoveOnly() {
+__host__ __device__ constexpr void
+testMoveOnly()
+{
   cuda::std::unexpected<MoveOnly> u(MoveOnly(5));
   cuda::std::expected<void, MoveOnly> e(cuda::std::move(u));
   assert(!e.has_value());
@@ -72,7 +90,9 @@ __host__ __device__ constexpr void testMoveOnly() {
   assert(u.error() == 0);
 }
 
-__host__ __device__ constexpr bool test() {
+__host__ __device__ constexpr bool
+test()
+{
   testInt<int>();
   testInt<MyInt>();
   testInt<MoveOnly>();
@@ -80,12 +100,20 @@ __host__ __device__ constexpr bool test() {
   return true;
 }
 
-__host__ __device__ void testException() {
+__host__ __device__ void
+testException()
+{
 #ifndef TEST_HAS_NO_EXCEPTIONS
-  struct Except {};
+  struct Except
+  {};
 
-  struct Throwing {
-    __host__ __device__ Throwing(int) { throw Except{}; }
+  struct Throwing
+  {
+    __host__ __device__
+    Throwing(int)
+    {
+      throw Except{};
+    }
   };
 
   {
@@ -101,7 +129,9 @@ __host__ __device__ void testException() {
 #endif // TEST_HAS_NO_EXCEPTIONS
 }
 
-int main(int, char**) {
+int
+main(int, char**)
+{
   test();
 #if TEST_STD_VER > 17 && defined(_LIBCUDACXX_ADDRESSOF)
   static_assert(test(), "");

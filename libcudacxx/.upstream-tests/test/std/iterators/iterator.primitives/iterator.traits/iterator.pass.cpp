@@ -24,25 +24,27 @@
 
 #include "test_macros.h"
 
-struct A {};
+struct A
+{};
 
 struct test_iterator
 {
-    typedef int                       difference_type;
-    typedef A                         value_type;
-    typedef A*                        pointer;
-    typedef A&                        reference;
-    typedef cuda::std::forward_iterator_tag iterator_category;
+  typedef int difference_type;
+  typedef A value_type;
+  typedef A* pointer;
+  typedef A& reference;
+  typedef cuda::std::forward_iterator_tag iterator_category;
 };
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    typedef cuda::std::iterator_traits<test_iterator> It;
-    static_assert((cuda::std::is_same<It::difference_type, int>::value), "");
-    static_assert((cuda::std::is_same<It::value_type, A>::value), "");
-    static_assert((cuda::std::is_same<It::pointer, A*>::value), "");
-    static_assert((cuda::std::is_same<It::reference, A&>::value), "");
-    static_assert((cuda::std::is_same<It::iterator_category, cuda::std::forward_iterator_tag>::value), "");
+  typedef cuda::std::iterator_traits<test_iterator> It;
+  static_assert((cuda::std::is_same<It::difference_type, int>::value), "");
+  static_assert((cuda::std::is_same<It::value_type, A>::value), "");
+  static_assert((cuda::std::is_same<It::pointer, A*>::value), "");
+  static_assert((cuda::std::is_same<It::reference, A&>::value), "");
+  static_assert((cuda::std::is_same<It::iterator_category, cuda::std::forward_iterator_tag>::value), "");
 
   return 0;
 }

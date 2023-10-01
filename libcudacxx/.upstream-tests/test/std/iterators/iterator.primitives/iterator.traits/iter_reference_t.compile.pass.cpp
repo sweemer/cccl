@@ -23,7 +23,8 @@ static_assert(cuda::std::same_as<cuda::std::iter_reference_t<forward_iterator<in
 static_assert(cuda::std::same_as<cuda::std::iter_reference_t<bidirectional_iterator<int*> >, int&>);
 static_assert(cuda::std::same_as<cuda::std::iter_reference_t<random_access_iterator<int*> >, int&>);
 
-int main(int, char**)
+int
+main(int, char**)
 {
   return 0;
 }

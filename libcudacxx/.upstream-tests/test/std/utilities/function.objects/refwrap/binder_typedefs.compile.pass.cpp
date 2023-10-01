@@ -23,27 +23,35 @@
 
 struct UnaryFunction
 {
-    typedef long argument_type;
-    typedef char result_type;
+  typedef long argument_type;
+  typedef char result_type;
 };
 
 struct BinaryFunction
 {
-    typedef int first_argument_type;
-    typedef char second_argument_type;
-    typedef long result_type;
+  typedef int first_argument_type;
+  typedef char second_argument_type;
+  typedef long result_type;
 };
 
-static_assert(cuda::std::is_same<cuda::std::reference_wrapper<int(UnaryFunction::*)()>::result_type, int>::value, "");
-static_assert(cuda::std::is_same<cuda::std::reference_wrapper<int(UnaryFunction::*)()>::argument_type, UnaryFunction*>::value, "");
+static_assert(cuda::std::is_same<cuda::std::reference_wrapper<int (UnaryFunction::*)()>::result_type, int>::value, "");
+static_assert(
+    cuda::std::is_same<cuda::std::reference_wrapper<int (UnaryFunction::*)()>::argument_type, UnaryFunction*>::value,
+    "");
 
-static_assert(cuda::std::is_same<cuda::std::reference_wrapper<int(BinaryFunction::*)(char)>::result_type, int>::value, "");
-static_assert(cuda::std::is_same<cuda::std::reference_wrapper<int(BinaryFunction::*)(char)>::first_argument_type, BinaryFunction*>::value, "");
-static_assert(cuda::std::is_same<cuda::std::reference_wrapper<int(BinaryFunction::*)(char)>::second_argument_type, char>::value, "");
+static_assert(
+    cuda::std::is_same<cuda::std::reference_wrapper<int (BinaryFunction::*)(char)>::result_type, int>::value, "");
+static_assert(cuda::std::is_same<cuda::std::reference_wrapper<int (BinaryFunction::*)(char)>::first_argument_type,
+                  BinaryFunction*>::value,
+    "");
+static_assert(
+    cuda::std::is_same<cuda::std::reference_wrapper<int (BinaryFunction::*)(char)>::second_argument_type, char>::value,
+    "");
 
-static_assert(cuda::std::is_same<cuda::std::reference_wrapper<void(*)()>::result_type, void>::value, "");
+static_assert(cuda::std::is_same<cuda::std::reference_wrapper<void (*)()>::result_type, void>::value, "");
 
-int main(int, char**)
+int
+main(int, char**)
 {
   return 0;
 }

@@ -20,14 +20,20 @@
 // #include <cuda/std/functional>
 #include <cuda/std/utility>
 
-struct A {};
+struct A
+{};
 
-__host__ __device__ const A source() {return A();}
-
-int main(int, char**)
+__host__ __device__ const A
+source()
 {
-    cuda::std::reference_wrapper<const A> r = cuda::std::ref(source());
-    (void)r;
+  return A();
+}
 
-    return 0;
+int
+main(int, char**)
+{
+  cuda::std::reference_wrapper<const A> r = cuda::std::ref(source());
+  (void) r;
+
+  return 0;
 }

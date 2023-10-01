@@ -14,81 +14,80 @@
 #include "test_macros.h"
 
 template <class T>
-__host__ __device__
-void test_is_nothrow_default_constructible()
+__host__ __device__ void
+test_is_nothrow_default_constructible()
 {
-    static_assert( cuda::std::is_nothrow_default_constructible<T>::value, "");
-    static_assert( cuda::std::is_nothrow_default_constructible<const T>::value, "");
-    static_assert( cuda::std::is_nothrow_default_constructible<volatile T>::value, "");
-    static_assert( cuda::std::is_nothrow_default_constructible<const volatile T>::value, "");
+  static_assert(cuda::std::is_nothrow_default_constructible<T>::value, "");
+  static_assert(cuda::std::is_nothrow_default_constructible<const T>::value, "");
+  static_assert(cuda::std::is_nothrow_default_constructible<volatile T>::value, "");
+  static_assert(cuda::std::is_nothrow_default_constructible<const volatile T>::value, "");
 #if TEST_STD_VER > 11
-    static_assert( cuda::std::is_nothrow_default_constructible_v<T>, "");
-    static_assert( cuda::std::is_nothrow_default_constructible_v<const T>, "");
-    static_assert( cuda::std::is_nothrow_default_constructible_v<volatile T>, "");
-    static_assert( cuda::std::is_nothrow_default_constructible_v<const volatile T>, "");
+  static_assert(cuda::std::is_nothrow_default_constructible_v<T>, "");
+  static_assert(cuda::std::is_nothrow_default_constructible_v<const T>, "");
+  static_assert(cuda::std::is_nothrow_default_constructible_v<volatile T>, "");
+  static_assert(cuda::std::is_nothrow_default_constructible_v<const volatile T>, "");
 #endif
 }
 
 template <class T>
-__host__ __device__
-void test_has_not_nothrow_default_constructor()
+__host__ __device__ void
+test_has_not_nothrow_default_constructor()
 {
-    static_assert(!cuda::std::is_nothrow_default_constructible<T>::value, "");
-    static_assert(!cuda::std::is_nothrow_default_constructible<const T>::value, "");
-    static_assert(!cuda::std::is_nothrow_default_constructible<volatile T>::value, "");
-    static_assert(!cuda::std::is_nothrow_default_constructible<const volatile T>::value, "");
+  static_assert(!cuda::std::is_nothrow_default_constructible<T>::value, "");
+  static_assert(!cuda::std::is_nothrow_default_constructible<const T>::value, "");
+  static_assert(!cuda::std::is_nothrow_default_constructible<volatile T>::value, "");
+  static_assert(!cuda::std::is_nothrow_default_constructible<const volatile T>::value, "");
 #if TEST_STD_VER > 11
-    static_assert(!cuda::std::is_nothrow_default_constructible_v<T>, "");
-    static_assert(!cuda::std::is_nothrow_default_constructible_v<const T>, "");
-    static_assert(!cuda::std::is_nothrow_default_constructible_v<volatile T>, "");
-    static_assert(!cuda::std::is_nothrow_default_constructible_v<const volatile T>, "");
+  static_assert(!cuda::std::is_nothrow_default_constructible_v<T>, "");
+  static_assert(!cuda::std::is_nothrow_default_constructible_v<const T>, "");
+  static_assert(!cuda::std::is_nothrow_default_constructible_v<volatile T>, "");
+  static_assert(!cuda::std::is_nothrow_default_constructible_v<const volatile T>, "");
 #endif
 }
 
 class Empty
-{
-};
+{};
 
 union Union {};
 
 struct bit_zero
 {
-    int :  0;
+  int : 0;
 };
 
 struct A
 {
-    __host__ __device__
-    A();
+  __host__ __device__ A();
 };
 
 struct DThrows
 {
-    __host__ __device__
-    DThrows()  noexcept(true) {}
-    __host__ __device__
-    ~DThrows() noexcept(false) {}
+  __host__ __device__
+  DThrows() noexcept(true)
+  {}
+  __host__ __device__ ~DThrows() noexcept(false) {}
 };
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    test_has_not_nothrow_default_constructor<void>();
-    test_has_not_nothrow_default_constructor<int&>();
+  test_has_not_nothrow_default_constructor<void>();
+  test_has_not_nothrow_default_constructor<int&>();
 #ifndef TEST_COMPILER_NVHPC
-    test_has_not_nothrow_default_constructor<A>();
-#if !defined(__INTEL_COMPILER) && !defined(TEST_COMPILER_MSVC_2017)
-    test_has_not_nothrow_default_constructor<DThrows>(); // This is LWG2116
-#endif
+  test_has_not_nothrow_default_constructor<A>();
+#  if !defined(__INTEL_COMPILER) && !defined(TEST_COMPILER_MSVC_2017)
+  test_has_not_nothrow_default_constructor<DThrows>(); // This is LWG2116
+#  endif
 #endif // TEST_COMPILER_NVHPC
 
-    test_is_nothrow_default_constructible<Union>();
-    test_is_nothrow_default_constructible<Empty>();
-    test_is_nothrow_default_constructible<int>();
-    test_is_nothrow_default_constructible<double>();
-    test_is_nothrow_default_constructible<int*>();
-    test_is_nothrow_default_constructible<const int*>();
-    test_is_nothrow_default_constructible<char[3]>();
-    test_is_nothrow_default_constructible<bit_zero>();
+  test_is_nothrow_default_constructible<Union>();
+  test_is_nothrow_default_constructible<Empty>();
+  test_is_nothrow_default_constructible<int>();
+  test_is_nothrow_default_constructible<double>();
+  test_is_nothrow_default_constructible<int*>();
+  test_is_nothrow_default_constructible<const int*>();
+  test_is_nothrow_default_constructible<char[3]>();
+  test_is_nothrow_default_constructible<bit_zero>();
 
   return 0;
 }

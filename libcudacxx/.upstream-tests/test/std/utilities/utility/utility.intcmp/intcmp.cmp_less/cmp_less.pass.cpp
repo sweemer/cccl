@@ -21,11 +21,13 @@
 #include "test_macros.h"
 
 template <typename T>
-struct Tuple {
+struct Tuple
+{
   T min;
   T max;
   T mid;
-  __host__ __device__ constexpr Tuple() {
+  __host__ __device__ constexpr Tuple()
+  {
     min = cuda::std::numeric_limits<T>::min();
     max = cuda::std::numeric_limits<T>::max();
     if constexpr (cuda::std::is_signed_v<T>) {
@@ -37,7 +39,9 @@ struct Tuple {
 };
 
 template <typename T>
-__host__ __device__ constexpr void test_cmp_less1() {
+__host__ __device__ constexpr void
+test_cmp_less1()
+{
   constexpr Tuple<T> tup;
   assert(cuda::std::cmp_less(T(0), T(1)));
   assert(cuda::std::cmp_less(T(1), T(2)));
@@ -61,39 +65,61 @@ __host__ __device__ constexpr void test_cmp_less1() {
 }
 
 template <typename T, typename U>
-__host__ __device__ constexpr void test_cmp_less2() {
+__host__ __device__ constexpr void
+test_cmp_less2()
+{
   assert(cuda::std::cmp_less(T(0), U(1)));
   assert(!cuda::std::cmp_less(T(1), U(0)));
 }
 
 template <class... Ts>
-__host__ __device__ constexpr void test1(const cuda::std::tuple<Ts...>&) {
-  (test_cmp_less1<Ts>() , ...);
+__host__ __device__ constexpr void
+test1(const cuda::std::tuple<Ts...>&)
+{
+  (test_cmp_less1<Ts>(), ...);
 }
 
 template <class T, class... Us>
-__host__ __device__ constexpr void test2_impl(const cuda::std::tuple<Us...>&) {
-  (test_cmp_less2<T, Us>() , ...);
+__host__ __device__ constexpr void
+test2_impl(const cuda::std::tuple<Us...>&)
+{
+  (test_cmp_less2<T, Us>(), ...);
 }
 
 template <class... Ts, class UTuple>
-__host__ __device__ constexpr void test2(const cuda::std::tuple<Ts...>&, const UTuple& utuple) {
-  (test2_impl<Ts>(utuple) , ...);
+__host__ __device__ constexpr void
+test2(const cuda::std::tuple<Ts...>&, const UTuple& utuple)
+{
+  (test2_impl<Ts>(utuple), ...);
 }
 
-__host__ __device__ constexpr bool test() {
+__host__ __device__ constexpr bool
+test()
+{
   cuda::std::tuple<
 #ifndef TEST_HAS_NO_INT128_T
-      __int128_t, __uint128_t,
+      __int128_t,
+      __uint128_t,
 #endif
-      unsigned long long, long long, unsigned long, long, unsigned int, int,
-      unsigned short, short, unsigned char, signed char> types;
+      unsigned long long,
+      long long,
+      unsigned long,
+      long,
+      unsigned int,
+      int,
+      unsigned short,
+      short,
+      unsigned char,
+      signed char>
+      types;
   test1(types);
   test2(types, types);
   return true;
 }
 
-int main(int, char**) {
+int
+main(int, char**)
+{
   ASSERT_NOEXCEPT(cuda::std::cmp_less(0, 1));
   test();
   static_assert(test());

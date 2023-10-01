@@ -14,12 +14,10 @@
 //	Specifically, for the copy constructor.
 // UNSUPPORTED: clang-9 && nvcc-11.1
 
-
 // template <class T, class... U>
 //   array(T, U...) -> array<T, 1 + sizeof...(U)>;
 //
 //  Requires: (is_same_v<T, U> && ...) is true. Otherwise the program is ill-formed.
-
 
 #include <cuda/std/array>
 #include <cuda/std/cassert>
@@ -31,18 +29,19 @@
 
 #include "test_macros.h"
 
-int main(int, char**)
+int
+main(int, char**)
 {
-//  Test the explicit deduction guides
-    {
-    cuda::std::array arr{1,2,3};  // array(T, U...)
+  //  Test the explicit deduction guides
+  {
+    cuda::std::array arr{1, 2, 3}; // array(T, U...)
     static_assert(cuda::std::is_same_v<decltype(arr), cuda::std::array<int, 3>>, "");
     assert(arr[0] == 1);
     assert(arr[1] == 2);
     assert(arr[2] == 3);
-    }
+  }
 
-    {
+  {
     const long l1 = 42;
     cuda::std::array arr{1L, 4L, 9L, l1}; // array(T, U...)
     static_assert(cuda::std::is_same_v<decltype(arr)::value_type, long>, "");
@@ -51,12 +50,12 @@ int main(int, char**)
     assert(arr[1] == 4);
     assert(arr[2] == 9);
     assert(arr[3] == l1);
-    }
+  }
 
-//  Test the implicit deduction guides
+  //  Test the implicit deduction guides
   {
-  cuda::std::array<double, 2> source = {4.0, 5.0};
-  cuda::std::array arr(source);   // array(array)
+    cuda::std::array<double, 2> source = {4.0, 5.0};
+    cuda::std::array arr(source); // array(array)
     static_assert(cuda::std::is_same_v<decltype(arr), decltype(source)>, "");
     static_assert(cuda::std::is_same_v<decltype(arr), cuda::std::array<double, 2>>, "");
     assert(arr[0] == 4.0);

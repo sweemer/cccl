@@ -15,12 +15,13 @@
 
 #include "test_macros.h"
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    using day = cuda::std::chrono::day;
+  using day = cuda::std::chrono::day;
 
-    static_assert(cuda::std::is_trivially_copyable_v<day>, "");
-    static_assert(cuda::std::is_standard_layout_v<day>, "");
+  static_assert(cuda::std::is_trivially_copyable_v<day>, "");
+  static_assert(cuda::std::is_standard_layout_v<day>, "");
 
   return 0;
 }

@@ -19,15 +19,17 @@
 
 #include "test_macros.h"
 
-__host__ __device__ TEST_CONSTEXPR_CXX20 bool test()
+__host__ __device__ TEST_CONSTEXPR_CXX20 bool
+test()
 {
-  int i = 0;
+  int i                               = 0;
   cuda::std::reference_wrapper<int> r = cuda::std::ref(i);
   assert(&r.get() == &i);
   return true;
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
   test();
 #if TEST_STD_VER > 17 && !defined(__CUDACC_RTC__)

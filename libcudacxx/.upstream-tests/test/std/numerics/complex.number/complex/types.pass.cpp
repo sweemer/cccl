@@ -26,16 +26,17 @@ template <class T>
 __host__ __device__ void
 test()
 {
-    typedef cuda::std::complex<T> C;
-    static_assert((cuda::std::is_same<typename C::value_type, T>::value), "");
+  typedef cuda::std::complex<T> C;
+  static_assert((cuda::std::is_same<typename C::value_type, T>::value), "");
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    test<float>();
-    test<double>();
-// CUDA treats long double as double
-//  test<long double>();
+  test<float>();
+  test<double>();
+  // CUDA treats long double as double
+  //  test<long double>();
 
   return 0;
 }

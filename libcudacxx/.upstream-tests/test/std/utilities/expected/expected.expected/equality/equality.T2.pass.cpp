@@ -19,17 +19,30 @@
 
 #include "test_macros.h"
 
-struct Data {
+struct Data
+{
   int i;
-  __host__ __device__ constexpr Data(int ii) : i(ii) {}
+  __host__ __device__ constexpr Data(int ii)
+      : i(ii)
+  {}
 
-  __host__ __device__ friend constexpr bool operator==(const Data& data, int ii) { return data.i == ii; }
+  __host__ __device__ friend constexpr bool
+  operator==(const Data& data, int ii)
+  {
+    return data.i == ii;
+  }
 #if TEST_STD_VER < 20
-  __host__ __device__ friend constexpr bool operator!=(const Data& data, int ii) { return data.i != ii; }
+  __host__ __device__ friend constexpr bool
+  operator!=(const Data& data, int ii)
+  {
+    return data.i != ii;
+  }
 #endif // TEST_STD_VER < 20
 };
 
-__host__ __device__ constexpr bool test() {
+__host__ __device__ constexpr bool
+test()
+{
   // x.has_value()
   {
     const cuda::std::expected<Data, int> e1(cuda::std::in_place, 5);
@@ -51,7 +64,9 @@ __host__ __device__ constexpr bool test() {
   return true;
 }
 
-int main(int, char**) {
+int
+main(int, char**)
+{
   test();
 #if TEST_STD_VER > 17 && defined(_LIBCUDACXX_ADDRESSOF)
   static_assert(test(), "");

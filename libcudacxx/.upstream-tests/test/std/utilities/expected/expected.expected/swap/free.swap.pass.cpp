@@ -23,7 +23,8 @@
 #include "test_macros.h"
 
 // Test Constraints:
-struct NotSwappable {
+struct NotSwappable
+{
   __host__ __device__ NotSwappable operator=(const NotSwappable&) = delete;
 };
 __host__ __device__ void swap(NotSwappable&, NotSwappable&) = delete;
@@ -36,9 +37,12 @@ static_assert(!cuda::std::is_swappable_v<cuda::std::expected<NotSwappable, int>>
 // !is_swappable_v<E>
 static_assert(!cuda::std::is_swappable_v<cuda::std::expected<int, NotSwappable>>, "");
 
-struct NotMoveContructible {
+struct NotMoveContructible
+{
   NotMoveContructible(NotMoveContructible&&) = delete;
-  __host__ __device__ friend void swap(NotMoveContructible&, NotMoveContructible&) {}
+  __host__ __device__ friend void
+  swap(NotMoveContructible&, NotMoveContructible&)
+  {}
 };
 
 // !is_move_constructible_v<T>
@@ -47,9 +51,12 @@ static_assert(!cuda::std::is_swappable_v<cuda::std::expected<NotMoveContructible
 // !is_move_constructible_v<E>
 static_assert(!cuda::std::is_swappable_v<cuda::std::expected<int, NotMoveContructible>>, "");
 
-struct MoveMayThrow {
+struct MoveMayThrow
+{
   __host__ __device__ MoveMayThrow(MoveMayThrow&&) noexcept(false);
-  __host__ __device__ friend void swap(MoveMayThrow&, MoveMayThrow&) noexcept {}
+  __host__ __device__ friend void
+  swap(MoveMayThrow&, MoveMayThrow&) noexcept
+  {}
 };
 
 // !is_nothrow_move_constructible_v<T> && is_nothrow_move_constructible_v<E>
@@ -70,8 +77,11 @@ static_assert(!cuda::std::is_nothrow_swappable_v<cuda::std::expected<MoveMayThro
 // !is_nothrow_move_constructible_v<E>
 static_assert(!cuda::std::is_nothrow_swappable_v<cuda::std::expected<int, MoveMayThrow>>, "");
 
-struct SwapMayThrow {
-  __host__ __device__ friend void swap(SwapMayThrow&, SwapMayThrow&) noexcept(false) {}
+struct SwapMayThrow
+{
+  __host__ __device__ friend void
+  swap(SwapMayThrow&, SwapMayThrow&) noexcept(false)
+  {}
 };
 
 // !is_nothrow_swappable_v<T>
@@ -80,7 +90,9 @@ static_assert(!cuda::std::is_nothrow_swappable_v<cuda::std::expected<SwapMayThro
 // !is_nothrow_swappable_v<E>
 static_assert(!cuda::std::is_nothrow_swappable_v<cuda::std::expected<int, SwapMayThrow>>, "");
 
-__host__ __device__ TEST_CONSTEXPR_CXX20 bool test() {
+__host__ __device__ TEST_CONSTEXPR_CXX20 bool
+test()
+{
   // this->has_value() && rhs.has_value()
   {
     cuda::std::expected<ADLSwap, int> x(cuda::std::in_place, 5);
@@ -188,7 +200,9 @@ __host__ __device__ TEST_CONSTEXPR_CXX20 bool test() {
   return true;
 }
 
-__host__ __device__ void testException() {
+__host__ __device__ void
+testException()
+{
 #ifndef TEST_HAS_NO_EXCEPTIONS
   // !e1.has_value() && e2.has_value()
   {
@@ -218,7 +232,9 @@ __host__ __device__ void testException() {
 #endif // TEST_HAS_NO_EXCEPTIONS
 }
 
-int main(int, char**) {
+int
+main(int, char**)
+{
   test();
 #if TEST_STD_VER > 17 && defined(_LIBCUDACXX_ADDRESSOF)
   static_assert(test());

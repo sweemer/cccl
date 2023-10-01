@@ -15,28 +15,29 @@
 
 #include <cuda/std/iterator>
 #if defined(_LIBCUDACXX_HAS_VECTOR)
-#include <cuda/std/vector>
-#include "nasty_containers.h"
+#  include <cuda/std/vector>
+#  include "nasty_containers.h"
 
-#include "test_macros.h"
+#  include "test_macros.h"
 
 template <class C>
-__host__ __device__
-void
+__host__ __device__ void
 test(C c)
 {
-    cuda::std::insert_iterator<C> i(c, c.begin());
+  cuda::std::insert_iterator<C> i(c, c.begin());
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    test(cuda::std::vector<int>());
-    test(nasty_vector<int>());
+  test(cuda::std::vector<int>());
+  test(nasty_vector<int>());
 
   return 0;
 }
 #else
-int main(int, char**)
+int
+main(int, char**)
 {
   return 0;
 }

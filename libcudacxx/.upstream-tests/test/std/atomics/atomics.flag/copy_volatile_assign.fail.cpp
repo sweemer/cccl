@@ -21,11 +21,12 @@
 #include <cuda/std/atomic>
 #include <cuda/std/cassert>
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    cuda::std::atomic_flag f0;
-    volatile cuda::std::atomic_flag f;
-    f = f0;
+  cuda::std::atomic_flag f0;
+  volatile cuda::std::atomic_flag f;
+  f = f0;
 
   return 0;
 }

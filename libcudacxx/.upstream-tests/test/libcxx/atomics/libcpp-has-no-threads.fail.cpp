@@ -19,13 +19,13 @@
 
 // MODULES_DEFINES: _LIBCUDACXX_HAS_NO_THREADS
 #ifndef _LIBCUDACXX_HAS_NO_THREADS
-#define _LIBCUDACXX_HAS_NO_THREADS
+#  define _LIBCUDACXX_HAS_NO_THREADS
 #endif
 
 #include <cuda/std/atomic>
 
-int main(int, char**)
+int
+main(int, char**)
 {
-
   return 0;
 }

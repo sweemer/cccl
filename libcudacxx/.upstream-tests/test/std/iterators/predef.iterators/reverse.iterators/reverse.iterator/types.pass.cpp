@@ -32,35 +32,37 @@
 #include "test_iterators.h"
 
 template <class It>
-struct find_current
-    : private cuda::std::reverse_iterator<It>
+struct find_current : private cuda::std::reverse_iterator<It>
 {
-__host__ __device__
-    void test() {++(this->current);}
+  __host__ __device__ void
+  test()
+  {
+    ++(this->current);
+  }
 };
 
 template <class It>
-__host__ __device__
-void
+__host__ __device__ void
 test()
 {
-    typedef cuda::std::reverse_iterator<It> R;
-    typedef cuda::std::iterator_traits<It> T;
-    find_current<It> q;
-    q.test();
-    static_assert((cuda::std::is_same<typename R::iterator_type, It>::value), "");
-    static_assert((cuda::std::is_same<typename R::value_type, typename T::value_type>::value), "");
-    static_assert((cuda::std::is_same<typename R::difference_type, typename T::difference_type>::value), "");
-    static_assert((cuda::std::is_same<typename R::reference, typename T::reference>::value), "");
-    static_assert((cuda::std::is_same<typename R::pointer, typename cuda::std::iterator_traits<It>::pointer>::value), "");
-    static_assert((cuda::std::is_same<typename R::iterator_category, typename T::iterator_category>::value), "");
+  typedef cuda::std::reverse_iterator<It> R;
+  typedef cuda::std::iterator_traits<It> T;
+  find_current<It> q;
+  q.test();
+  static_assert((cuda::std::is_same<typename R::iterator_type, It>::value), "");
+  static_assert((cuda::std::is_same<typename R::value_type, typename T::value_type>::value), "");
+  static_assert((cuda::std::is_same<typename R::difference_type, typename T::difference_type>::value), "");
+  static_assert((cuda::std::is_same<typename R::reference, typename T::reference>::value), "");
+  static_assert((cuda::std::is_same<typename R::pointer, typename cuda::std::iterator_traits<It>::pointer>::value), "");
+  static_assert((cuda::std::is_same<typename R::iterator_category, typename T::iterator_category>::value), "");
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    test<bidirectional_iterator<char*> >();
-    test<random_access_iterator<char*> >();
-    test<char*>();
+  test<bidirectional_iterator<char*> >();
+  test<random_access_iterator<char*> >();
+  test<char*>();
 
   return 0;
 }

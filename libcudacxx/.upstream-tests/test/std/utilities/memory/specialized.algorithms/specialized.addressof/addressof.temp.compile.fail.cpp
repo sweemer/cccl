@@ -19,9 +19,10 @@
 
 #include "test_macros.h"
 
-int main(int, char**)
+int
+main(int, char**)
 {
-  const int *p = cuda::std::addressof<const int>(0);
+  const int* p = cuda::std::addressof<const int>(0);
 
   return 0;
 }

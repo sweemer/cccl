@@ -15,7 +15,8 @@
 
 #include "test_macros.h"
 
-int main(int, char**)
+int
+main(int, char**)
 {
   static_assert(cuda::std::barrier<>::max() > 0, "");
   static_assert(cuda::std::barrier<void (*)()>::max() > 0, "");

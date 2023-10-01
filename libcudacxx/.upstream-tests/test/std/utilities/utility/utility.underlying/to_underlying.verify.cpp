@@ -16,9 +16,12 @@
 
 #include <cuda/std/utility>
 
-struct S {};
+struct S
+{};
 
-int main(int, char**) {
+int
+main(int, char**)
+{
   cuda::std::to_underlying(125); // expected-error {{no matching function for call}}
   cuda::std::to_underlying(S{}); // expected-error {{no matching function for call}}
 

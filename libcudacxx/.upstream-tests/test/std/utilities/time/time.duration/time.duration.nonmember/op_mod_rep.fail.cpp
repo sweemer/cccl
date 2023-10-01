@@ -21,10 +21,11 @@
 
 #include "../../rep.h"
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    cuda::std::chrono::duration<Rep> d(Rep(15));
-    d = d % 5;
+  cuda::std::chrono::duration<Rep> d(Rep(15));
+  d = d % 5;
 
   return 0;
 }

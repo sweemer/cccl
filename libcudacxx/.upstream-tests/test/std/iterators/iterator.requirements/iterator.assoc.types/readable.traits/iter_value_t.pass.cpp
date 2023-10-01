@@ -18,7 +18,9 @@
 
 #ifndef TEST_COMPILER_MSVC_2017 // MSVC 2017 cannot make this a constexpr function
 template <class T, class Expected>
-__host__ __device__ constexpr bool check_iter_value_t() {
+__host__ __device__ constexpr bool
+check_iter_value_t()
+{
   constexpr bool result = cuda::std::same_as<cuda::std::iter_value_t<T>, Expected>;
   static_assert(cuda::std::same_as<cuda::std::iter_value_t<T const>, Expected> == result);
   static_assert(cuda::std::same_as<cuda::std::iter_value_t<T volatile>, Expected> == result);
@@ -37,8 +39,9 @@ static_assert(check_iter_value_t<int*, int>());
 static_assert(check_iter_value_t<int[], int>());
 static_assert(check_iter_value_t<int[10], int>());
 
-struct both_members {
-  using value_type = double;
+struct both_members
+{
+  using value_type   = double;
   using element_type = double;
 };
 static_assert(check_iter_value_t<both_members, double>());

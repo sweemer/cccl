@@ -17,16 +17,17 @@
 
 #include "test_macros.h"
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    typedef cuda::std::chrono::system_clock Clock;
-    typedef cuda::std::chrono::milliseconds Duration;
-    typedef cuda::std::chrono::time_point<Clock, Duration> TP;
-    LIBCPP_ASSERT_NOEXCEPT(TP::max());
+  typedef cuda::std::chrono::system_clock Clock;
+  typedef cuda::std::chrono::milliseconds Duration;
+  typedef cuda::std::chrono::time_point<Clock, Duration> TP;
+  LIBCPP_ASSERT_NOEXCEPT(TP::max());
 #if TEST_STD_VER > 17
-    ASSERT_NOEXCEPT(       TP::max());
+  ASSERT_NOEXCEPT(TP::max());
 #endif
-    assert(TP::min() == TP(Duration::min()));
+  assert(TP::min() == TP(Duration::min()));
 
   return 0;
 }

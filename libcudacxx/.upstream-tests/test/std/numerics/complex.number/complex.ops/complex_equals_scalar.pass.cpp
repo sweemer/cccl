@@ -14,11 +14,11 @@
 //   operator==(const complex<T>& lhs, const T& rhs);
 
 #if defined(__clang__)
-#pragma clang diagnostic ignored "-Wliteral-conversion"
+#  pragma clang diagnostic ignored "-Wliteral-conversion"
 #endif
 
 #if defined(_MSC_VER)
-#pragma warning(disable: 4244) // conversion from 'const double' to 'int', possible loss of data
+#  pragma warning(disable : 4244) // conversion from 'const double' to 'int', possible loss of data
 #endif
 
 #include <cuda/std/complex>
@@ -31,26 +31,26 @@ __host__ __device__ TEST_CONSTEXPR_CXX14 void
 test_constexpr()
 {
 #if TEST_STD_VER > 11
-    {
+  {
     constexpr cuda::std::complex<T> lhs(1.5, 2.5);
     constexpr T rhs(-2.5);
     static_assert(!(lhs == rhs), "");
-    }
-    {
+  }
+  {
     constexpr cuda::std::complex<T> lhs(1.5, 0);
     constexpr T rhs(-2.5);
     static_assert(!(lhs == rhs), "");
-    }
-    {
+  }
+  {
     constexpr cuda::std::complex<T> lhs(1.5, 2.5);
     constexpr T rhs(1.5);
     static_assert(!(lhs == rhs), "");
-    }
-    {
+  }
+  {
     constexpr cuda::std::complex<T> lhs(1.5, 0);
     constexpr T rhs(1.5);
-    static_assert( (lhs == rhs), "");
-    }
+    static_assert((lhs == rhs), "");
+  }
 #endif
 }
 
@@ -58,45 +58,46 @@ template <class T>
 __host__ __device__ TEST_CONSTEXPR_CXX14 bool
 test()
 {
-    {
-        cuda::std::complex<T> lhs(1.5,  2.5);
-        T rhs(-2.5);
-        assert(!(lhs == rhs));
-    }
-    {
-        cuda::std::complex<T> lhs(1.5, 0);
-        T rhs(-2.5);
-        assert(!(lhs == rhs));
-    }
-    {
-        cuda::std::complex<T> lhs(1.5, 2.5);
-        T rhs(1.5);
-        assert(!(lhs == rhs));
-    }
-    {
-        cuda::std::complex<T> lhs(1.5, 0);
-        T rhs(1.5);
-        assert( (lhs == rhs));
-    }
+  {
+    cuda::std::complex<T> lhs(1.5, 2.5);
+    T rhs(-2.5);
+    assert(!(lhs == rhs));
+  }
+  {
+    cuda::std::complex<T> lhs(1.5, 0);
+    T rhs(-2.5);
+    assert(!(lhs == rhs));
+  }
+  {
+    cuda::std::complex<T> lhs(1.5, 2.5);
+    T rhs(1.5);
+    assert(!(lhs == rhs));
+  }
+  {
+    cuda::std::complex<T> lhs(1.5, 0);
+    T rhs(1.5);
+    assert((lhs == rhs));
+  }
 
-    test_constexpr<T> ();
+  test_constexpr<T>();
 
-    return true;
+  return true;
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    test<float>();
-    test<double>();
+  test<float>();
+  test<double>();
 // CUDA treats long double as double
 //  test<long double>();
 #if TEST_STD_VER > 11
-    static_assert(test<float>(), "");
-    static_assert(test<double>(), "");
+  static_assert(test<float>(), "");
+  static_assert(test<double>(), "");
 // CUDA treats long double as double
 //  static_assert(test<long double>(), "");
 #endif
-    test_constexpr<int> ();
+  test_constexpr<int>();
 
   return 0;
 }

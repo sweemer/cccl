@@ -18,7 +18,8 @@
 #include <cuda/std/iterator>
 #include <cuda/std/cassert>
 
-__host__ __device__ constexpr bool test()
+__host__ __device__ constexpr bool
+test()
 {
   // The underlying sentinel is an integer.
   {
@@ -37,9 +38,12 @@ __host__ __device__ constexpr bool test()
 
   // The underlying sentinel is a user-defined type with an explicit default constructor.
   {
-    struct S {
+    struct S
+    {
       explicit S() = default;
-      __host__ __device__ constexpr explicit S(int j) : i(j) {}
+      __host__ __device__ constexpr explicit S(int j)
+          : i(j)
+      {}
       int i = 3;
     };
     static_assert(!cuda::std::is_convertible_v<S, cuda::std::move_sentinel<S>>);
@@ -49,7 +53,8 @@ __host__ __device__ constexpr bool test()
   return true;
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
   test();
   static_assert(test());

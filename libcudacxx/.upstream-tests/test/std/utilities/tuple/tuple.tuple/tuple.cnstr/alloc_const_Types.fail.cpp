@@ -13,33 +13,39 @@
 // template <class Alloc>
 //   EXPLICIT tuple(allocator_arg_t, const Alloc& a, const Types&...);
 
-// UNSUPPORTED: c++98, c++03 
+// UNSUPPORTED: c++98, c++03
 // UNSUPPORTED: nvrtc
 
 #include <cuda/std/tuple>
 #include <cuda/std/cassert>
 
-struct ExplicitCopy {
+struct ExplicitCopy
+{
   __host__ __device__ explicit ExplicitCopy(ExplicitCopy const&) {}
   __host__ __device__ explicit ExplicitCopy(int) {}
 };
 
-__host__ __device__ cuda::std::tuple<ExplicitCopy> const_explicit_copy_test() {
-    const ExplicitCopy e(42);
-    return {cuda::std::allocator_arg, cuda::std::allocator<void>{}, e};
-    // expected-error@-1 {{chosen constructor is explicit in copy-initialization}}
-}
-
-__host__ __device__ cuda::std::tuple<ExplicitCopy> non_const_explicity_copy_test() {
-    ExplicitCopy e(42);
-    return {cuda::std::allocator_arg, cuda::std::allocator<void>{}, e};
-    // expected-error@-1 {{chosen constructor is explicit in copy-initialization}}
-}
-
-int main(int, char**)
+__host__ __device__ cuda::std::tuple<ExplicitCopy>
+const_explicit_copy_test()
 {
-    const_explicit_copy_test();
-    non_const_explicity_copy_test();
+  const ExplicitCopy e(42);
+  return {cuda::std::allocator_arg, cuda::std::allocator<void>{}, e};
+  // expected-error@-1 {{chosen constructor is explicit in copy-initialization}}
+}
+
+__host__ __device__ cuda::std::tuple<ExplicitCopy>
+non_const_explicity_copy_test()
+{
+  ExplicitCopy e(42);
+  return {cuda::std::allocator_arg, cuda::std::allocator<void>{}, e};
+  // expected-error@-1 {{chosen constructor is explicit in copy-initialization}}
+}
+
+int
+main(int, char**)
+{
+  const_explicit_copy_test();
+  non_const_explicity_copy_test();
 
   return 0;
 }

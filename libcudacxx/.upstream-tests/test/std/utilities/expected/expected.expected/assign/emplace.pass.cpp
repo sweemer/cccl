@@ -35,17 +35,15 @@
 
 template <class T, class... Args>
 _LIBCUDACXX_CONCEPT_FRAGMENT(
-  CanEmplace_,
-  requires(T t, Args&&... args)(
-    (t.emplace(cuda::std::forward<Args>(args)...))
-  ));
+    CanEmplace_, requires(T t, Args&&... args)((t.emplace(cuda::std::forward<Args>(args)...))));
 template <class T, class... Args>
 constexpr bool CanEmplace = _LIBCUDACXX_FRAGMENT(CanEmplace_, T, Args...);
 
 static_assert(CanEmplace<cuda::std::expected<int, int>, int>, "");
 
 template <bool Noexcept>
-struct CtorFromInt {
+struct CtorFromInt
+{
   __host__ __device__ CtorFromInt(int) noexcept(Noexcept);
   __host__ __device__ CtorFromInt(int, int) noexcept(Noexcept);
 };
@@ -55,7 +53,9 @@ static_assert(CanEmplace<cuda::std::expected<CtorFromInt<true>, int>, int, int>,
 static_assert(!CanEmplace<cuda::std::expected<CtorFromInt<false>, int>, int>, "");
 static_assert(!CanEmplace<cuda::std::expected<CtorFromInt<false>, int>, int, int>, "");
 
-__host__ __device__ TEST_CONSTEXPR_CXX20 bool test() {
+__host__ __device__ TEST_CONSTEXPR_CXX20 bool
+test()
+{
   // has_value
   {
     BothNoexcept::state oldState{};
@@ -86,7 +86,9 @@ __host__ __device__ TEST_CONSTEXPR_CXX20 bool test() {
   return true;
 }
 
-int main(int, char**) {
+int
+main(int, char**)
+{
   test();
 #if TEST_STD_VER > 17 && defined(_LIBCUDACXX_ADDRESSOF)
   static_assert(test());

@@ -19,29 +19,30 @@
 #include "../../rep.h"
 
 template <class D>
-__host__ __device__
-void test()
+__host__ __device__ void
+test()
 {
-    LIBCPP_ASSERT_NOEXCEPT(cuda::std::chrono::duration_values<typename D::rep>::zero());
+  LIBCPP_ASSERT_NOEXCEPT(cuda::std::chrono::duration_values<typename D::rep>::zero());
 #if TEST_STD_VER > 17
-    ASSERT_NOEXCEPT(       cuda::std::chrono::duration_values<typename D::rep>::zero());
+  ASSERT_NOEXCEPT(cuda::std::chrono::duration_values<typename D::rep>::zero());
 #endif
-    {
+  {
     typedef typename D::rep Rep;
     Rep zero_rep = cuda::std::chrono::duration_values<Rep>::zero();
     assert(D::zero().count() == zero_rep);
-    }
-    {
+  }
+  {
     typedef typename D::rep Rep;
     constexpr Rep zero_rep = cuda::std::chrono::duration_values<Rep>::zero();
     static_assert(D::zero().count() == zero_rep, "");
-    }
+  }
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    test<cuda::std::chrono::duration<int> >();
-    test<cuda::std::chrono::duration<Rep> >();
+  test<cuda::std::chrono::duration<int> >();
+  test<cuda::std::chrono::duration<Rep> >();
 
   return 0;
 }

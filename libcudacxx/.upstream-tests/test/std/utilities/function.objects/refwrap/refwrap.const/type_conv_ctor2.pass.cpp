@@ -20,21 +20,33 @@
 
 #include "test_macros.h"
 
-struct B {};
+struct B
+{};
 
-struct A1 {
+struct A1
+{
   mutable B b_;
-  __host__ __device__ TEST_CONSTEXPR operator B&() const { return b_; }
+  __host__ __device__ TEST_CONSTEXPR
+  operator B&() const
+  {
+    return b_;
+  }
 };
 
-struct A2 {
+struct A2
+{
   mutable B b_;
-  __host__ __device__ TEST_CONSTEXPR operator B&() const TEST_NOEXCEPT { return b_; }
+  __host__ __device__ TEST_CONSTEXPR
+  operator B&() const TEST_NOEXCEPT
+  {
+    return b_;
+  }
 };
 
 __host__ __device__ void implicitly_convert(cuda::std::reference_wrapper<B>) TEST_NOEXCEPT;
 
-__host__ __device__ TEST_CONSTEXPR_CXX20 bool test()
+__host__ __device__ TEST_CONSTEXPR_CXX20 bool
+test()
 {
   {
     A1 a{};
@@ -61,7 +73,9 @@ __host__ __device__ TEST_CONSTEXPR_CXX20 bool test()
   return true;
 }
 
-int main(int, char**) {
+int
+main(int, char**)
+{
   test();
 #if TEST_STD_VER > 17 && !defined(__CUDACC_RTC__)
   static_assert(test());

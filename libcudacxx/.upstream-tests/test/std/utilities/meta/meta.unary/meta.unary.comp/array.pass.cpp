@@ -15,26 +15,26 @@
 #include "test_macros.h"
 
 template <class T>
-__host__ __device__
-void test_array_imp()
+__host__ __device__ void
+test_array_imp()
 {
-    static_assert(!cuda::std::is_reference<T>::value, "");
-    static_assert(!cuda::std::is_arithmetic<T>::value, "");
-    static_assert(!cuda::std::is_fundamental<T>::value, "");
-    static_assert( cuda::std::is_object<T>::value, "");
-    static_assert(!cuda::std::is_scalar<T>::value, "");
-    static_assert( cuda::std::is_compound<T>::value, "");
-    static_assert(!cuda::std::is_member_pointer<T>::value, "");
+  static_assert(!cuda::std::is_reference<T>::value, "");
+  static_assert(!cuda::std::is_arithmetic<T>::value, "");
+  static_assert(!cuda::std::is_fundamental<T>::value, "");
+  static_assert(cuda::std::is_object<T>::value, "");
+  static_assert(!cuda::std::is_scalar<T>::value, "");
+  static_assert(cuda::std::is_compound<T>::value, "");
+  static_assert(!cuda::std::is_member_pointer<T>::value, "");
 }
 
 template <class T>
-__host__ __device__
-void test_array()
+__host__ __device__ void
+test_array()
 {
-    test_array_imp<T>();
-    test_array_imp<const T>();
-    test_array_imp<volatile T>();
-    test_array_imp<const volatile T>();
+  test_array_imp<T>();
+  test_array_imp<const T>();
+  test_array_imp<volatile T>();
+  test_array_imp<const volatile T>();
 }
 
 typedef char array[3];
@@ -43,12 +43,13 @@ typedef char incomplete_array[];
 
 class incomplete_type;
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    test_array<array>();
-    test_array<const_array>();
-    test_array<incomplete_array>();
-    test_array<incomplete_type[]>();
+  test_array<array>();
+  test_array<const_array>();
+  test_array<incomplete_array>();
+  test_array<incomplete_type[]>();
 
   return 0;
 }

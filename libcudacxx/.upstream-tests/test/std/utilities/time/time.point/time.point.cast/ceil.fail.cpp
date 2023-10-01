@@ -22,9 +22,10 @@
 
 #include <cuda/std/chrono>
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    cuda::std::chrono::ceil<int>(cuda::std::chrono::system_clock::now());
+  cuda::std::chrono::ceil<int>(cuda::std::chrono::system_clock::now());
 
   return 0;
 }

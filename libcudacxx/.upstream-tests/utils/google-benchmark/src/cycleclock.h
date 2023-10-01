@@ -164,7 +164,7 @@ inline BENCHMARK_ALWAYS_INLINE int64_t Now() {
   uint64_t tsc;
   asm("stck %0" : "=Q"(tsc) : : "cc");
   return tsc;
-#elif defined(__riscv) // RISC-V
+#elif defined(__riscv)   // RISC-V
   // Use RDCYCLE (and RDCYCLEH on riscv32)
 #if __riscv_xlen == 32
   uint64_t cycles_low, cycles_hi0, cycles_hi1;
@@ -180,9 +180,10 @@ inline BENCHMARK_ALWAYS_INLINE int64_t Now() {
   return cycles;
 #endif
 #else
-// The soft failover to a generic implementation is automatic only for ARM.
-// For other platforms the developer is expected to make an attempt to create
-// a fast implementation and use generic version if nothing better is available.
+  // The soft failover to a generic implementation is automatic only for ARM.
+  // For other platforms the developer is expected to make an attempt to create
+  // a fast implementation and use generic version if nothing better is
+  // available.
 #error You need to define CycleTimer for your OS and CPU
 #endif
 }

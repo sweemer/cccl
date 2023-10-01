@@ -21,13 +21,16 @@
 #include "test_iterators.h"
 
 template <class It>
-__host__ __device__
-void test() {
-    cuda::std::move_iterator<It> r;
-    unused(r);
+__host__ __device__ void
+test()
+{
+  cuda::std::move_iterator<It> r;
+  unused(r);
 }
 
-int main(int, char**) {
+int
+main(int, char**)
+{
   // we don't have a test iterator that is both input and default-constructible, so not testing that case
   test<forward_iterator<char*> >();
   test<bidirectional_iterator<char*> >();
@@ -36,7 +39,7 @@ int main(int, char**) {
 
 #if TEST_STD_VER > 14
   {
-    constexpr cuda::std::move_iterator<const char *> it;
+    constexpr cuda::std::move_iterator<const char*> it;
     unused(it);
   }
 #endif

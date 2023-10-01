@@ -22,9 +22,10 @@
 
 #include <cuda/std/chrono>
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    cuda::std::chrono::round<int>(cuda::std::chrono::milliseconds(3));
+  cuda::std::chrono::round<int>(cuda::std::chrono::milliseconds(3));
 
   return 0;
 }

@@ -41,21 +41,30 @@
 #include "../../types.h"
 #include "test_macros.h"
 
-struct NotCopyConstructible {
+struct NotCopyConstructible
+{
   NotCopyConstructible(const NotCopyConstructible&)            = delete;
   NotCopyConstructible& operator=(const NotCopyConstructible&) = default;
 };
 
-struct NotCopyAssignable {
+struct NotCopyAssignable
+{
   NotCopyAssignable(const NotCopyAssignable&)            = default;
   NotCopyAssignable& operator=(const NotCopyAssignable&) = delete;
 };
 
-struct MoveMayThrow {
+struct MoveMayThrow
+{
   MoveMayThrow(MoveMayThrow const&)            = default;
   MoveMayThrow& operator=(const MoveMayThrow&) = default;
-  __host__ __device__ MoveMayThrow(MoveMayThrow&&) noexcept(false) {}
-  __host__ __device__ MoveMayThrow& operator=(MoveMayThrow&&) noexcept(false) { return *this; }
+  __host__ __device__
+  MoveMayThrow(MoveMayThrow&&) noexcept(false)
+  {}
+  __host__ __device__ MoveMayThrow&
+  operator=(MoveMayThrow&&) noexcept(false)
+  {
+    return *this;
+  }
 };
 
 // Test constraints
@@ -82,7 +91,9 @@ static_assert(cuda::std::is_copy_assignable_v<cuda::std::expected<int, MoveMayTh
 // !is_nothrow_move_constructible_v<T> && !is_nothrow_move_constructible_v<E>
 static_assert(!cuda::std::is_copy_assignable_v<cuda::std::expected<MoveMayThrow, MoveMayThrow>>, "");
 
-__host__ __device__ TEST_CONSTEXPR_CXX20 bool test() {
+__host__ __device__ TEST_CONSTEXPR_CXX20 bool
+test()
+{
   // If this->has_value() && rhs.has_value() is true, equivalent to val = *rhs.
   {
     Traced::state oldState{};
@@ -247,11 +258,17 @@ __host__ __device__ TEST_CONSTEXPR_CXX20 bool test() {
   return true;
 }
 
-__host__ __device__ void testException() {
+__host__ __device__ void
+testException()
+{
 #ifndef TEST_HAS_NO_EXCEPTIONS
-  struct ThrowOnCopyMoveMayThrow {
+  struct ThrowOnCopyMoveMayThrow
+  {
     ThrowOnCopyMoveMayThrow() = default;
-    ThrowOnCopyMoveMayThrow(const ThrowOnCopyMoveMayThrow&) { throw Except{}; };
+    ThrowOnCopyMoveMayThrow(const ThrowOnCopyMoveMayThrow&)
+    {
+      throw Except{};
+    };
     ThrowOnCopyMoveMayThrow& operator=(const ThrowOnCopyMoveMayThrow&) = default;
     ThrowOnCopyMoveMayThrow(ThrowOnCopyMoveMayThrow&&) noexcept(false) {}
   };
@@ -284,7 +301,9 @@ __host__ __device__ void testException() {
 #endif // TEST_HAS_NO_EXCEPTIONS
 }
 
-int main(int, char**) {
+int
+main(int, char**)
+{
   test();
 #if TEST_STD_VER > 17 && defined(_LIBCUDACXX_ADDRESSOF)
   static_assert(test());

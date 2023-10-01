@@ -31,7 +31,8 @@ __host__ __device__ constexpr bool check_subsumption() {
 
 static_assert(check_subsumption<cuda::std::array<int, 4>::iterator, cuda::std::array<int, 4>::iterator>());
 
-int main(int, char**)
+int
+main(int, char**)
 {
   return 0;
 }

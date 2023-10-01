@@ -16,7 +16,7 @@
 //                      complex<float>       proj(float);
 
 #if defined(_MSC_VER)
-#pragma warning(disable: 4244) // conversion from 'const double' to 'int', possible loss of data
+#  pragma warning(disable : 4244) // conversion from 'const double' to 'int', possible loss of data
 #endif
 
 #include <cuda/std/complex>
@@ -30,45 +30,47 @@ template <class T>
 __host__ __device__ void
 test(T x, typename cuda::std::enable_if<cuda::std::is_integral<T>::value>::type* = 0)
 {
-    static_assert((cuda::std::is_same<decltype(cuda::std::proj(x)), cuda::std::complex<double> >::value), "");
-    assert(cuda::std::proj(x) == proj(cuda::std::complex<double>(x, 0)));
+  static_assert((cuda::std::is_same<decltype(cuda::std::proj(x)), cuda::std::complex<double> >::value), "");
+  assert(cuda::std::proj(x) == proj(cuda::std::complex<double>(x, 0)));
 }
 
 template <class T>
 __host__ __device__ void
 test(T x, typename cuda::std::enable_if<cuda::std::is_floating_point<T>::value>::type* = 0)
 {
-    static_assert((cuda::std::is_same<decltype(cuda::std::proj(x)), cuda::std::complex<T> >::value), "");
-    assert(cuda::std::proj(x) == proj(cuda::std::complex<T>(x, 0)));
+  static_assert((cuda::std::is_same<decltype(cuda::std::proj(x)), cuda::std::complex<T> >::value), "");
+  assert(cuda::std::proj(x) == proj(cuda::std::complex<T>(x, 0)));
 }
 
 template <class T>
 __host__ __device__ void
-test(T x, typename cuda::std::enable_if<!cuda::std::is_integral<T>::value &&
-                                  !cuda::std::is_floating_point<T>::value>::type* = 0)
+test(T x,
+    typename cuda::std::enable_if<!cuda::std::is_integral<T>::value && !cuda::std::is_floating_point<T>::value>::type* =
+        0)
 {
-    static_assert((cuda::std::is_same<decltype(cuda::std::proj(x)), cuda::std::complex<T> >::value), "");
-    assert(cuda::std::proj(x) == proj(cuda::std::complex<T>(x, 0)));
+  static_assert((cuda::std::is_same<decltype(cuda::std::proj(x)), cuda::std::complex<T> >::value), "");
+  assert(cuda::std::proj(x) == proj(cuda::std::complex<T>(x, 0)));
 }
 
 template <class T>
 __host__ __device__ void
 test()
 {
-    test<T>(0);
-    test<T>(1);
-    test<T>(10);
+  test<T>(0);
+  test<T>(1);
+  test<T>(10);
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    test<float>();
-    test<double>();
-// CUDA treats long double as double
-//  test<long double>();
-    test<int>();
-    test<unsigned>();
-    test<long long>();
+  test<float>();
+  test<double>();
+  // CUDA treats long double as double
+  //  test<long double>();
+  test<int>();
+  test<unsigned>();
+  test<long long>();
 
   return 0;
 }

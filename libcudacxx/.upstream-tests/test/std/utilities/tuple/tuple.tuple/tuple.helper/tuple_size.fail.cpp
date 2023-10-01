@@ -6,7 +6,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-// UNSUPPORTED: c++98, c++03 
+// UNSUPPORTED: c++98, c++03
 // UNSUPPORTED: nvrtc
 
 // <cuda/std/tuple>
@@ -19,11 +19,14 @@
 
 #include <cuda/std/tuple>
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    (void)cuda::std::tuple_size<cuda::std::tuple<> &>::value; // expected-error {{implicit instantiation of undefined template}}
-    (void)cuda::std::tuple_size<int>::value; // expected-error {{implicit instantiation of undefined template}}
-    (void)cuda::std::tuple_size<cuda::std::tuple<>*>::value; // expected-error {{implicit instantiation of undefined template}}
+  (void) cuda::std::tuple_size<cuda::std::tuple<>&>::value; // expected-error {{implicit instantiation of undefined
+                                                            // template}}
+  (void) cuda::std::tuple_size<int>::value; // expected-error {{implicit instantiation of undefined template}}
+  (void) cuda::std::tuple_size<cuda::std::tuple<>*>::value; // expected-error {{implicit instantiation of undefined
+                                                            // template}}
 
   return 0;
 }

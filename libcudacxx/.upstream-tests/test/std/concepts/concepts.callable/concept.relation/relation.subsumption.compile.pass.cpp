@@ -18,10 +18,13 @@
 #include "test_macros.h"
 #if TEST_STD_VER > 17
 
-struct S1 {};
-struct S2 {};
+struct S1
+{};
+struct S2
+{};
 
-struct R {
+struct R
+{
   __host__ __device__ bool operator()(S1, S1) const;
   __host__ __device__ bool operator()(S1, S2) const;
   __host__ __device__ bool operator()(S2, S1) const;
@@ -43,10 +46,8 @@ __host__ __device__ constexpr bool check_relation_subsumes_predicate() {
 }
 // clang-format on
 
-static_assert(
-    check_relation_subsumes_predicate<int (*)(int, double), int, int>(), "");
-static_assert(
-    check_relation_subsumes_predicate<int (*)(int, double), int, double>(), "");
+static_assert(check_relation_subsumes_predicate<int (*)(int, double), int, int>(), "");
+static_assert(check_relation_subsumes_predicate<int (*)(int, double), int, double>(), "");
 static_assert(check_relation_subsumes_predicate<R, S1, S1>(), "");
 static_assert(check_relation_subsumes_predicate<R, S1, S2>(), "");
 
@@ -69,7 +70,8 @@ static_assert(check_relation_subsumes_itself<R, S1, S1>(), "");
 
 #endif // TEST_STD_VER > 17
 
-int main(int, char**)
+int
+main(int, char**)
 {
   return 0;
 }

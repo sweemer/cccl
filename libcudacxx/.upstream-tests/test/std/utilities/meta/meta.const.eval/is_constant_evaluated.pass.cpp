@@ -18,16 +18,19 @@
 #include "test_macros.h"
 
 #if TEST_STD_VER > 17
-#ifndef __cccl_lib_is_constant_evaluated
-#if TEST_HAS_BUILTIN(__builtin_is_constant_evaluated)
-# error __cccl_lib_is_constant_evaluated should be defined
-#endif
-#endif // __cccl_lib_is_constant_evaluated
+#  ifndef __cccl_lib_is_constant_evaluated
+#    if TEST_HAS_BUILTIN(__builtin_is_constant_evaluated)
+#      error __cccl_lib_is_constant_evaluated should be defined
+#    endif
+#  endif // __cccl_lib_is_constant_evaluated
 #endif // TEST_STD_VER > 17
 
-template <bool> struct InTemplate {};
+template <bool>
+struct InTemplate
+{};
 
-int main(int, char**)
+int
+main(int, char**)
 {
 #if defined(_LIBCUDACXX_IS_CONSTANT_EVALUATED)
   // Test the signature

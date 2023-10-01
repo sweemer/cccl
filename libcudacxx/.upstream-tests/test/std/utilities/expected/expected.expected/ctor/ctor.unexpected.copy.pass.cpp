@@ -34,52 +34,75 @@
 static_assert(cuda::std::is_constructible_v<cuda::std::expected<int, int>, const cuda::std::unexpected<int>&>, "");
 
 // !is_constructible_v<E, GF>
-struct foo {};
+struct foo
+{};
 static_assert(!cuda::std::is_constructible_v<cuda::std::expected<int, int>, const cuda::std::unexpected<foo>&>, "");
-static_assert(!cuda::std::is_constructible_v<cuda::std::expected<int, MoveOnly>, const cuda::std::unexpected<MoveOnly>&>, "");
+static_assert(
+    !cuda::std::is_constructible_v<cuda::std::expected<int, MoveOnly>, const cuda::std::unexpected<MoveOnly>&>, "");
 
 // explicit(!is_convertible_v<const G&, E>)
-struct NotConvertible {
+struct NotConvertible
+{
   __host__ __device__ explicit NotConvertible(int);
 };
 static_assert(cuda::std::is_convertible_v<const cuda::std::unexpected<int>&, cuda::std::expected<int, int>>, "");
-static_assert(!cuda::std::is_convertible_v<const cuda::std::unexpected<int>&, cuda::std::expected<int, NotConvertible>>, "");
+static_assert(
+    !cuda::std::is_convertible_v<const cuda::std::unexpected<int>&, cuda::std::expected<int, NotConvertible>>, "");
 
-struct MyInt {
+struct MyInt
+{
   int i;
-  __host__ __device__ constexpr MyInt(int ii) : i(ii) {}
+  __host__ __device__ constexpr MyInt(int ii)
+      : i(ii)
+  {}
 #if TEST_STD_VER > 17
   __host__ __device__ friend constexpr bool operator==(const MyInt&, const MyInt&) = default;
 #else
-  __host__ __device__ friend constexpr bool operator==(const MyInt& lhs, const MyInt& rhs) noexcept {
+  __host__ __device__ friend constexpr bool
+  operator==(const MyInt& lhs, const MyInt& rhs) noexcept
+  {
     return lhs.i == rhs.i;
   };
-  __host__ __device__ friend constexpr bool operator!=(const MyInt& lhs, const MyInt& rhs) noexcept {
+  __host__ __device__ friend constexpr bool
+  operator!=(const MyInt& lhs, const MyInt& rhs) noexcept
+  {
     return lhs.i != rhs.i;
   };
 #endif // TEST_STD_VER > 17
 };
 
 template <class T>
-__host__ __device__ constexpr void testUnexpected() {
+__host__ __device__ constexpr void
+testUnexpected()
+{
   const cuda::std::unexpected<int> u(5);
   cuda::std::expected<int, T> e(u);
   assert(!e.has_value());
   assert(e.error() == 5);
 }
 
-__host__ __device__ constexpr bool test() {
+__host__ __device__ constexpr bool
+test()
+{
   testUnexpected<int>();
   testUnexpected<MyInt>();
   return true;
 }
 
-__host__ __device__ void testException() {
+__host__ __device__ void
+testException()
+{
 #ifndef TEST_HAS_NO_EXCEPTIONS
-  struct Except {};
+  struct Except
+  {};
 
-  struct Throwing {
-    __host__ __device__ Throwing(int) { throw Except{}; }
+  struct Throwing
+  {
+    __host__ __device__
+    Throwing(int)
+    {
+      throw Except{};
+    }
   };
 
   {
@@ -95,7 +118,9 @@ __host__ __device__ void testException() {
 #endif // TEST_HAS_NO_EXCEPTIONS
 }
 
-int main(int, char**) {
+int
+main(int, char**)
+{
   test();
 #if TEST_STD_VER > 17 && defined(_LIBCUDACXX_ADDRESSOF)
   static_assert(test(), "");

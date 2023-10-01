@@ -14,12 +14,13 @@
 
 #include <cuda/std/cassert>
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    // cuda/std/memory not supported, however, with <complex> available this test needs to fail.
-    typedef cuda::std::unique_ptr<int> upint;
-    cuda::std::pair<upint, int> t(upint(new int(4)), 23);
-    upint p = cuda::std::get<upint>(t);
+  // cuda/std/memory not supported, however, with <complex> available this test needs to fail.
+  typedef cuda::std::unique_ptr<int> upint;
+  cuda::std::pair<upint, int> t(upint(new int(4)), 23);
+  upint p = cuda::std::get<upint>(t);
 
   return 0;
 }

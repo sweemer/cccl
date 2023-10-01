@@ -18,33 +18,37 @@
 #include "test_macros.h"
 #include "disable_missing_braces_warning.h"
 
-struct NoDefault {
-  __host__ __device__ NoDefault(int) {}
+struct NoDefault
+{
+  __host__ __device__
+  NoDefault(int)
+  {}
 };
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    {
-        typedef double T;
-        typedef cuda::std::array<T, 3> C;
-        C c;
-        assert(c.size() == 3);
-    }
-    {
-        typedef double T;
-        typedef cuda::std::array<T, 0> C;
-        C c;
-        assert(c.size() == 0);
-    }
-    {
-      typedef cuda::std::array<NoDefault, 0> C;
-      C c;
-      assert(c.size() == 0);
-      C c1 = {};
-      assert(c1.size() == 0);
-      C c2 = {{}};
-      assert(c2.size() == 0);
-    }
+  {
+    typedef double T;
+    typedef cuda::std::array<T, 3> C;
+    C c;
+    assert(c.size() == 3);
+  }
+  {
+    typedef double T;
+    typedef cuda::std::array<T, 0> C;
+    C c;
+    assert(c.size() == 0);
+  }
+  {
+    typedef cuda::std::array<NoDefault, 0> C;
+    C c;
+    assert(c.size() == 0);
+    C c1 = {};
+    assert(c1.size() == 0);
+    C c2 = {{}};
+    assert(c2.size() == 0);
+  }
 
   return 0;
 }

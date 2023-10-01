@@ -20,9 +20,13 @@
 
 #include "test_macros.h"
 
-struct S { S(); }; // not constexpr
+struct S
+{
+  S();
+}; // not constexpr
 
-int main(int, char**)
+int
+main(int, char**)
 {
   {
     constexpr cuda::std::istream_iterator<S> it;

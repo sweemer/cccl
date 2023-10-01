@@ -11,10 +11,17 @@
 template <class T>
 struct UserDefinedIntegral
 {
-    UserDefinedIntegral() : value(0) {}
-    UserDefinedIntegral(T v) : value(v) {}
-    operator T() const { return value; }
-    T value;
+  UserDefinedIntegral()
+      : value(0)
+  {}
+  UserDefinedIntegral(T v)
+      : value(v)
+  {}
+  operator T() const
+  {
+    return value;
+  }
+  T value;
 };
 
 // Poison the arithmetic and comparison operations

@@ -20,9 +20,10 @@
 
 #include <cuda/std/chrono>
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    cuda::std::chrono::duration<int> d(1.);
+  cuda::std::chrono::duration<int> d(1.);
 
   return 0;
 }

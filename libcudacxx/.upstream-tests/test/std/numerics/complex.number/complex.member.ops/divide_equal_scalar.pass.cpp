@@ -20,35 +20,36 @@ template <class T>
 __host__ __device__ TEST_CONSTEXPR_CXX14 bool
 test()
 {
-    cuda::std::complex<T> c(1);
-    assert(c.real() == 1);
-    assert(c.imag() == 0);
-    c /= 0.5;
-    assert(c.real() == 2);
-    assert(c.imag() == 0);
-    c /= 0.5;
-    assert(c.real() == 4);
-    assert(c.imag() == 0);
-    c /= -0.5;
-    assert(c.real() == -8);
-    assert(c.imag() == 0);
-    c.imag(2);
-    c /= 0.5;
-    assert(c.real() == -16);
-    assert(c.imag() == 4);
+  cuda::std::complex<T> c(1);
+  assert(c.real() == 1);
+  assert(c.imag() == 0);
+  c /= 0.5;
+  assert(c.real() == 2);
+  assert(c.imag() == 0);
+  c /= 0.5;
+  assert(c.real() == 4);
+  assert(c.imag() == 0);
+  c /= -0.5;
+  assert(c.real() == -8);
+  assert(c.imag() == 0);
+  c.imag(2);
+  c /= 0.5;
+  assert(c.real() == -16);
+  assert(c.imag() == 4);
 
-    return true;
+  return true;
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    test<float>();
-    test<double>();
+  test<float>();
+  test<double>();
 // CUDA treats long double as double
 //  test<long double>();
 #if TEST_STD_VER > 11
-    static_assert(test<float>(), "");
-    static_assert(test<double>(), "");
+  static_assert(test<float>(), "");
+  static_assert(test<double>(), "");
 // CUDA treats long double as double
 //  static_assert(test<long double>(), "");
 #endif

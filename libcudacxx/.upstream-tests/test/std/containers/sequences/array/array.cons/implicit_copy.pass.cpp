@@ -19,17 +19,22 @@
 // Disable the missing braces warning for this reason.
 #include "disable_missing_braces_warning.h"
 
-struct NoDefault {
-  __host__ __device__ NoDefault(int) {}
+struct NoDefault
+{
+  __host__ __device__
+  NoDefault(int)
+  {}
 };
 
-int main(int, char**) {
+int
+main(int, char**)
+{
   {
     typedef double T;
     typedef cuda::std::array<T, 3> C;
-    C c = {1.1, 2.2, 3.3};
+    C c  = {1.1, 2.2, 3.3};
     C c2 = c;
-    c2 = c;
+    c2   = c;
     unused(c2);
     static_assert(cuda::std::is_copy_constructible<C>::value, "");
     static_assert(cuda::std::is_copy_assignable<C>::value, "");
@@ -37,7 +42,7 @@ int main(int, char**) {
   {
     typedef double T;
     typedef cuda::std::array<const T, 3> C;
-    C c = {1.1, 2.2, 3.3};
+    C c  = {1.1, 2.2, 3.3};
     C c2 = c;
     unused(c2);
     static_assert(cuda::std::is_copy_constructible<C>::value, "");
@@ -46,9 +51,9 @@ int main(int, char**) {
   {
     typedef double T;
     typedef cuda::std::array<T, 0> C;
-    C c = {};
+    C c  = {};
     C c2 = c;
-    c2 = c;
+    c2   = c;
     unused(c2);
     static_assert(cuda::std::is_copy_constructible<C>::value, "");
     static_assert(cuda::std::is_copy_assignable<C>::value, "");
@@ -57,7 +62,7 @@ int main(int, char**) {
     // const arrays of size 0 should disable the implicit copy assignment operator.
     typedef double T;
     typedef cuda::std::array<const T, 0> C;
-    C c = {{}};
+    C c  = {{}};
     C c2 = c;
     unused(c2);
     static_assert(cuda::std::is_copy_constructible<C>::value, "");
@@ -66,9 +71,9 @@ int main(int, char**) {
   {
     typedef NoDefault T;
     typedef cuda::std::array<T, 0> C;
-    C c = {};
+    C c  = {};
     C c2 = c;
-    c2 = c;
+    c2   = c;
     unused(c2);
     static_assert(cuda::std::is_copy_constructible<C>::value, "");
     static_assert(cuda::std::is_copy_assignable<C>::value, "");
@@ -76,13 +81,12 @@ int main(int, char**) {
   {
     typedef NoDefault T;
     typedef cuda::std::array<const T, 0> C;
-    C c = {{}};
+    C c  = {{}};
     C c2 = c;
     unused(c2);
     static_assert(cuda::std::is_copy_constructible<C>::value, "");
     static_assert(!cuda::std::is_copy_assignable<C>::value, "");
   }
-
 
   return 0;
 }

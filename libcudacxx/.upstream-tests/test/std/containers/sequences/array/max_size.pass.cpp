@@ -21,20 +21,21 @@
 #include "test_macros.h"
 #include "min_allocator.h"
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    {
+  {
     typedef cuda::std::array<int, 2> C;
     C c;
     ASSERT_NOEXCEPT(c.max_size());
     assert(c.max_size() == 2);
-    }
-    {
+  }
+  {
     typedef cuda::std::array<int, 0> C;
     C c;
     ASSERT_NOEXCEPT(c.max_size());
     assert(c.max_size() == 0);
-    }
+  }
 
   return 0;
 }

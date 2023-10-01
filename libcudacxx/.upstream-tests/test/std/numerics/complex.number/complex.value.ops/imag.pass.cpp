@@ -22,16 +22,17 @@ template <class T>
 __host__ __device__ void
 test()
 {
-    cuda::std::complex<T> z(1.5, 2.5);
-    assert(imag(z) == 2.5);
+  cuda::std::complex<T> z(1.5, 2.5);
+  assert(imag(z) == 2.5);
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    test<float>();
-    test<double>();
-// CUDA treats long double as double
-//  test<long double>();
+  test<float>();
+  test<double>();
+  // CUDA treats long double as double
+  //  test<long double>();
 
   return 0;
 }

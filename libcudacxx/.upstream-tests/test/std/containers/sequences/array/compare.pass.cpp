@@ -16,10 +16,9 @@
 // bool operator>(array<T, N> const&, array<T, N> const&);
 // bool operator>=(array<T, N> const&, array<T, N> const&);
 
-
 #include <cuda/std/array>
 #if defined(_LIBCUDACXX_HAS_VECTOR)
-#include <cuda/std/vector>
+#  include <cuda/std/vector>
 #endif
 #include <cuda/std/cassert>
 
@@ -30,7 +29,8 @@
 // Disable the missing braces warning for this reason.
 #include "disable_missing_braces_warning.h"
 
-int main(int, char**)
+int
+main(int, char**)
 {
   {
     typedef int T;
@@ -53,11 +53,11 @@ int main(int, char**)
 
 #if TEST_STD_VER > 17
   {
-  constexpr cuda::std::array<int, 3> a1 = {1, 2, 3};
-  constexpr cuda::std::array<int, 3> a2 = {2, 3, 4};
-  static_assert(testComparisons6(a1, a1, true, false), "");
-  static_assert(testComparisons6(a1, a2, false, true), "");
-  static_assert(testComparisons6(a2, a1, false, false), "");
+    constexpr cuda::std::array<int, 3> a1 = {1, 2, 3};
+    constexpr cuda::std::array<int, 3> a2 = {2, 3, 4};
+    static_assert(testComparisons6(a1, a1, true, false), "");
+    static_assert(testComparisons6(a1, a2, false, true), "");
+    static_assert(testComparisons6(a2, a1, false, false), "");
   }
 #endif
 

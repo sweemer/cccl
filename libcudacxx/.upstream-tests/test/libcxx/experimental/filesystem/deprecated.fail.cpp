@@ -13,8 +13,14 @@
 
 #include <experimental/filesystem>
 
-using namespace cuda::std::experimental::filesystem; // expected-error {{'filesystem' is deprecated: cuda::std::experimental::filesystem has now been deprecated in favor of C++17's cuda::std::filesystem. Please stop using it and start using cuda::std::filesystem. This experimental version will be removed in LLVM 11. You can remove this warning by defining the _LIBCUDACXX_NO_EXPERIMENTAL_DEPRECATION_WARNING_FILESYSTEM macro.}}
+using namespace cuda::std::experimental::
+    filesystem; // expected-error {{'filesystem' is deprecated: cuda::std::experimental::filesystem has now been
+                // deprecated in favor of C++17's cuda::std::filesystem. Please stop using it and start using
+                // cuda::std::filesystem. This experimental version will be removed in LLVM 11. You can remove this
+                // warning by defining the _LIBCUDACXX_NO_EXPERIMENTAL_DEPRECATION_WARNING_FILESYSTEM macro.}}
 
-int main(int, char**) {
+int
+main(int, char**)
+{
   return 0;
 }

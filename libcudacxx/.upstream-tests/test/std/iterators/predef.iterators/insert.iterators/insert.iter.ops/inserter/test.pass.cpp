@@ -15,32 +15,33 @@
 
 #include <cuda/std/iterator>
 #if defined(_LIBCUDACXX_HAS_VECTOR)
-#include <cuda/std/vector>
-#include <cuda/std/cassert>
-#include "nasty_containers.h"
+#  include <cuda/std/vector>
+#  include <cuda/std/cassert>
+#  include "nasty_containers.h"
 
-#include "test_macros.h"
+#  include "test_macros.h"
 
 template <class C>
-__host__ __device__
-void
+__host__ __device__ void
 test(C c)
 {
-    cuda::std::insert_iterator<C> i = cuda::std::inserter(c, c.end());
-    i = 0;
-    assert(c.size() == 1);
-    assert(c.back() == 0);
+  cuda::std::insert_iterator<C> i = cuda::std::inserter(c, c.end());
+  i                               = 0;
+  assert(c.size() == 1);
+  assert(c.back() == 0);
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    test(cuda::std::vector<int>());
-    test(nasty_vector<int>());
+  test(cuda::std::vector<int>());
+  test(nasty_vector<int>());
 
   return 0;
 }
 #else
-int main(int, char**)
+int
+main(int, char**)
 {
   return 0;
 }

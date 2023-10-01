@@ -19,35 +19,38 @@
 // Disable the missing braces warning for this reason.
 #include "disable_missing_braces_warning.h"
 
-struct NoDefault {
-  __host__ __device__ NoDefault(int) {}
+struct NoDefault
+{
+  __host__ __device__
+  NoDefault(int)
+  {}
 };
 
-
-int main(int, char**)
+int
+main(int, char**)
 {
-    {
-        typedef double T;
-        typedef cuda::std::array<T, 3> C;
-        C c = {1, 2, 3.5};
-        C::iterator i;
-        i = c.begin();
-        assert(*i == 1);
-        assert(&*i == c.data());
-        *i = 5.5;
-        assert(c[0] == 5.5);
-    }
-    {
-      typedef NoDefault T;
-      typedef cuda::std::array<T, 0> C;
-      C c = {};
-      C::iterator ib, ie;
-      ib = c.begin();
-      ie = c.end();
-      assert(ib == ie);
-      LIBCPP_ASSERT(ib != nullptr);
-      LIBCPP_ASSERT(ie != nullptr);
-    }
+  {
+    typedef double T;
+    typedef cuda::std::array<T, 3> C;
+    C c = {1, 2, 3.5};
+    C::iterator i;
+    i = c.begin();
+    assert(*i == 1);
+    assert(&*i == c.data());
+    *i = 5.5;
+    assert(c[0] == 5.5);
+  }
+  {
+    typedef NoDefault T;
+    typedef cuda::std::array<T, 0> C;
+    C c = {};
+    C::iterator ib, ie;
+    ib = c.begin();
+    ie = c.end();
+    assert(ib == ie);
+    LIBCPP_ASSERT(ib != nullptr);
+    LIBCPP_ASSERT(ie != nullptr);
+  }
 
   return 0;
 }

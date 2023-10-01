@@ -22,15 +22,15 @@ __host__ __device__ TEST_CONSTEXPR_CXX14 void
 test_constexpr()
 {
 #if TEST_STD_VER > 11
-    constexpr cuda::std::complex<T> c1;
-    static_assert(c1.real() == 0, "");
-    static_assert(c1.imag() == 0, "");
-    constexpr cuda::std::complex<T> c2(3);
-    static_assert(c2.real() == 3, "");
-    static_assert(c2.imag() == 0, "");
-    constexpr cuda::std::complex<T> c3(3, 4);
-    static_assert(c3.real() == 3, "");
-    static_assert(c3.imag() == 4, "");
+  constexpr cuda::std::complex<T> c1;
+  static_assert(c1.real() == 0, "");
+  static_assert(c1.imag() == 0, "");
+  constexpr cuda::std::complex<T> c2(3);
+  static_assert(c2.real() == 3, "");
+  static_assert(c2.imag() == 0, "");
+  constexpr cuda::std::complex<T> c3(3, 4);
+  static_assert(c3.real() == 3, "");
+  static_assert(c3.imag() == 4, "");
 #endif
 }
 
@@ -38,60 +38,60 @@ template <class T>
 __host__ __device__ TEST_CONSTEXPR_CXX14 bool
 test()
 {
-    cuda::std::complex<T> c;
-    assert(c.real() == 0);
-    assert(c.imag() == 0);
-    c.real(3.5);
-    assert(c.real() == 3.5);
-    assert(c.imag() == 0);
-    c.imag(4.5);
-    assert(c.real() == 3.5);
-    assert(c.imag() == 4.5);
-    c.real(-4.5);
-    assert(c.real() == -4.5);
-    assert(c.imag() == 4.5);
-    c.imag(-5.5);
-    assert(c.real() == -4.5);
-    assert(c.imag() == -5.5);
+  cuda::std::complex<T> c;
+  assert(c.real() == 0);
+  assert(c.imag() == 0);
+  c.real(3.5);
+  assert(c.real() == 3.5);
+  assert(c.imag() == 0);
+  c.imag(4.5);
+  assert(c.real() == 3.5);
+  assert(c.imag() == 4.5);
+  c.real(-4.5);
+  assert(c.real() == -4.5);
+  assert(c.imag() == 4.5);
+  c.imag(-5.5);
+  assert(c.real() == -4.5);
+  assert(c.imag() == -5.5);
 
-    test_constexpr<T> ();
+  test_constexpr<T>();
 
-    return true;
+  return true;
 }
 
 template <class T>
 __host__ __device__ void
 test_volatile()
 {
-    volatile cuda::std::complex<T> cv;
-    assert(cv.real() == 0);
-    assert(cv.imag() == 0);
-    cv.real(3.5);
-    assert(cv.real() == 3.5);
-    assert(cv.imag() == 0);
-    cv.imag(4.5);
-    assert(cv.real() == 3.5);
-    assert(cv.imag() == 4.5);
-
+  volatile cuda::std::complex<T> cv;
+  assert(cv.real() == 0);
+  assert(cv.imag() == 0);
+  cv.real(3.5);
+  assert(cv.real() == 3.5);
+  assert(cv.imag() == 0);
+  cv.imag(4.5);
+  assert(cv.real() == 3.5);
+  assert(cv.imag() == 4.5);
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    test<float>();
-    test<double>();
+  test<float>();
+  test<double>();
 // CUDA treats long double as double
 //  test<long double>();
 #if TEST_STD_VER > 11
-    static_assert(test<float>(), "");
-    static_assert(test<double>(), "");
+  static_assert(test<float>(), "");
+  static_assert(test<double>(), "");
 // CUDA treats long double as double
 //  static_assert(test<long double>(), "");
 #endif
-    test_constexpr<int> ();
+  test_constexpr<int>();
 
-    // test volatile extensions
-    test_volatile<float>();
-    test_volatile<double>();
+  // test volatile extensions
+  test_volatile<float>();
+  test_volatile<double>();
 
   return 0;
 }

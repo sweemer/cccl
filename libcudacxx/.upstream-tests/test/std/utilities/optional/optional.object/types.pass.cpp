@@ -25,19 +25,19 @@
 using cuda::std::optional;
 
 template <class Opt, class T>
-__host__ __device__
-void
+__host__ __device__ void
 test()
 {
-    static_assert(cuda::std::is_same<typename Opt::value_type, T>::value, "");
+  static_assert(cuda::std::is_same<typename Opt::value_type, T>::value, "");
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    test<optional<int>, int>();
-    test<optional<const int>, const int>();
-    test<optional<double>, double>();
-    test<optional<const double>, const double>();
+  test<optional<int>, int>();
+  test<optional<const int>, const int>();
+  test<optional<double>, double>();
+  test<optional<const double>, const double>();
 
   return 0;
 }

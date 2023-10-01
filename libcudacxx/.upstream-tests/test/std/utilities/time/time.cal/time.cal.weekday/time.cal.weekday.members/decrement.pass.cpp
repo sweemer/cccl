@@ -13,7 +13,6 @@
 //  constexpr weekday& operator--() noexcept;
 //  constexpr weekday operator--(int) noexcept;
 
-
 #include <cuda/std/chrono>
 #include <cuda/std/type_traits>
 #include <cuda/std/cassert>
@@ -22,34 +21,40 @@
 #include "../../euclidian.h"
 
 template <typename WD>
-__host__ __device__
-constexpr bool testConstexpr()
+__host__ __device__ constexpr bool
+testConstexpr()
 {
-    WD wd{1};
-    if ((--wd).c_encoding() != 0) return false;
-    if ((wd--).c_encoding() != 0) return false;
-    if ((wd).c_encoding()   != 6) return false;
-    return true;
+  WD wd{1};
+  if ((--wd).c_encoding() != 0) {
+    return false;
+  }
+  if ((wd--).c_encoding() != 0) {
+    return false;
+  }
+  if ((wd).c_encoding() != 6) {
+    return false;
+  }
+  return true;
 }
 
-int main(int, char**)
+int
+main(int, char**)
 {
-    using weekday = cuda::std::chrono::weekday;
-    ASSERT_NOEXCEPT(--(cuda::std::declval<weekday&>())  );
-    ASSERT_NOEXCEPT(  (cuda::std::declval<weekday&>())--);
+  using weekday = cuda::std::chrono::weekday;
+  ASSERT_NOEXCEPT(--(cuda::std::declval<weekday&>()));
+  ASSERT_NOEXCEPT((cuda::std::declval<weekday&>())--);
 
-    ASSERT_SAME_TYPE(weekday , decltype(  cuda::std::declval<weekday&>()--));
-    ASSERT_SAME_TYPE(weekday&, decltype(--cuda::std::declval<weekday&>()  ));
+  ASSERT_SAME_TYPE(weekday, decltype(cuda::std::declval<weekday&>()--));
+  ASSERT_SAME_TYPE(weekday&, decltype(--cuda::std::declval<weekday&>()));
 
-    static_assert(testConstexpr<weekday>(), "");
+  static_assert(testConstexpr<weekday>(), "");
 
-    for (unsigned i = 0; i <= 6; ++i)
-    {
-        weekday wd(i);
-        assert(((--wd).c_encoding() == euclidian_subtraction<unsigned, 0, 6>(i, 1)));
-        assert(((wd--).c_encoding() == euclidian_subtraction<unsigned, 0, 6>(i, 1)));
-        assert(((wd)  .c_encoding() == euclidian_subtraction<unsigned, 0, 6>(i, 2)));
-    }
+  for (unsigned i = 0; i <= 6; ++i) {
+    weekday wd(i);
+    assert(((--wd).c_encoding() == euclidian_subtraction<unsigned, 0, 6>(i, 1)));
+    assert(((wd--).c_encoding() == euclidian_subtraction<unsigned, 0, 6>(i, 1)));
+    assert(((wd).c_encoding() == euclidian_subtraction<unsigned, 0, 6>(i, 2)));
+  }
 
   return 0;
 }

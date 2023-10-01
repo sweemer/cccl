@@ -18,10 +18,13 @@
 #include "test_macros.h"
 #if TEST_STD_VER > 17
 
-struct S1 {};
-struct S2 {};
+struct S1
+{};
+struct S2
+{};
 
-struct R {
+struct R
+{
   __host__ __device__ bool operator()(S1, S1) const;
   __host__ __device__ bool operator()(S1, S2) const;
   __host__ __device__ bool operator()(S2, S1) const;
@@ -85,7 +88,8 @@ static_assert(check_strict_weak_order_subsumes_itself<R, S1, S1>(), "");
 
 #endif // TEST_STD_VER > 17
 
-int main(int, char**)
+int
+main(int, char**)
 {
   return 0;
 }

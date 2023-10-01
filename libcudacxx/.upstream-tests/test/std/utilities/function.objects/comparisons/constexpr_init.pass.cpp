@@ -27,28 +27,29 @@
 #include "test_macros.h"
 
 template <class T>
-__host__ __device__
-constexpr bool test_constexpr_context() {
+__host__ __device__ constexpr bool
+test_constexpr_context()
+{
   cuda::std::equal_to<T> eq;
-  ((void)eq);
+  ((void) eq);
   cuda::std::not_equal_to<T> neq;
-  ((void)neq);
+  ((void) neq);
   cuda::std::less<T> l;
-  ((void)l);
+  ((void) l);
   cuda::std::less_equal<T> le;
-  ((void)le);
+  ((void) le);
   cuda::std::greater<T> g;
-  ((void)g);
+  ((void) g);
   cuda::std::greater_equal<T> ge;
-  ((void)ge);
+  ((void) ge);
   return true;
 }
 
 static_assert(test_constexpr_context<int>(), "");
 static_assert(test_constexpr_context<void>(), "");
 
-int main(int, char**) {
-
-
+int
+main(int, char**)
+{
   return 0;
 }
