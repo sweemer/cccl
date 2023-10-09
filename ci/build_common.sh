@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Temporary:
+VERBOSE=1
+
 set -eo pipefail
 
 # Ensure the script is being executed in its containing directory
@@ -161,7 +164,9 @@ function test_preset()
 
     pushd .. > /dev/null
 
-    ctest --preset=$PRESET
+    find . -type f -name 'CTestTestfile.cmake' -exec echo \; -exec echo "%%%%%%%%% File: {} %%%%%%%%%%%" \; -exec cat {} \;
+
+    ctest --preset=$PRESET -VV
     echo "$BUILD_NAME testing complete."
 
     popd > /dev/null
