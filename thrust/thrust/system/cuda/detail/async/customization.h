@@ -48,6 +48,8 @@
 #include <thrust/mr/sync_pool.h>
 #include <thrust/per_device_resource.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 namespace system { namespace cuda { namespace detail

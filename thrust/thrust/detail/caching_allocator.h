@@ -22,6 +22,8 @@
 #include <thrust/mr/new.h>
 #include <thrust/mr/device_memory_resource.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 namespace detail

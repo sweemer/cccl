@@ -21,3 +21,4 @@
 // this system inherits for_each
 #include <thrust/system/detail/sequential/for_each.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

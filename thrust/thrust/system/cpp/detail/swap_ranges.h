@@ -20,3 +20,4 @@
 
 // cpp has no special swap_ranges
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

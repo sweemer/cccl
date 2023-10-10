@@ -26,6 +26,8 @@
 #include <tbb/blocked_range.h>
 #include <tbb/parallel_for.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {

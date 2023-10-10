@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-/*! \file 
+/*! \file
  *  \brief An allocator which allocates storage with \p device_new.
  */
 
@@ -30,6 +30,8 @@
 #include <cuda/std/limits>
 
 #include <stdexcept>
+
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 THRUST_NAMESPACE_BEGIN
 
@@ -105,7 +107,7 @@ template<typename T>
      */
     __host__ __device__
     inline pointer address(reference r) { return &r; }
-    
+
     /*! Returns the address an allocated object.
      *  \return <tt>&r</tt>.
      */

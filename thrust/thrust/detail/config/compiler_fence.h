@@ -19,6 +19,8 @@
 #include <thrust/detail/config.h>
 #include <thrust/detail/preprocessor.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 // TODO: Enable this or remove this file once nvGRAPH/CUSP migrates off of it.
 //#if THRUST_HOST_COMPILER == THRUST_HOST_COMPILER_MSVC
 //  #pragma message("warning: The functionality in this header is unsafe, deprecated, and will soon be removed. Use C++11 or C11 atomics instead.")

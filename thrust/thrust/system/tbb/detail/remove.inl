@@ -20,6 +20,8 @@
 #include <thrust/system/tbb/detail/remove.h>
 #include <thrust/system/detail/generic/remove.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {

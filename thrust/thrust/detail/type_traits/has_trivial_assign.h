@@ -27,16 +27,18 @@
 
 #include <cuda/std/type_traits>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 namespace detail
 {
 
-template<typename T> 
+template<typename T>
 struct has_trivial_assign
   : public integral_constant<
-      bool, 
-      (is_pod<T>::value && !is_const<T>::value) 
+      bool,
+      (is_pod<T>::value && !is_const<T>::value)
       || ::cuda::std::is_trivially_copy_assignable<T>::value
     >
 {};

@@ -21,3 +21,4 @@
 // this system inherits equal
 #include <thrust/system/cpp/detail/equal.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

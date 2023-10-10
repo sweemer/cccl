@@ -26,6 +26,8 @@
 
 #include <nv/target>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 /**
  * \def THRUST_CDP_DISPATCH
  *

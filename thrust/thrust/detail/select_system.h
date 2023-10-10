@@ -25,6 +25,8 @@
 #include <thrust/type_traits/remove_cvref.h>
 #include <thrust/system/detail/generic/select_system.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 namespace detail

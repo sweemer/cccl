@@ -21,3 +21,4 @@
 // this system inherits partition
 #include <thrust/system/detail/sequential/partition.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

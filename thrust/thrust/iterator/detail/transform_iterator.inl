@@ -24,6 +24,8 @@
 #include <thrust/iterator/transform_iterator.h>
 #include <thrust/type_traits/remove_cvref.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 template <class UnaryFunction, class Iterator, class Reference, class Value>

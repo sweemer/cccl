@@ -26,6 +26,8 @@
 #include <thrust/detail/pointer.h>
 #include <thrust/detail/reference.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system { namespace omp
 {

@@ -22,6 +22,8 @@
 #include <thrust/detail/swap.h>
 #include <thrust/tuple.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 template <typename T1, typename T2>

@@ -21,6 +21,8 @@
 #include <thrust/system/detail/generic/reduce_by_key.h>
 #include <thrust/distance.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {

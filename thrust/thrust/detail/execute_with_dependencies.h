@@ -27,6 +27,8 @@
 #include <tuple>
 #include <type_traits>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 namespace detail
@@ -96,7 +98,7 @@ public:
 
     std::tuple<remove_cvref_t<Dependencies>...>
     __host__
-    extract_dependencies() 
+    extract_dependencies()
     {
         return std::move(dependencies);
     }
@@ -184,7 +186,7 @@ public:
 
     std::tuple<remove_cvref_t<Dependencies>...>
     __host__
-    extract_dependencies() 
+    extract_dependencies()
     {
         return std::move(dependencies);
     }

@@ -24,3 +24,4 @@
 
 #include <thrust/universal_allocator.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

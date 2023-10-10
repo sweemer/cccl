@@ -24,6 +24,8 @@
 #include <thrust/detail/config.h>
 #include <thrust/memory.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 /*! \addtogroup memory_management Memory Management

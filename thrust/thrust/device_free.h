@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-/*! \file 
+/*! \file
  *  \brief Deallocates storage allocated by \p device_malloc.
  */
 
@@ -22,6 +22,8 @@
 
 #include <thrust/detail/config.h>
 #include <thrust/device_ptr.h>
+
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 THRUST_NAMESPACE_BEGIN
 

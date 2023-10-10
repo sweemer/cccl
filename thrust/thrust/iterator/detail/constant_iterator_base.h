@@ -21,6 +21,8 @@
 #include <thrust/iterator/counting_iterator.h>
 #include <thrust/iterator/iterator_adaptor.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 // forward declaration of constant_iterator
@@ -66,6 +68,6 @@ template<typename Value,
 }; // end constant_iterator_base
 
 } // end detail
-  
+
 THRUST_NAMESPACE_END
 

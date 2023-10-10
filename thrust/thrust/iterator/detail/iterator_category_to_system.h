@@ -24,6 +24,8 @@
 #include <thrust/iterator/detail/any_system_tag.h>
 #include <thrust/detail/type_traits.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 namespace detail
@@ -46,7 +48,7 @@ template<typename Category>
         >::value,
 
         detail::identity_<thrust::host_system_tag>,
-        
+
         // convertible to device iterator?
         eval_if<
           or_<

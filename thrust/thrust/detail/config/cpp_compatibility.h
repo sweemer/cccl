@@ -20,6 +20,8 @@
 
 #include <cstddef>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 #ifndef __has_cpp_attribute
 #  define __has_cpp_attribute(X) 0
 #endif

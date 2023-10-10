@@ -25,6 +25,8 @@
 #include <thrust/pair.h>
 #include <thrust/system/detail/generic/tag.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {
@@ -67,14 +69,14 @@ ForwardIterator min_element(thrust::execution_policy<DerivedPolicy> &exec,
 template <typename DerivedPolicy, typename ForwardIterator>
 __host__ __device__
 thrust::pair<ForwardIterator,ForwardIterator> minmax_element(thrust::execution_policy<DerivedPolicy> &exec,
-                                                             ForwardIterator first, 
+                                                             ForwardIterator first,
                                                              ForwardIterator last);
 
 
 template <typename DerivedPolicy, typename ForwardIterator, typename BinaryPredicate>
 __host__ __device__
 thrust::pair<ForwardIterator,ForwardIterator> minmax_element(thrust::execution_policy<DerivedPolicy> &exec,
-                                                             ForwardIterator first, 
+                                                             ForwardIterator first,
                                                              ForwardIterator last,
                                                              BinaryPredicate comp);
 

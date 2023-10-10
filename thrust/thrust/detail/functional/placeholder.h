@@ -20,6 +20,8 @@
 #include <thrust/detail/functional/actor.h>
 #include <thrust/detail/functional/argument.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace detail
 {

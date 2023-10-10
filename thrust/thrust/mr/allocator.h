@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-/*! \file 
+/*! \file
  *  \brief Allocator types usable with \ref Memory Resources.
  */
 
@@ -29,6 +29,8 @@
 
 #include <thrust/mr/validator.h>
 #include <thrust/mr/polymorphic_adaptor.h>
+
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 THRUST_NAMESPACE_BEGIN
 namespace mr

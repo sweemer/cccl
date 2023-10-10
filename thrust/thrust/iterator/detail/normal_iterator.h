@@ -28,6 +28,8 @@
 #include <thrust/detail/type_traits.h>
 #include <thrust/type_traits/is_contiguous_iterator.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace detail
 {
@@ -49,7 +51,7 @@ template<typename Pointer>
     __host__ __device__
     normal_iterator(Pointer p)
       : super_t(p) {}
-    
+
     template<typename OtherPointer>
     __host__ __device__
     normal_iterator(const normal_iterator<OtherPointer> &other,

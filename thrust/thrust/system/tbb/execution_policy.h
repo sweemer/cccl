@@ -72,6 +72,7 @@
 #include <thrust/system/tbb/detail/unique.h>
 #include <thrust/system/tbb/detail/unique_by_key.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 // define these entities here for the purpose of Doxygenating them
 // they are actually defined elsewhere

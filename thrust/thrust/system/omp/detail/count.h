@@ -21,3 +21,4 @@
 // this system inherits count
 #include <thrust/system/cpp/detail/count.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

@@ -24,6 +24,8 @@
 #include <thrust/detail/config.h>
 #include <thrust/detail/execution_policy.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 /*! \addtogroup algorithms
@@ -140,7 +142,7 @@ __host__ __device__
                         OutputIterator result);
 
 
-	
+
 /*! \p copy copies elements from the range [\p first, \p last) to the range
  *  [\p result, \p result + (\p last - \p first)). That is, it performs
  *  the assignments *\p result = *\p first, *(\p result + \c 1) = *(\p first + \c 1),

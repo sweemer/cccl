@@ -21,6 +21,8 @@
 #include <thrust/iterator/transform_output_iterator.h>
 #include <thrust/iterator/iterator_adaptor.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 template <typename UnaryFunction, typename OutputIterator>

@@ -21,3 +21,4 @@
 // this system inherits generate
 #include <thrust/system/cpp/detail/generate.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

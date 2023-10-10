@@ -21,3 +21,4 @@
 // this system inherits iter_swap
 #include <thrust/system/detail/sequential/iter_swap.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

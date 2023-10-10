@@ -24,6 +24,8 @@
 // pollute the global namespace. These identifiers are in lowercase to avoid
 // colliding with the real macros in errno.h.
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 namespace system

@@ -10,6 +10,8 @@
 #include <thrust/detail/config.h>
 #include <thrust/detail/type_traits.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 template <typename T>

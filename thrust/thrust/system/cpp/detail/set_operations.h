@@ -21,3 +21,4 @@
 // this system inherits the set operations
 #include <thrust/system/detail/sequential/set_operations.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

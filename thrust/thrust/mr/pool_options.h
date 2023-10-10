@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-/*! \file 
+/*! \file
  *  \brief A type used by the pooling resource adaptors to fine-tune their
  *  behavior.
  */
@@ -27,6 +27,8 @@
 
 #include <thrust/detail/config.h>
 #include <thrust/detail/config/memory_resource.h>
+
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 THRUST_NAMESPACE_BEGIN
 namespace mr

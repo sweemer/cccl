@@ -22,6 +22,8 @@
 
 #include <thrust/detail/config.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 // #pragma nv_exec_check_disable is only recognized by NVCC.  Having a macro
 // expand to a #pragma (rather than _Pragma) only works with NVCC's compilation
 // model, not with other compilers.

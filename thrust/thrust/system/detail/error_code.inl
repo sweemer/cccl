@@ -21,6 +21,8 @@
 
 #include <thrust/system/error_code.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 namespace system

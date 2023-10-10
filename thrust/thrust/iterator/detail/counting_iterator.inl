@@ -24,6 +24,8 @@
 #include <thrust/detail/type_traits.h>
 #include <cstddef>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 // forward declaration of counting_iterator

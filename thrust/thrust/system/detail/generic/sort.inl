@@ -28,6 +28,8 @@
 #include <thrust/tuple.h>
 #include <thrust/detail/internal_functional.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {
@@ -44,7 +46,7 @@ __host__ __device__
             RandomAccessIterator first,
             RandomAccessIterator last)
 {
-  typedef typename thrust::iterator_value<RandomAccessIterator>::type value_type; 
+  typedef typename thrust::iterator_value<RandomAccessIterator>::type value_type;
   thrust::sort(exec, first, last, thrust::less<value_type>());
 } // end sort()
 

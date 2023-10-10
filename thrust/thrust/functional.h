@@ -25,6 +25,8 @@
 #include <functional>
 #include <thrust/detail/functional/placeholder.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 /*! \addtogroup function_objects Function Objects

@@ -26,6 +26,8 @@
 #include <thrust/detail/type_traits/iterator/is_output_iterator.h>
 #include <thrust/functional.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {

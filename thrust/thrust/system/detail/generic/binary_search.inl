@@ -31,6 +31,8 @@
 #include <thrust/detail/temporary_array.h>
 #include <thrust/detail/type_traits.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace detail
 {

@@ -20,6 +20,8 @@
 #include <thrust/system/tbb/detail/execution_policy.h>
 #include <thrust/pair.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {
@@ -60,7 +62,7 @@ template<typename DerivedPolicy,
 
 
 } // end namespace detail
-} // end namespace tbb 
+} // end namespace tbb
 } // end namespace system
 THRUST_NAMESPACE_END
 

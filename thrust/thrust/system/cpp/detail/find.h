@@ -21,3 +21,4 @@
 // this system inherits find
 #include <thrust/system/detail/sequential/find.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

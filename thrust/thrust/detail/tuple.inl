@@ -21,6 +21,8 @@
 #include <thrust/detail/type_traits.h>
 #include <thrust/detail/swap.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 // define null_type

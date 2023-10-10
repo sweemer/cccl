@@ -31,6 +31,8 @@
 #include <thrust/detail/seq.h>
 #include <thrust/system/cuda/detail/par.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace cuda_cub {
 

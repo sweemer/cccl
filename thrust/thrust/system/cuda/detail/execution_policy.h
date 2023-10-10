@@ -40,6 +40,8 @@
   #include <thrust/detail/dependencies_aware_execution_policy.h>
 #endif
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 namespace cuda_cub
@@ -66,7 +68,7 @@ struct tag : execution_policy<tag>
 template <class Derived>
 struct execution_policy : thrust::execution_policy<Derived>
 {
-  typedef tag tag_type; 
+  typedef tag tag_type;
   operator tag() const { return tag(); }
 };
 

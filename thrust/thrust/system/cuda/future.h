@@ -13,6 +13,8 @@
 #include <thrust/system/cuda/pointer.h>
 #include <thrust/system/cuda/detail/execution_policy.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 namespace system { namespace cuda
@@ -52,14 +54,14 @@ using thrust::system::cuda::when_all;
 } // namespace cuda
 
 template <typename DerivedPolicy>
-__host__ 
+__host__
 thrust::cuda::unique_eager_event
 unique_eager_event_type(
   thrust::cuda::execution_policy<DerivedPolicy> const&
 ) noexcept;
 
 template <typename T, typename DerivedPolicy>
-__host__ 
+__host__
 thrust::cuda::unique_eager_future<T>
 unique_eager_future_type(
   thrust::cuda::execution_policy<DerivedPolicy> const&

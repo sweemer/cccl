@@ -22,6 +22,8 @@
 #include <thrust/system/omp/detail/default_decomposition.h>
 #include <thrust/system/omp/detail/reduce_intervals.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {

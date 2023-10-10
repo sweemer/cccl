@@ -22,5 +22,7 @@
 
 #include <thrust/future.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 // TODO: Actually separate `<thrust/future.h>` into two headers.
 

@@ -41,6 +41,8 @@
 
 #include <nv/target>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace cuda_cub {
 namespace core {
@@ -51,7 +53,7 @@ namespace core {
  */
 #if !defined(THRUST_DISABLE_KERNEL_VISIBILITY_WARNING_SUPPRESSION)
 _LIBCUDACXX_GCC_DIAGNOSTIC_IGNORED("-Wattributes")
-_LIBCUDACXX_CLANG_DIAGNOSTIC_IGNORED("-Wattributes")                      
+_LIBCUDACXX_CLANG_DIAGNOSTIC_IGNORED("-Wattributes")
 #endif
 
 #ifndef THRUST_DETAIL_KERNEL_ATTRIBUTES
@@ -538,7 +540,7 @@ _LIBCUDACXX_CLANG_DIAGNOSTIC_IGNORED("-Wattributes")
     THRUST_RUNTIME_FUNCTION
     void print_info(K k) const
     {
-      #if THRUST_DEBUG_SYNC_FLAG 
+      #if THRUST_DEBUG_SYNC_FLAG
       cuda_optional<int> occ = max_sm_occupancy(k);
       const int ptx_version = core::get_ptx_version();
       if (count > 0)

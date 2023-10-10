@@ -24,6 +24,8 @@
 #include <thrust/iterator/detail/device_system_tag.h>
 #include <thrust/iterator/detail/any_system_tag.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {

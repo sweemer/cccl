@@ -30,6 +30,8 @@
 #include <stdexcept> // for std::runtime_error
 #include <utility> // for use of std::swap in the WAR below
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 namespace detail

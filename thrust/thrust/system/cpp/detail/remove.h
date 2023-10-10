@@ -21,3 +21,4 @@
 // this system inherits remove
 #include <thrust/system/detail/sequential/remove.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

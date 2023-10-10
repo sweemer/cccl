@@ -21,11 +21,13 @@
 #include <thrust/pair.h>
 #include <thrust/detail/reference_forward_declaration.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace detail
 {
 
-  
+
 template<
   typename... Ts
 >

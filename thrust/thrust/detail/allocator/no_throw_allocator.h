@@ -20,6 +20,8 @@
 
 #include <nv/target>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace detail
 {
@@ -29,7 +31,7 @@ template<typename BaseAllocator>
 {
   private:
     typedef BaseAllocator super_t;
-  
+
   public:
     inline __host__ __device__
     no_throw_allocator(const BaseAllocator &other = BaseAllocator())

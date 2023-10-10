@@ -21,3 +21,4 @@
 // this system inherits fill
 #include <thrust/system/cpp/detail/fill.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

@@ -26,6 +26,8 @@
 #include <thrust/iterator/zip_iterator.h>
 #include <thrust/iterator/detail/minimum_system.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {

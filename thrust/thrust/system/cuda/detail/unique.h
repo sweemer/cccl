@@ -45,6 +45,8 @@
 #include <cub/device/device_select.cuh>
 #include <cub/util_math.cuh>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 template <typename DerivedPolicy,
@@ -788,7 +790,7 @@ struct zip_adj_not_predicate {
   bool __host__ __device__ operator()(TupleType&& tuple) {
       return !binary_pred(thrust::get<0>(tuple), thrust::get<1>(tuple));
   }
-  
+
   BinaryPred binary_pred;
 };
 

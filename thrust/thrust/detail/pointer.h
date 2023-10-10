@@ -31,6 +31,8 @@
 #include <ostream>
 #include <cstddef>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 template <typename Element, typename Tag, typename Reference = use_default, typename Derived = use_default>

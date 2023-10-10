@@ -11,6 +11,8 @@
 #  include <thrust/detail/memory_wrapper.h>
 #endif
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19,7 +21,7 @@ THRUST_NAMESPACE_BEGIN
  */
 template <typename T>
 __host__ __device__
-T* addressof(T& arg) 
+T* addressof(T& arg)
 {
   return reinterpret_cast<T*>(
     &const_cast<char&>(reinterpret_cast<const volatile char&>(arg))

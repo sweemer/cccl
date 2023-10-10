@@ -23,6 +23,7 @@
 #include <thrust/tuple.h>
 #include <thrust/functional.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 THRUST_NAMESPACE_BEGIN
 namespace detail

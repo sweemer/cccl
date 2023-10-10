@@ -24,6 +24,8 @@
 #include <thrust/detail/config.h>
 #include <thrust/system/tbb/detail/execution_policy.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {
@@ -34,7 +36,7 @@ namespace detail
 
 
 template<typename DerivedPolicy,
-         typename InputIterator, 
+         typename InputIterator,
          typename OutputType,
          typename BinaryFunction>
   OutputType reduce(execution_policy<DerivedPolicy> &exec,

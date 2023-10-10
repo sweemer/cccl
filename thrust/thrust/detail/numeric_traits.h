@@ -22,6 +22,8 @@
 
 //#include <stdint.h> // for intmax_t (not provided on MSVS 2005)
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 namespace detail
@@ -46,7 +48,7 @@ template<typename T>
         >,
         integral_constant<
           int,
-          sizeof(T) * std::numeric_limits<unsigned char>::digits - (is_signed<T>::value ? 1 : 0)  
+          sizeof(T) * std::numeric_limits<unsigned char>::digits - (is_signed<T>::value ? 1 : 0)
         >
       >::type
 {}; // end num_digits

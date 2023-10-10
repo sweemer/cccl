@@ -20,6 +20,8 @@
 #include <thrust/detail/type_traits/pointer_traits.h>
 #include <thrust/iterator/iterator_traits.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace detail
 {

@@ -28,6 +28,8 @@
 #include <thrust/for_each.h>
 #include <thrust/detail/memory_wrapper.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace detail
 {

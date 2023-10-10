@@ -24,6 +24,8 @@
 #include <thrust/system/detail/generic/gather.h>
 #include <thrust/system/detail/adl/gather.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 __thrust_exec_check_disable__

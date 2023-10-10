@@ -24,6 +24,8 @@
 #include <thrust/detail/type_traits/has_nested_type.h>
 #include <thrust/detail/type_traits/pointer_traits.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 __THRUST_DEFINE_HAS_NESTED_TYPE(has_difference_type, difference_type)

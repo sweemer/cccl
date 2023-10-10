@@ -31,6 +31,8 @@
 #include <type_traits>
 #include <utility>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 #if (THRUST_HOST_COMPILER == THRUST_HOST_COMPILER_MSVC && _MSC_VER == 1900)
 #define THRUST_OPTIONAL_MSVC2015
 #endif

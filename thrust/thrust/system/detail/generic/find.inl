@@ -27,6 +27,7 @@
 #include <thrust/iterator/zip_iterator.h>
 #include <thrust/detail/internal_functional.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 // Contributed by Erich Elsen
 

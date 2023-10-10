@@ -33,6 +33,8 @@
 #include <thrust/system/cuda/detail/reduce.h>
 #include <thrust/distance.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace cuda_cub {
 

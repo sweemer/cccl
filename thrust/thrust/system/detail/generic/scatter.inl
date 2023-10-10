@@ -23,6 +23,8 @@
 #include <thrust/transform.h>
 #include <thrust/iterator/permutation_iterator.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {

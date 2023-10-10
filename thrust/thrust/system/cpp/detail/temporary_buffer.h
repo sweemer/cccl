@@ -20,3 +20,4 @@
 
 // this system has no special temporary buffer functions
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

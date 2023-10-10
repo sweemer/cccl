@@ -22,6 +22,8 @@
 
 #include <thrust/detail/config.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace detail
 {
@@ -41,6 +43,8 @@ THRUST_NAMESPACE_END
 #include <thrust/detail/allocator/temporary_allocator.h>
 #include <thrust/detail/allocator/no_throw_allocator.h>
 #include <thrust/detail/memory_wrapper.h>
+
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 THRUST_NAMESPACE_BEGIN
 namespace detail

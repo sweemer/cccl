@@ -34,6 +34,8 @@
 
 #include <cassert>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 namespace cuda_cub {
@@ -127,7 +129,7 @@ namespace launcher {
                               shared_mem,
                               stream);
     }
-    #else 
+    #else
     template<class K, class... Args>
     cudaError_t __device__
     doit_device(K, Args const&... ) const

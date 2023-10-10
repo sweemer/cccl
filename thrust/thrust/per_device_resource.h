@@ -28,6 +28,8 @@
 #include <thrust/detail/execution_policy.h>
 #include <thrust/mr/allocator.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 /*! Returns a global instance of \p MR for the current device of the provided system.

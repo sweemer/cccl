@@ -35,6 +35,8 @@
 #include <thrust/random/uniform_real_distribution.h>
 #include <thrust/random/normal_distribution.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 /*! \addtogroup random Random Number Generation

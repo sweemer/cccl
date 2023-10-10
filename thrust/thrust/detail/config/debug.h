@@ -16,6 +16,10 @@
 
 #pragma once
 
+#include <thrust/detail/config.h>
+
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 #ifndef THRUST_DEBUG
 #  ifndef NDEBUG
 #    if defined(DEBUG) || defined(_DEBUG)

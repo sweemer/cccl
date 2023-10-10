@@ -31,3 +31,5 @@
 
 #include <thrust/system/cuda/detail/async/exclusive_scan.h>
 #include <thrust/system/cuda/detail/async/inclusive_scan.h>
+
+_CCCL_IMPLICIT_SYSTEM_HEADER

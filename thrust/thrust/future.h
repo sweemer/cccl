@@ -54,6 +54,8 @@
   #include __THRUST_DEVICE_SYSTEM_FUTURE_HEADER
 #undef __THRUST_DEVICE_SYSTEM_FUTURE_HEADER
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -70,14 +72,14 @@ namespace unimplemented
 
 struct no_unique_eager_event_type_found {};
 
-inline __host__ 
+inline __host__
 no_unique_eager_event_type_found
 unique_eager_event_type(...) noexcept;
 
 struct no_unique_eager_future_type_found {};
 
 template <typename T>
-__host__ 
+__host__
 no_unique_eager_future_type_found
 unique_eager_future_type(...) noexcept;
 

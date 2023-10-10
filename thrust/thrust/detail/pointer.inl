@@ -21,6 +21,8 @@
 #include <thrust/detail/pointer.h>
 #include <thrust/detail/type_traits.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 template<typename Element, typename Tag, typename Reference, typename Derived>

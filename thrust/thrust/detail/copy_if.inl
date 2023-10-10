@@ -23,6 +23,8 @@
 #include <thrust/system/detail/generic/select_system.h>
 #include <thrust/system/detail/adl/copy_if.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 __thrust_exec_check_disable__

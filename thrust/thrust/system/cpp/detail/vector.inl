@@ -20,6 +20,8 @@
 #include <thrust/system/cpp/vector.h>
 #include <utility>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {
@@ -98,13 +100,13 @@ template<typename T, typename Allocator>
     return *this;
   }
 #endif
-  
+
   template<typename T, typename Allocator>
     vector<T,Allocator>
       ::vector(std::initializer_list<T> il)
         : super_t(il)
   {}
-  
+
   template<typename T, typename Allocator>
     vector<T,Allocator>
       ::vector(std::initializer_list<T> il, const Allocator& alloc)
@@ -139,7 +141,7 @@ template<typename T, typename Allocator>
   super_t::operator=(x);
   return *this;
 }
-      
+
 } // end cpp
 } // end system
 THRUST_NAMESPACE_END

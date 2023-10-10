@@ -45,6 +45,8 @@
 #include <cub/device/device_select.cuh>
 #include <cub/util_math.cuh>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 // XXX declare generic copy_if interface
 // to avoid circulular dependency from thrust/copy.h

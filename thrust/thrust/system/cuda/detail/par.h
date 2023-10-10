@@ -37,6 +37,7 @@
 #  include <thrust/detail/dependencies_aware_execution_policy.h>
 #endif
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 THRUST_NAMESPACE_BEGIN
 namespace cuda_cub {
@@ -114,7 +115,7 @@ struct execute_on_stream : execute_on_stream_base<execute_on_stream>
   __host__ __device__
   execute_on_stream() : base_t(){};
   __host__ __device__
-  execute_on_stream(cudaStream_t stream) 
+  execute_on_stream(cudaStream_t stream)
   : base_t(stream){};
 };
 
@@ -125,7 +126,7 @@ struct execute_on_stream_nosync : execute_on_stream_nosync_base<execute_on_strea
   __host__ __device__
   execute_on_stream_nosync() : base_t(){};
   __host__ __device__
-  execute_on_stream_nosync(cudaStream_t stream) 
+  execute_on_stream_nosync(cudaStream_t stream)
   : base_t(stream){};
 };
 
@@ -191,11 +192,11 @@ THRUST_INLINE_CONSTANT par_t par;
 /*! \p thrust::cuda::par_nosync is a parallel execution policy targeting Thrust's CUDA device backend.
  *  Similar to \p thrust::cuda::par it allows execution of Thrust algorithms in a specific CUDA stream.
  *
- *  \p thrust::cuda::par_nosync indicates that an algorithm is free to avoid any synchronization of the 
+ *  \p thrust::cuda::par_nosync indicates that an algorithm is free to avoid any synchronization of the
  *  associated stream that is not strictly required for correctness. Additionally, algorithms may return
  *  before the corresponding kernels are completed, similar to asynchronous kernel launches via <<< >>> syntax.
  *  The user must take care to perform explicit synchronization if necessary.
- *  
+ *
  *  The following code snippet demonstrates how to use \p thrust::cuda::par_nosync :
  *
  *  \code

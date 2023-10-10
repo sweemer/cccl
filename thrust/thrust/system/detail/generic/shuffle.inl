@@ -25,6 +25,8 @@
 
 #include <cstdint>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system {
 namespace detail {

@@ -20,6 +20,8 @@
 #include <thrust/detail/allocator_aware_execution_policy.h>
 #include <thrust/system/tbb/detail/execution_policy.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {

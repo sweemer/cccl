@@ -21,3 +21,4 @@
 // this system inherits unique
 #include <thrust/system/detail/sequential/unique.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

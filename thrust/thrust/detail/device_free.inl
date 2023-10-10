@@ -22,6 +22,8 @@
 #include <thrust/system/detail/generic/select_system.h>
 #include <thrust/detail/malloc_and_free.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 void device_free(thrust::device_ptr<void> ptr)

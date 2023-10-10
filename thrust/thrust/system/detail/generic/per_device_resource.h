@@ -22,6 +22,8 @@
 #include <thrust/mr/memory_resource.h>
 #include <thrust/detail/execution_policy.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {

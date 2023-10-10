@@ -22,6 +22,8 @@
 #include <thrust/iterator/iterator_traits.h>
 #include <thrust/iterator/detail/any_assign.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 namespace detail

@@ -23,3 +23,4 @@
 #include <thrust/detail/functional/operators/bitwise_operators.h>
 #include <thrust/detail/functional/operators/compound_assignment_operators.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

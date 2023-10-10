@@ -21,3 +21,4 @@
 // this system inherits merge
 #include <thrust/system/cpp/detail/merge.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

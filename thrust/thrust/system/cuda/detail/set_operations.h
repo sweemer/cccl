@@ -45,6 +45,7 @@
 #include <thrust/system/cuda/detail/par_to_seq.h>
 #include <thrust/system/cuda/detail/util.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 THRUST_NAMESPACE_BEGIN
 

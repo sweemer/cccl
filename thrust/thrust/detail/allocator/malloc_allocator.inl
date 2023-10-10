@@ -23,6 +23,8 @@
 #include <thrust/detail/raw_pointer_cast.h>
 #include <thrust/detail/malloc_and_free.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace detail
 {

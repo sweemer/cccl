@@ -20,6 +20,9 @@
 
 #pragma once
 
+// Include libcu++ config to get
+#include <cuda/std/detail/__config>
+
 // NOTE: The order of these #includes matters.
 
 #include <thrust/detail/config/simple_defines.h>
@@ -38,3 +41,4 @@
 #include <thrust/detail/config/global_workarounds.h>
 #include <thrust/detail/config/namespace.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

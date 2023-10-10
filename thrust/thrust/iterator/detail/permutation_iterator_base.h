@@ -23,6 +23,8 @@
 #include <thrust/detail/type_traits.h>
 #include <thrust/iterator/detail/minimum_system.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 template<typename,typename> class permutation_iterator;

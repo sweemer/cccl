@@ -42,6 +42,8 @@
 #include <thrust/detail/temporary_array.h>
 #include <thrust/type_traits/is_trivially_relocatable.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace cuda_cub {
 
@@ -178,7 +180,7 @@ namespace __copy {
     // get type of the input data
     typedef typename thrust::iterator_value<InputIt>::type InputTy;
 
-    // allocate device temp storage 
+    // allocate device temp storage
     thrust::detail::temporary_array<InputTy, D> d_in_ptr(device_s, num_items);
 
     // uninitialize copy into temp device storage

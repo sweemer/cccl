@@ -22,6 +22,8 @@
 #include <thrust/iterator/detail/any_system_tag.h>
 #include <thrust/detail/type_traits.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {
@@ -58,7 +60,7 @@ template<typename Derived>
   struct execution_policy
     : thrust::system::cpp::detail::execution_policy<Derived>
 {
-  typedef tag tag_type; 
+  typedef tag tag_type;
   operator tag() const { return tag(); }
 };
 

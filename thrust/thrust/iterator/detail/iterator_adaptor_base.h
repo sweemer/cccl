@@ -23,6 +23,8 @@
 #include <thrust/detail/use_default.h>
 #include <thrust/iterator/iterator_facade.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 

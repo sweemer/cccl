@@ -24,6 +24,8 @@
 #include <thrust/device_ptr.h>
 #include <cstddef> // for std::size_t
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 /*! \addtogroup memory_management Memory Management

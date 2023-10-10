@@ -21,3 +21,4 @@
 // omp inherits swap_ranges
 #include <thrust/system/cpp/detail/swap_ranges.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

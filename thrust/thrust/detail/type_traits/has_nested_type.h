@@ -18,6 +18,8 @@
 
 #include <thrust/detail/type_traits.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 #define __THRUST_DEFINE_HAS_NESTED_TYPE(trait_name, nested_type_name) \
 template<typename T> \
   struct trait_name  \

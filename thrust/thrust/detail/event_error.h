@@ -29,6 +29,8 @@
 
 #include <stdexcept>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 enum class event_errc

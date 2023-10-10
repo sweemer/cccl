@@ -52,6 +52,8 @@
 //    fixed in CUB first).
 //  - Need to check if CUB actually optimizes for sums before putting in effort
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {

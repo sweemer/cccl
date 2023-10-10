@@ -22,6 +22,8 @@
 #include <thrust/detail/alignment.h>
 #include <thrust/detail/config/cpp_compatibility.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 #define THRUST_MR_DEFAULT_ALIGNMENT THRUST_ALIGNOF(THRUST_NS_QUALIFIER::detail::max_align_t)
 
 #if THRUST_CPP_DIALECT >= 2017

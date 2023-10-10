@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-/*! \file 
+/*! \file
  *  \brief An allocator which allocates storage with \p device_malloc.
  */
 
@@ -28,13 +28,15 @@
 #include <limits>
 #include <stdexcept>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 // forward declarations to WAR circular #includes
 template<typename> class device_ptr;
 template<typename T> device_ptr<T> device_malloc(const std::size_t n);
 
-/*! \addtogroup allocators Allocators 
+/*! \addtogroup allocators Allocators
  *  \ingroup memory_management
  *  \{
  */

@@ -21,6 +21,8 @@
 #include <thrust/device_malloc.h>
 #include <thrust/uninitialized_fill.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 template<typename T>

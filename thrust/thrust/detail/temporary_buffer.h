@@ -25,6 +25,8 @@
 #include <thrust/system/detail/generic/temporary_buffer.h>
 #include <thrust/system/detail/adl/temporary_buffer.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace detail
 {

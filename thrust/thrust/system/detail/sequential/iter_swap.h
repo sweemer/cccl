@@ -21,6 +21,8 @@
 #include <thrust/detail/raw_pointer_cast.h>
 #include <thrust/detail/swap.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {

@@ -18,6 +18,8 @@
 
 #include <thrust/detail/config/compiler.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 // XXX workaround gcc 4.8+'s complaints about unused local typedefs by silencing them globally
 #if defined(THRUST_GCC_VERSION) && (THRUST_GCC_VERSION >= 40800)
 #  if defined(__NVCC__) && (CUDART_VERSION >= 6000)

@@ -50,6 +50,8 @@
 #include <cub/device/device_reduce.cuh>
 #include <cub/util_math.cuh>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 // forward declare generic reduce

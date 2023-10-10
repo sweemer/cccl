@@ -20,10 +20,12 @@
 
 #include <thrust/detail/type_traits/minimum_type.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 namespace detail
-{ 
+{
 
 template<typename T1,
          typename T2  = minimum_type_detail::any_conversion,

@@ -53,6 +53,8 @@
 #include <cub/device/device_radix_sort.cuh>
 #include <cub/device/device_merge_sort.cuh>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace cuda_cub {
 

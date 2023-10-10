@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-/*! \file 
+/*! \file
  *  \brief A caching and pooling memory resource adaptor which uses separate upstream resources for memory allocation
  *      and bookkeeping.
  */
@@ -33,6 +33,8 @@
 #include <thrust/mr/pool_options.h>
 
 #include <cassert>
+
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 THRUST_NAMESPACE_BEGIN
 namespace mr

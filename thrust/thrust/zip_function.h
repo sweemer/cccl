@@ -17,6 +17,8 @@
 #include <thrust/type_traits/integer_sequence.h>
 #include <thrust/detail/type_deduction.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 /*! \addtogroup function_objects Function Objects

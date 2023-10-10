@@ -21,6 +21,8 @@
 #include <thrust/detail/functional/composite.h>
 #include <thrust/detail/functional/operators/operator_adaptors.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace detail
 {

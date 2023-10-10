@@ -22,13 +22,15 @@
 
 #include <thrust/detail/config.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 #if defined(__CUDACC__) || defined(_NVHPC_CUDA)
 
 #define __thrust_forceinline__ __forceinline__
 
 #else
 
-// TODO add 
+// TODO add
 
 #define __thrust_forceinline__
 

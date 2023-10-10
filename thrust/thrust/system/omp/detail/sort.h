@@ -19,6 +19,8 @@
 #include <thrust/detail/config.h>
 #include <thrust/system/omp/detail/execution_policy.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {
@@ -34,7 +36,7 @@ void stable_sort(execution_policy<DerivedPolicy> &exec,
                  RandomAccessIterator first,
                  RandomAccessIterator last,
                  StrictWeakOrdering comp);
-    
+
 template<typename DerivedPolicy,
          typename RandomAccessIterator1,
          typename RandomAccessIterator2,

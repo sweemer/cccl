@@ -26,6 +26,8 @@
 #include <thrust/system/detail/adl/reduce.h>
 #include <thrust/system/detail/adl/reduce_by_key.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 

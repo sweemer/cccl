@@ -24,6 +24,8 @@
 #include <thrust/system/detail/generic/uninitialized_fill.h>
 #include <thrust/system/detail/adl/uninitialized_fill.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 

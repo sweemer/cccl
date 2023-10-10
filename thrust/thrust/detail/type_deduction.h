@@ -17,6 +17,8 @@
 #include <utility>
 #include <type_traits>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 ///////////////////////////////////////////////////////////////////////////////
 
 /// \def THRUST_FWD(x)

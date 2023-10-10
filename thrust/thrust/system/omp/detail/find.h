@@ -16,7 +16,7 @@
 
 
 /*! \file find.h
- *  \brief OpenMP implementation of find_if. 
+ *  \brief OpenMP implementation of find_if.
  */
 
 #pragma once
@@ -24,6 +24,8 @@
 #include <thrust/detail/config.h>
 #include <thrust/system/detail/generic/find.h>
 #include <thrust/system/omp/detail/execution_policy.h>
+
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 THRUST_NAMESPACE_BEGIN
 namespace system

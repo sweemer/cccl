@@ -20,3 +20,4 @@
 
 // this system has no special sequence functions
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

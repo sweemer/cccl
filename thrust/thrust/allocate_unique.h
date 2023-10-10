@@ -18,6 +18,8 @@
 #include <utility>
 #include <thrust/detail/memory_wrapper.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 // wg21.link/p0316r0
@@ -245,7 +247,7 @@ private:
   allocator_type alloc_;
   std::size_t    count_;
 };
-  
+
 template <typename T, typename Allocator>
 using uninitialized_array_allocator_delete
   = array_allocator_delete<T, Allocator, true>;

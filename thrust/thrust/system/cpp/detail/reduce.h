@@ -21,3 +21,4 @@
 // this system inherits reduce
 #include <thrust/system/detail/sequential/reduce.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

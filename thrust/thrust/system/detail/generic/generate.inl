@@ -22,6 +22,8 @@
 #include <thrust/detail/internal_functional.h>
 #include <thrust/for_each.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {

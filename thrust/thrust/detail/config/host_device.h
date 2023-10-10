@@ -22,6 +22,8 @@
 
 #include <thrust/detail/config.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 // since nvcc defines __host__ and __device__ for us,
 // and only nvcc knows what to do with __host__ and __device__,
 // define them to be the empty string for other compilers

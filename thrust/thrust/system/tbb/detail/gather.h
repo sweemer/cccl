@@ -21,3 +21,4 @@
 // this system inherits gather
 #include <thrust/system/cpp/detail/gather.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

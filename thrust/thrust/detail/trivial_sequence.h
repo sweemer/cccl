@@ -31,6 +31,8 @@
 #include <thrust/detail/temporary_array.h>
 #include <thrust/type_traits/is_contiguous_iterator.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 namespace detail
@@ -64,7 +66,7 @@ struct _trivial_sequence<Iterator, DerivedPolicy, thrust::detail::false_type>
 {
     typedef typename thrust::iterator_value<Iterator>::type iterator_value;
     typedef typename thrust::detail::temporary_array<iterator_value, DerivedPolicy>::iterator iterator_type;
-    
+
     thrust::detail::temporary_array<iterator_value, DerivedPolicy> buffer;
 
     __host__ __device__

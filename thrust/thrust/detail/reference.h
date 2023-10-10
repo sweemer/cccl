@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-/*! \file 
+/*! \file
  *  \brief A pointer to a variable which resides in memory associated with a
  *  system.
  */
@@ -32,6 +32,8 @@
 #include <thrust/type_traits/remove_cvref.h>
 #include <type_traits>
 #include <ostream>
+
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 THRUST_NAMESPACE_BEGIN
 

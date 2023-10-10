@@ -21,6 +21,8 @@
 #include <thrust/random/xor_combine_engine.h>
 #include <thrust/random/detail/random_core_access.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 namespace random

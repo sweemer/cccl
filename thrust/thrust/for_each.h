@@ -24,6 +24,8 @@
 #include <thrust/detail/type_traits.h>
 #include <thrust/detail/execution_policy.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 /*! \addtogroup modifying

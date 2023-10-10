@@ -24,6 +24,8 @@
 #include <thrust/system/detail/generic/transform_scan.h>
 #include <thrust/system/detail/adl/transform_scan.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 

@@ -21,6 +21,8 @@
 #include <thrust/reduce.h>
 #include <thrust/iterator/transform_iterator.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {

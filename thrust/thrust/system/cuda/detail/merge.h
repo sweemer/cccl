@@ -44,6 +44,7 @@ j * Copyright (c) 2016, NVIDIA CORPORATION.  All rights reserved.
 #include <thrust/system/cuda/detail/util.h>
 #include <thrust/system/cuda/detail/par_to_seq.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 THRUST_NAMESPACE_BEGIN
 namespace cuda_cub {

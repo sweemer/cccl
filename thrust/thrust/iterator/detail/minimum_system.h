@@ -21,9 +21,11 @@
 #include <thrust/detail/type_traits/is_metafunction_defined.h>
 #include <thrust/detail/type_traits/minimum_type.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace detail
-{ 
+{
 
 
 template<typename T1,

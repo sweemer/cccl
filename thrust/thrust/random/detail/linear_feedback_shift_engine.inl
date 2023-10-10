@@ -20,6 +20,8 @@
 
 #include <thrust/random/linear_feedback_shift_engine.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 namespace random

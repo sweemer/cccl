@@ -25,6 +25,8 @@
 #include <thrust/detail/type_traits/pointer_traits.h>
 #include <thrust/type_traits/is_trivially_relocatable.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {

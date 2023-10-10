@@ -20,6 +20,8 @@
 #include <thrust/detail/preprocessor.h>
 #include <thrust/detail/integer_traits.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 /**
  * Dispatch between 32-bit and 64-bit index based versions of the same algorithm
  * implementation. This version assumes that callables for both branches consist

@@ -28,6 +28,8 @@
 #include <thrust/unique.h>
 #include <thrust/detail/range/head_flags.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {

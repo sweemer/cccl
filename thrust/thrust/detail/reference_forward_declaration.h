@@ -19,6 +19,8 @@
 #include <thrust/detail/config.h>
 #include <thrust/detail/use_default.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 template <typename Element, typename Pointer, typename Derived = use_default>

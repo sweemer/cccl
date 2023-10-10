@@ -23,6 +23,8 @@
 #include <thrust/system/detail/generic/tabulate.h>
 #include <thrust/system/detail/adl/tabulate.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 

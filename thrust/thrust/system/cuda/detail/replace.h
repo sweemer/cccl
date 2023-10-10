@@ -32,6 +32,8 @@
 #include <thrust/system/cuda/detail/transform.h>
 #include <thrust/detail/internal_functional.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace cuda_cub {
 

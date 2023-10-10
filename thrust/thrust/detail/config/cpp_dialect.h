@@ -22,6 +22,8 @@
 
 #include <thrust/detail/config/compiler.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 // Deprecation warnings may be silenced by defining the following macros. These
 // may be combined.
 // - THRUST_IGNORE_DEPRECATED_CPP_DIALECT:

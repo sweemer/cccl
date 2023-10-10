@@ -20,6 +20,8 @@
 #include <thrust/detail/type_traits/pointer_traits.h>
 #include <thrust/detail/allocator/tagged_allocator.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace detail
 {

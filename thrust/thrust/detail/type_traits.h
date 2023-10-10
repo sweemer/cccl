@@ -28,6 +28,8 @@
 
 #include <type_traits>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 // forward declaration of device_reference

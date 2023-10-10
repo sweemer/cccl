@@ -21,3 +21,4 @@
 // this system inherits this algorithm
 #include <thrust/system/cpp/detail/scan_by_key.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

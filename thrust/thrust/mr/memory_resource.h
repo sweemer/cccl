@@ -27,6 +27,8 @@
 #  include THRUST_MR_STD_MR_HEADER
 #endif
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 /*! \brief \p thrust::mr is the namespace containing system agnostic types and functions for \p memory_resource related functionalities.
  */

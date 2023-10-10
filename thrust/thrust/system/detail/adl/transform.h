@@ -34,6 +34,8 @@
 #include <thrust/system/tbb/detail/transform.h>
 #endif
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 #define __THRUST_HOST_SYSTEM_TRANSFORM_HEADER <__THRUST_HOST_SYSTEM_ROOT/detail/transform.h>
 #include __THRUST_HOST_SYSTEM_TRANSFORM_HEADER
 #undef __THRUST_HOST_SYSTEM_TRANSFORM_HEADER

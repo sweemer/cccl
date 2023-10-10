@@ -30,6 +30,8 @@
 #include <limits>
 #include <stdexcept>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 /** \addtogroup allocators Allocators

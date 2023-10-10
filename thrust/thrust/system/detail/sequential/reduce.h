@@ -25,6 +25,8 @@
 #include <thrust/detail/function.h>
 #include <thrust/system/detail/sequential/execution_policy.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {
@@ -36,7 +38,7 @@ namespace sequential
 
 __thrust_exec_check_disable__
 template<typename DerivedPolicy,
-         typename InputIterator, 
+         typename InputIterator,
          typename OutputType,
          typename BinaryFunction>
 __host__ __device__

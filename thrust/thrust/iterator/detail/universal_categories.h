@@ -21,6 +21,8 @@
 
 // XXX eliminate this file
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 // define these types without inheritance to avoid ambiguous conversion to base classes

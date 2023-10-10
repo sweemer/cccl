@@ -21,6 +21,8 @@
 #include <thrust/tuple.h>
 #include <thrust/detail/tuple_meta_transform.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 namespace detail

@@ -21,3 +21,4 @@
 // this system inherits transform_reduce
 #include <thrust/system/cpp/detail/transform_reduce.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

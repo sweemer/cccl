@@ -25,6 +25,8 @@
 #include <thrust/system/detail/adl/scan.h>
 #include <thrust/system/detail/adl/scan_by_key.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 

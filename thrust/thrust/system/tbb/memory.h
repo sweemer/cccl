@@ -27,6 +27,8 @@
 #include <thrust/mr/allocator.h>
 #include <ostream>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {

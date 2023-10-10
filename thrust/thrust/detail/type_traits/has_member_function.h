@@ -20,6 +20,8 @@
 
 #include <utility> // for std::declval
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 #define __THRUST_DEFINE_HAS_MEMBER_FUNCTION(trait_name, member_function_name)  \
   template <typename T, typename Signature, typename = void>                   \
   struct trait_name : thrust::false_type                                       \

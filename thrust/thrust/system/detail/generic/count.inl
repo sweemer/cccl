@@ -21,6 +21,8 @@
 #include <thrust/transform_reduce.h>
 #include <thrust/detail/internal_functional.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {

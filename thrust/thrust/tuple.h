@@ -34,6 +34,8 @@
 #include <thrust/detail/tuple.inl>
 #include <thrust/pair.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 /*! \addtogroup utility
@@ -155,7 +157,7 @@ get(const detail::cons<HT, TT>& t);
  *  \code
  *  #include <thrust/tuple.h>
  *  #include <iostream>
- *  
+ *
  *  int main() {
  *    // Create a tuple containing an `int`, a `float`, and a string.
  *    thrust::tuple<int, float, const char*> t(13, 0.1f, "thrust");

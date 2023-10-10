@@ -16,7 +16,7 @@
 
 
 /*! \file for_each.h
- *  \brief Defines the interface for a function that executes a 
+ *  \brief Defines the interface for a function that executes a
  *  function or functional for each value in a given range.
  */
 
@@ -24,6 +24,8 @@
 
 #include <thrust/detail/config.h>
 #include <thrust/system/omp/detail/execution_policy.h>
+
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 THRUST_NAMESPACE_BEGIN
 namespace system

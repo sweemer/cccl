@@ -21,3 +21,4 @@
 // this system inherits copy
 #include <thrust/system/detail/sequential/copy.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

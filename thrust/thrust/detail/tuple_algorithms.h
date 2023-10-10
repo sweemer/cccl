@@ -26,6 +26,8 @@
 
 #include <tuple>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 template <typename Tuple, std::size_t... Is>

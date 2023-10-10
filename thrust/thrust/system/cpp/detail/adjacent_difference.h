@@ -21,3 +21,4 @@
 // this system inherits adjacent_difference
 #include <thrust/system/detail/sequential/adjacent_difference.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

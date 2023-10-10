@@ -21,3 +21,4 @@
 // this system inherits reverse
 #include <thrust/system/cpp/detail/reverse.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

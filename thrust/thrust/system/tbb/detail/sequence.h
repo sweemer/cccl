@@ -21,3 +21,4 @@
 // this system inherits sequence
 #include <thrust/system/cpp/detail/sequence.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

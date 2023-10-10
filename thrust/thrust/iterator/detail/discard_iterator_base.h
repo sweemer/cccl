@@ -22,6 +22,8 @@
 #include <thrust/iterator/detail/any_assign.h>
 #include <cstddef> // for std::ptrdiff_t
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 // forward declaration of discard_iterator
@@ -58,7 +60,7 @@ template<typename System>
 
 
 } // end detail
-  
+
 THRUST_NAMESPACE_END
 
 

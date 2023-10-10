@@ -23,6 +23,8 @@
 #include <thrust/system/detail/generic/partition.h>
 #include <thrust/system/detail/adl/partition.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 __thrust_exec_check_disable__

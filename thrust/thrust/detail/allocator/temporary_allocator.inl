@@ -30,6 +30,8 @@
 #endif // NVCC device pass or NVC++
 #endif // CUDA
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace detail
 {

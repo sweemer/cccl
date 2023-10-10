@@ -23,6 +23,8 @@
 #include <thrust/system/detail/generic/remove.h>
 #include <thrust/system/detail/adl/remove.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 

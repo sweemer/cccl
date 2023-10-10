@@ -24,6 +24,8 @@
 #include <thrust/iterator/iterator_traits.h>
 #include <thrust/system/omp/detail/pragma_omp.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {

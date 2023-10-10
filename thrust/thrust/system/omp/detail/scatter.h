@@ -21,3 +21,4 @@
 // this system inherits this algorithm
 #include <thrust/system/cpp/detail/scatter.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

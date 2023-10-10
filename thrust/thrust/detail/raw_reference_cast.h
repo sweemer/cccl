@@ -23,11 +23,12 @@
 #include <thrust/detail/tuple_transform.h>
 #include <thrust/iterator/detail/tuple_of_iterator_references.h>
 
-
 // the order of declarations and definitions in this file is totally goofy
 // this header defines raw_reference_cast, which has a few overloads towards the bottom of the file
 // raw_reference_cast depends on metafunctions such as is_unwrappable and raw_reference
 // we need to be sure that these metafunctions are completely defined (including specializations) before they are instantiated by raw_reference_cast
+
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 THRUST_NAMESPACE_BEGIN
 namespace detail

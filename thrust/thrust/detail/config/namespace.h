@@ -19,6 +19,8 @@
 #include <thrust/detail/config/device_system.h>
 #include <thrust/version.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 /**
  * \file namespace.h
  * \brief Utilities that allow `thrust::` to be placed inside an

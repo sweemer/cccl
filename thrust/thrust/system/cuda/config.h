@@ -26,7 +26,6 @@
  ******************************************************************************/
 #pragma once
 
-
 #ifdef THRUST_DEBUG_SYNC
 #define THRUST_DEBUG_SYNC_FLAG true
 #define CUB_DEBUG_SYNC
@@ -43,6 +42,8 @@
 #include <cub/util_debug.cuh>
 
 #include <cub/detail/detect_cuda_runtime.cuh>
+
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 /**
  * \def THRUST_RUNTIME_FUNCTION

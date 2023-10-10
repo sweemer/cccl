@@ -21,3 +21,4 @@
 // this system inherits extrema algorithms
 #include <thrust/system/detail/sequential/extrema.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

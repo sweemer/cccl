@@ -23,6 +23,8 @@
 
 // functions to handle memory alignment
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace detail
 {

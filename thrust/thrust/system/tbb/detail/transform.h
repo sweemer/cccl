@@ -21,3 +21,4 @@
 // omp inherits transform
 #include <thrust/system/cpp/detail/transform.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

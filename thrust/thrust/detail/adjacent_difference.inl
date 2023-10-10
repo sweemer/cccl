@@ -21,6 +21,8 @@
 #include <thrust/system/detail/generic/adjacent_difference.h>
 #include <thrust/system/detail/adl/adjacent_difference.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 __thrust_exec_check_disable__

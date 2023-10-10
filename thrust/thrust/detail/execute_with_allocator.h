@@ -25,6 +25,8 @@
 #include <thrust/detail/allocator/allocator_traits.h>
 #include <thrust/detail/integer_math.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 namespace detail

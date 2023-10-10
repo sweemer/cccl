@@ -21,3 +21,4 @@
 // this system inherits scan
 #include <thrust/system/cpp/detail/scan.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER

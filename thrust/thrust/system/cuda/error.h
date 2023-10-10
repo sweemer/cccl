@@ -26,6 +26,8 @@
 #include <thrust/system/error_code.h>
 #include <thrust/system/cuda/detail/guarded_driver_types.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 namespace system

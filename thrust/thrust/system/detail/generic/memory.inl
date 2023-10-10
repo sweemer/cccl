@@ -23,6 +23,8 @@
 #include <thrust/detail/static_assert.h>
 #include <thrust/detail/malloc_and_free.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace system
 {

@@ -28,6 +28,8 @@
 
 #include <thrust/detail/memory_wrapper.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 namespace detail
 {
@@ -384,7 +386,7 @@ template<typename Alloc>
 
   template<typename T>
   inline __host__ __device__ static void construct(allocator_type &a, T *p);
-  
+
   template<typename T, typename Arg1>
   inline __host__ __device__ static void construct(allocator_type &a, T *p, const Arg1 &arg1);
 

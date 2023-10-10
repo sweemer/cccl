@@ -23,6 +23,8 @@
 #include <thrust/detail/config/compiler.h>
 #include <thrust/detail/config/cpp_dialect.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 #if defined(CUB_IGNORE_DEPRECATED_API) && !defined(THRUST_IGNORE_DEPRECATED_API)
 #  define THRUST_IGNORE_DEPRECATED_API
 #endif

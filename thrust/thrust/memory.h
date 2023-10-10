@@ -29,6 +29,8 @@
 #include <thrust/detail/malloc_and_free.h>
 #include <thrust/detail/temporary_buffer.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 /*! \defgroup memory_management Memory Management

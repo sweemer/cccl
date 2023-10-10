@@ -24,6 +24,8 @@
 #include <thrust/system/detail/generic/swap_ranges.h>
 #include <thrust/system/detail/adl/swap_ranges.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 THRUST_NAMESPACE_BEGIN
 
 

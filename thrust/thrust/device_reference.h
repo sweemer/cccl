@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-/*! \file 
+/*! \file
  *  \brief A reference to an object which resides in memory associated with the
  *  device system.
  */
@@ -25,6 +25,8 @@
 #include <thrust/device_ptr.h>
 #include <thrust/detail/type_traits.h>
 #include <thrust/detail/reference.h>
+
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 THRUST_NAMESPACE_BEGIN
 
