@@ -27,9 +27,7 @@
 #include "../__utility/forward.h"
 #include "../__utility/move.h"
 
-#if defined(_LIBCUDACXX_USE_PRAGMA_GCC_SYSTEM_HEADER)
-#pragma GCC system_header
-#endif
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 #if defined(__cuda_std__) && _LIBCUDACXX_STD_VER > 17 // need to backfill ::std::construct_at
 #ifndef _LIBCUDACXX_COMPILER_NVRTC
