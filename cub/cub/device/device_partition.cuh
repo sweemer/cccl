@@ -42,6 +42,8 @@
 #include <cub/device/dispatch/dispatch_three_way_partition.cuh>
 #include <cub/util_deprecated.cuh>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 
@@ -85,9 +87,9 @@ struct DevicePartition
      * - Copies of the selected items are compacted into @p d_out and maintain
      *   their original relative ordering, however copies of the unselected
      *   items are compacted into the rear of @p d_out in reverse order.
-     * - The range `[d_out, d_out + num_items)` shall not overlap 
-     *   `[d_in, d_in + num_items)` nor `[d_flags, d_flags + num_items)` in any 
-     *   way. The range `[d_in, d_in + num_items)` may overlap 
+     * - The range `[d_out, d_out + num_items)` shall not overlap
+     *   `[d_in, d_in + num_items)` nor `[d_flags, d_flags + num_items)` in any
+     *   way. The range `[d_in, d_in + num_items)` may overlap
      *  `[d_flags, d_flags + num_items)`.
      * - \devicestorage
      *
@@ -251,8 +253,8 @@ struct DevicePartition
      * - Copies of the selected items are compacted into @p d_out and maintain
      *   their original relative ordering, however copies of the unselected
      *   items are compacted into the rear of @p d_out in reverse order.
-     * - The range `[d_out, d_out + num_items)` shall not overlap 
-     *   `[d_in, d_in + num_items)` in any way. 
+     * - The range `[d_out, d_out + num_items)` shall not overlap
+     *   `[d_in, d_in + num_items)` in any way.
      * - \devicestorage
      *
      * @par Performance
@@ -451,10 +453,10 @@ struct DevicePartition
      * - Copies of the unselected items are compacted into the
      *   @p d_unselected_out in reverse order.
      * - The ranges `[d_out, d_out + num_items)`,
-     *   `[d_first_part_out, d_first_part_out + d_num_selected_out[0])`, 
-     *   `[d_second_part_out, d_second_part_out + d_num_selected_out[1])`, 
-     *   `[d_unselected_out, d_unselected_out + num_items - d_num_selected_out[0] - d_num_selected_out[1])`, 
-     *   shall not overlap in any way. 
+     *   `[d_first_part_out, d_first_part_out + d_num_selected_out[0])`,
+     *   `[d_second_part_out, d_second_part_out + d_num_selected_out[1])`,
+     *   `[d_unselected_out, d_unselected_out + num_items - d_num_selected_out[0] - d_num_selected_out[1])`,
+     *   shall not overlap in any way.
      *
      * @par Snippet
      * The code snippet below illustrates how this algorithm can partition an

@@ -44,6 +44,8 @@
 
 #include <iterator>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 /******************************************************************************
@@ -68,8 +70,8 @@ CUB_NAMESPACE_BEGIN
  * @tparam _SCAN_ALGORITHM
  *   The BlockScan algorithm to use
  *
- * @tparam DelayConstructorT 
- *   Implementation detail, do not specify directly, requirements on the 
+ * @tparam DelayConstructorT
+ *   Implementation detail, do not specify directly, requirements on the
  *   content of this type are subject to breaking change.
  */
 template <int _BLOCK_THREADS,
@@ -95,7 +97,7 @@ struct AgentReduceByKeyPolicy
   ///< The BlockScan algorithm to use
   static constexpr BlockScanAlgorithm SCAN_ALGORITHM = _SCAN_ALGORITHM;
 
-  struct detail 
+  struct detail
   {
     using delay_constructor_t = DelayConstructorT;
   };

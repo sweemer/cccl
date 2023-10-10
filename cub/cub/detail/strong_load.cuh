@@ -38,6 +38,8 @@
 
 #include <iterator>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS // Do not document

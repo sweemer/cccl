@@ -18,6 +18,7 @@
 
 #include <cub/util_namespace.cuh>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 CUB_NAMESPACE_BEGIN
 

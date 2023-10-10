@@ -1,7 +1,7 @@
 /******************************************************************************
  * Copyright (c) 2011, Duane Merrill.  All rights reserved.
  * Copyright (c) 2011-2021, NVIDIA CORPORATION.  All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -12,7 +12,7 @@
  *     * Neither the name of the NVIDIA CORPORATION nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -38,6 +38,8 @@
 #include "../config.cuh"
 #include "../util_type.cuh"
 #include "../util_ptx.cuh"
+
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 CUB_NAMESPACE_BEGIN
 
@@ -489,7 +491,7 @@ public:
     }
 
     /**
-     * @brief Subtracts the left element of each adjacent pair of elements 
+     * @brief Subtracts the left element of each adjacent pair of elements
      *        partitioned across a CUDA thread block.
      *
      * @par
@@ -497,7 +499,7 @@ public:
      * - \smemreuse
      *
      * @par Snippet
-     * The code snippet below illustrates how to use @p BlockAdjacentDifference 
+     * The code snippet below illustrates how to use @p BlockAdjacentDifference
      * to compute the left difference between adjacent elements.
      *
      * @par
@@ -516,7 +518,7 @@ public:
      *
      * __global__ void ExampleKernel(...)
      * {
-     *   // Specialize BlockAdjacentDifference for a 1D block of 
+     *   // Specialize BlockAdjacentDifference for a 1D block of
      *   // 128 threads of type int
      *   using BlockAdjacentDifferenceT =
      *      cub::BlockAdjacentDifference<int, 128>;
@@ -607,7 +609,7 @@ public:
     }
 
     /**
-     * @brief Subtracts the left element of each adjacent pair of elements 
+     * @brief Subtracts the left element of each adjacent pair of elements
      *        partitioned across a CUDA thread block.
      *
      * @par
@@ -615,7 +617,7 @@ public:
      * - \smemreuse
      *
      * @par Snippet
-     * The code snippet below illustrates how to use @p BlockAdjacentDifference 
+     * The code snippet below illustrates how to use @p BlockAdjacentDifference
      * to compute the left difference between adjacent elements.
      *
      * @par
@@ -634,7 +636,7 @@ public:
      *
      * __global__ void ExampleKernel(...)
      * {
-     *   // Specialize BlockAdjacentDifference for a 1D block of 
+     *   // Specialize BlockAdjacentDifference for a 1D block of
      *   // 128 threads of type int
      *   using BlockAdjacentDifferenceT =
      *      cub::BlockAdjacentDifference<int, 128>;
@@ -725,9 +727,9 @@ public:
       {
         output[0] = input[0];
       }
-      else if (linear_tid == 0) 
+      else if (linear_tid == 0)
       {
-        output[0] = difference_op(input[0], 
+        output[0] = difference_op(input[0],
                                   tile_predecessor_item);
       }
       else

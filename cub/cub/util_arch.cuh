@@ -40,11 +40,13 @@
 // Legacy include; this functionality used to be defined in here.
 #include <cub/detail/detect_cuda_runtime.cuh>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS    // Do not document
 
-// \deprecated [Since 2.1.0] 
+// \deprecated [Since 2.1.0]
 #define CUB_USE_COOPERATIVE_GROUPS
 
 /// In device code, CUB_PTX_ARCH expands to the PTX version for which we are

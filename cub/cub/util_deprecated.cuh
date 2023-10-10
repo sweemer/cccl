@@ -38,6 +38,7 @@
 #include <cub/util_cpp_dialect.cuh>
 #include <cub/util_debug.cuh>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 #if defined(THRUST_IGNORE_DEPRECATED_API) && !defined(CUB_IGNORE_DEPRECATED_API)
 #  define CUB_IGNORE_DEPRECATED_API

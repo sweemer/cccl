@@ -1,7 +1,7 @@
 /******************************************************************************
  * Copyright (c) 2011, Duane Merrill.  All rights reserved.
  * Copyright (c) 2011-2018, NVIDIA CORPORATION.  All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -12,7 +12,7 @@
  *     * Neither the name of the NVIDIA CORPORATION nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -37,6 +37,8 @@
 
 #include <cuda/std/utility>
 #include <cuda/std/version> // _LIBCUDACXX_HIDDEN, _LIBCUDACXX_{CLANG,GCC}_DIAGNOSTIC_IGNORED
+
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 CUB_NAMESPACE_BEGIN
 
@@ -125,7 +127,7 @@ constexpr __host__ __device__ auto max CUB_PREVENT_MACRO_SUBSTITUTION(T &&t,
  */
 #if !defined(CUB_DISABLE_KERNEL_VISIBILITY_WARNING_SUPPRESSION)
 _LIBCUDACXX_GCC_DIAGNOSTIC_IGNORED("-Wattributes")
-_LIBCUDACXX_CLANG_DIAGNOSTIC_IGNORED("-Wattributes")                      
+_LIBCUDACXX_CLANG_DIAGNOSTIC_IGNORED("-Wattributes")
 #endif
 
 /** @} */       // end group UtilModule

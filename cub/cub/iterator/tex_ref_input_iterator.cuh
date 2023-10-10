@@ -38,6 +38,8 @@
 
 #include <cstddef>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 /**

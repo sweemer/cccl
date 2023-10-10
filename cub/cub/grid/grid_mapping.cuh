@@ -35,6 +35,8 @@
 
 #include "../config.cuh"
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 

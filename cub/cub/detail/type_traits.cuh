@@ -37,6 +37,7 @@
 
 #include <cuda/std/type_traits>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 CUB_NAMESPACE_BEGIN
 namespace detail {
@@ -51,7 +52,7 @@ using invoke_result_t =
 
 /// The type of intermediate accumulator (according to P2322R6)
 template <typename Invokable, typename InitT, typename InputT>
-using accumulator_t = 
+using accumulator_t =
   typename ::cuda::std::decay<invoke_result_t<Invokable, InitT, InputT>>::type;
 
 } // namespace detail

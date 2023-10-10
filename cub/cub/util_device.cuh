@@ -55,6 +55,8 @@
 #include <array>
 #include <cassert>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 
@@ -412,7 +414,7 @@ CUB_RUNTIME_FUNCTION inline cudaError_t SmVersionUncached(int& sm_version, int d
     {
         int major = 0, minor = 0;
         error = CubDebug(cudaDeviceGetAttribute(&major, cudaDevAttrComputeCapabilityMajor, device));
-        if (cudaSuccess != error) 
+        if (cudaSuccess != error)
         {
             break;
         }
@@ -544,7 +546,7 @@ CUB_RUNTIME_FUNCTION inline cudaError_t HasUVA(bool& has_uva)
     cudaError_t error = cudaSuccess;
     int device = -1;
     error = CubDebug(cudaGetDevice(&device));
-    if (cudaSuccess != error) 
+    if (cudaSuccess != error)
     {
         return error;
     }

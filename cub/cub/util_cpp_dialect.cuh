@@ -33,6 +33,8 @@
 
 #include "util_compiler.cuh"
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 // Deprecation warnings may be silenced by defining the following macros. These
 // may be combined.
 // - CUB_IGNORE_DEPRECATED_CPP_DIALECT:

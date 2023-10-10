@@ -38,6 +38,8 @@
 #include <iterator>
 #include <type_traits>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 //! @rst

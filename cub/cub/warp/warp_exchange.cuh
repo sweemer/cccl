@@ -39,6 +39,7 @@
 #include <cub/warp/specializations/warp_exchange_shfl.cuh>
 #include <cub/warp/specializations/warp_exchange_smem.cuh>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 CUB_NAMESPACE_BEGIN
 

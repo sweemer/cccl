@@ -39,6 +39,7 @@
 #include <cub/config.cuh>
 #include <cub/iterator/cache_modified_input_iterator.cuh>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 CUB_NAMESPACE_BEGIN
 

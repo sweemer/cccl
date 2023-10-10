@@ -12,9 +12,9 @@
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
- * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
  * ARE DISCLAIMED. IN NO EVENT SHALL NVIDIA CORPORATION BE LIABLE FOR ANY
  * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
  * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
@@ -26,7 +26,7 @@
  ******************************************************************************/
 
 /**
- * @file AgentScanByKey implements a stateful abstraction of CUDA thread blocks 
+ * @file AgentScanByKey implements a stateful abstraction of CUDA thread blocks
  *       for participating in device-wide prefix scan by key.
  */
 
@@ -43,6 +43,8 @@
 
 #include <iterator>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 /******************************************************************************
@@ -52,8 +54,8 @@ CUB_NAMESPACE_BEGIN
 /**
  * Parameterizable tuning policy type for AgentScanByKey
  *
- * @tparam DelayConstructorT 
- *   Implementation detail, do not specify directly, requirements on the 
+ * @tparam DelayConstructorT
+ *   Implementation detail, do not specify directly, requirements on the
  *   content of this type are subject to breaking change.
  */
 template <int _BLOCK_THREADS,
@@ -73,7 +75,7 @@ struct AgentScanByKeyPolicy
   static constexpr BlockScanAlgorithm SCAN_ALGORITHM   = _SCAN_ALGORITHM;
   static constexpr BlockStoreAlgorithm STORE_ALGORITHM = _STORE_ALGORITHM;
 
-  struct detail 
+  struct detail
   {
     using delay_constructor_t = DelayConstructorT;
   };

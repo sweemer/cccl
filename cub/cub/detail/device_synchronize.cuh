@@ -25,6 +25,8 @@
 
 #include <cuda_runtime_api.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 namespace detail

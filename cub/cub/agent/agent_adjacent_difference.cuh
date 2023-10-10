@@ -36,6 +36,7 @@
 
 #include <thrust/system/cuda/detail/core/util.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 CUB_NAMESPACE_BEGIN
 
@@ -159,7 +160,7 @@ struct AgentDifference
       }
       else
       {
-        InputT tile_prev_input = MayAlias 
+        InputT tile_prev_input = MayAlias
                                ? first_tile_previous[tile_idx]
                                : *(input_it + tile_base - 1);
 

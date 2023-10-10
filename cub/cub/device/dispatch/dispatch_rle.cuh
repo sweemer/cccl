@@ -50,6 +50,8 @@
 
 #include <nv/target>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 /******************************************************************************
@@ -172,8 +174,8 @@ __launch_bounds__(int(ChainedPolicyT::ActivePolicy::RleSweepPolicyT::BLOCK_THREA
  * @tparam OffsetT
  *   Signed integer type for global offsets
  *
- * @tparam SelectedPolicy 
- *   Implementation detail, do not specify directly, requirements on the 
+ * @tparam SelectedPolicy
+ *   Implementation detail, do not specify directly, requirements on the
  *   content of this type are subject to breaking change.
  */
 template <typename InputIteratorT,

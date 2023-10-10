@@ -46,6 +46,8 @@
 
 #include <cstdint>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 namespace detail

@@ -40,6 +40,8 @@
 #include <cub/warp/specializations/warp_scan_shfl.cuh>
 #include <cub/warp/specializations/warp_scan_smem.cuh>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 //! @rst

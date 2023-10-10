@@ -43,34 +43,36 @@
 #include <cuda/std/type_traits>
 #include <nv/target>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 
-namespace detail 
+namespace detail
 {
 
 template <class A = int, class = A>
-struct reduce_add_exists : ::cuda::std::false_type 
+struct reduce_add_exists : ::cuda::std::false_type
 {};
 
 template <class T>
-struct reduce_add_exists<T, decltype(__reduce_add_sync(0xFFFFFFFF, T{}))> : ::cuda::std::true_type 
+struct reduce_add_exists<T, decltype(__reduce_add_sync(0xFFFFFFFF, T{}))> : ::cuda::std::true_type
 {};
 
 template <class T = int, class = T>
-struct reduce_min_exists : ::cuda::std::false_type 
+struct reduce_min_exists : ::cuda::std::false_type
 {};
 
 template <class T>
-struct reduce_min_exists<T, decltype(__reduce_min_sync(0xFFFFFFFF, T{}))> : ::cuda::std::true_type 
+struct reduce_min_exists<T, decltype(__reduce_min_sync(0xFFFFFFFF, T{}))> : ::cuda::std::true_type
 {};
 
 template <class T = int, class = T>
-struct reduce_max_exists : ::cuda::std::false_type 
+struct reduce_max_exists : ::cuda::std::false_type
 {};
 
 template <class T>
-struct reduce_max_exists<T, decltype(__reduce_max_sync(0xFFFFFFFF, T{}))> : ::cuda::std::true_type 
+struct reduce_max_exists<T, decltype(__reduce_max_sync(0xFFFFFFFF, T{}))> : ::cuda::std::true_type
 {};
 
 }
@@ -419,7 +421,7 @@ struct WarpReduceShfl
     //---------------------------------------------------------------------
     template <typename ReductionOp>
     __device__ __forceinline__ T ReduceImpl(
-        Int2Type<0>     /* all_lanes_valid */, 
+        Int2Type<0>     /* all_lanes_valid */,
         T               input,                  ///< [in] Calling thread's input
         int             valid_items,            ///< [in] Total number of valid items across the logical warp
         ReductionOp     reduction_op)           ///< [in] Binary reduction operator
@@ -436,7 +438,7 @@ struct WarpReduceShfl
 
     template <typename ReductionOp>
     __device__ __forceinline__ T ReduceImpl(
-        Int2Type<1>     /* all_lanes_valid */, 
+        Int2Type<1>     /* all_lanes_valid */,
         T               input,                  ///< [in] Calling thread's input
         int             /* valid_items */,      ///< [in] Total number of valid items across the logical warp
         ReductionOp     reduction_op)           ///< [in] Binary reduction operator
@@ -452,7 +454,7 @@ struct WarpReduceShfl
     }
 
     template <class U = T>
-    __device__ __forceinline__ 
+    __device__ __forceinline__
     typename std::enable_if<
                (std::is_same<int, U>::value || std::is_same<unsigned int, U>::value)
             && detail::reduce_add_exists<>::value, T>::type
@@ -474,7 +476,7 @@ struct WarpReduceShfl
     }
 
     template <class U = T>
-    __device__ __forceinline__ 
+    __device__ __forceinline__
     typename std::enable_if<
                (std::is_same<int, U>::value || std::is_same<unsigned int, U>::value)
             && detail::reduce_min_exists<>::value, T>::type
@@ -496,7 +498,7 @@ struct WarpReduceShfl
     }
 
     template <class U = T>
-    __device__ __forceinline__ 
+    __device__ __forceinline__
     typename std::enable_if<
                (std::is_same<int, U>::value || std::is_same<unsigned int, U>::value)
             && detail::reduce_max_exists<>::value, T>::type

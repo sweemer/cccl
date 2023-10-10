@@ -108,3 +108,5 @@
 #include "util_ptx.cuh"
 #include "util_temporary_storage.cuh"
 #include "util_type.cuh"
+
+_CCCL_IMPLICIT_SYSTEM_HEADER

@@ -39,6 +39,8 @@
 #include "../util_ptx.cuh"
 #include "../util_type.cuh"
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 /**

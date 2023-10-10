@@ -33,6 +33,8 @@
 #include <cub/util_device.cuh>
 #include <cub/util_type.cuh>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 namespace detail

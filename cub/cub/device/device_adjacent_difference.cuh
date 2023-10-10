@@ -37,6 +37,7 @@
 #include <thrust/detail/integer_traits.h>
 #include <thrust/detail/cstdint.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 CUB_NAMESPACE_BEGIN
 

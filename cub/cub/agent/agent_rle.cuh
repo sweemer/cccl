@@ -46,6 +46,8 @@
 #include "../iterator/cache_modified_input_iterator.cuh"
 #include "../iterator/constant_input_iterator.cuh"
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 
@@ -56,28 +58,28 @@ CUB_NAMESPACE_BEGIN
 /**
  * Parameterizable tuning policy type for AgentRle
  *
- * @tparam _BLOCK_THREADS 
+ * @tparam _BLOCK_THREADS
  *   Threads per thread block
  *
- * @tparam _ITEMS_PER_THREAD 
+ * @tparam _ITEMS_PER_THREAD
  *   Items per thread (per tile of input)
  *
- * @tparam _LOAD_ALGORITHM 
+ * @tparam _LOAD_ALGORITHM
  *   The BlockLoad algorithm to use
  *
- * @tparam _LOAD_MODIFIER 
+ * @tparam _LOAD_MODIFIER
  *   Cache load modifier for reading input elements
  *
- * @tparam _STORE_WARP_TIME_SLICING 
- *   Whether or not only one warp's worth of shared memory should be allocated and time-sliced among 
- *   block-warps during any store-related data transpositions 
+ * @tparam _STORE_WARP_TIME_SLICING
+ *   Whether or not only one warp's worth of shared memory should be allocated and time-sliced among
+ *   block-warps during any store-related data transpositions
  *   (versus each warp having its own storage)
  *
- * @tparam _SCAN_ALGORITHM 
+ * @tparam _SCAN_ALGORITHM
  *   The BlockScan algorithm to use
  *
- * @tparam DelayConstructorT 
- *   Implementation detail, do not specify directly, requirements on the 
+ * @tparam DelayConstructorT
+ *   Implementation detail, do not specify directly, requirements on the
  *   content of this type are subject to breaking change.
  */
 template <int _BLOCK_THREADS,
@@ -100,7 +102,7 @@ struct AgentRlePolicy
     static constexpr CacheLoadModifier      LOAD_MODIFIER           = _LOAD_MODIFIER;       ///< Cache load modifier for reading input elements
     static constexpr BlockScanAlgorithm     SCAN_ALGORITHM          = _SCAN_ALGORITHM;      ///< The BlockScan algorithm to use
 
-    struct detail 
+    struct detail
     {
         using delay_constructor_t = DelayConstructorT;
     };
@@ -115,7 +117,7 @@ struct AgentRlePolicy
  ******************************************************************************/
 
 /**
- * \brief AgentRle implements a stateful abstraction of CUDA thread blocks for participating in device-wide run-length-encode 
+ * \brief AgentRle implements a stateful abstraction of CUDA thread blocks for participating in device-wide run-length-encode
  */
 template <
     typename    AgentRlePolicyT,        ///< Parameterized AgentRlePolicyT tuning policy type
@@ -413,12 +415,12 @@ struct AgentRle
 
         // `thread_exclusive_in_warp.key`:
         //      number of non-trivial runs starts in previous threads
-        // `thread_exclusive_in_warp.val`: 
+        // `thread_exclusive_in_warp.val`:
         //      number of items in the last non-trivial run in previous threads
 
         // `thread_aggregate.key`:
         //      number of non-trivial runs starts in this thread
-        // `thread_aggregate.val`: 
+        // `thread_aggregate.val`:
         //      number of items in the last non-trivial run in this thread
         LengthOffsetPair thread_aggregate = internal::ThreadReduce(lengths_and_num_runs, scan_op);
         WarpScanPairs(temp_storage.aliasable.scan_storage.warp_scan[warp_id]).Scan(
@@ -430,7 +432,7 @@ struct AgentRle
 
         // `thread_inclusive.key`:
         //      number of non-trivial runs starts in this and previous warp threads
-        // `thread_inclusive.val`: 
+        // `thread_inclusive.val`:
         //      number of items in the last non-trivial run in this or previous warp threads
 
         // Last lane in each warp shares its warp-aggregate
@@ -733,7 +735,7 @@ struct AgentRle
             if (thread_exclusive_in_warp.key == 0)
             {
                 // If there are no non-trivial runs starts in the previous warp threads, then
-                // `thread_exclusive_in_warp.val` denotes the number of items in the last 
+                // `thread_exclusive_in_warp.val` denotes the number of items in the last
                 // non-trivial run of the previous CTA threads, so the better name for it is
                 // `thread_exclusive_in_tile`.
                 thread_exclusive_in_warp.value += warp_exclusive_in_tile.value;
@@ -830,7 +832,7 @@ struct AgentRle
             if (thread_exclusive_in_warp.key == 0)
             {
                 // If there are no non-trivial runs starts in the previous warp threads, then
-                // `thread_exclusive_in_warp.val` denotes the number of items in the last 
+                // `thread_exclusive_in_warp.val` denotes the number of items in the last
                 // non-trivial run of the previous grid threads, so the better name for it is
                 // `thread_exclusive_in_grid`.
                 thread_exclusive_in_warp.value += thread_exclusive.value;

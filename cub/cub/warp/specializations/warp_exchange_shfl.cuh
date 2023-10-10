@@ -31,6 +31,8 @@
 #include <cub/util_ptx.cuh>
 #include <cub/util_type.cuh>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 namespace detail
@@ -51,7 +53,7 @@ class WarpExchangeShfl
   static constexpr bool IS_ARCH_WARP = LOGICAL_WARP_THREADS == CUB_WARP_THREADS(0);
 
   // concrete recursion class
-  template <typename OutputT, int IDX, int SIZE> 
+  template <typename OutputT, int IDX, int SIZE>
   class CompileTimeArray : protected CompileTimeArray<OutputT, IDX + 1, SIZE>
   {
   protected:
@@ -239,7 +241,7 @@ class WarpExchangeShfl
   };
 
   // terminating partial specialization
-  template <typename OutputT, int SIZE> 
+  template <typename OutputT, int SIZE>
   class CompileTimeArray<OutputT, SIZE, SIZE>
   {
   protected:

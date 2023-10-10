@@ -12,9 +12,9 @@
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
- * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
  * ARE DISCLAIMED. IN NO EVENT SHALL NVIDIA CORPORATION BE LIABLE FOR ANY
  * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
  * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
@@ -26,8 +26,8 @@
  ******************************************************************************/
 
 /**
- * @file DeviceScan provides device-wide, parallel operations for computing a 
- *       prefix scan across a sequence of data items residing within 
+ * @file DeviceScan provides device-wide, parallel operations for computing a
+ *       prefix scan across a sequence of data items residing within
  *       device-accessible memory.
  */
 
@@ -46,6 +46,8 @@
 #include <thrust/system/cuda/detail/core/triple_chevron_launch.h>
 
 #include <iterator>
+
+_CCCL_IMPLICIT_SYSTEM_HEADER
 
 CUB_NAMESPACE_BEGIN
 
@@ -465,7 +467,7 @@ struct DispatchScanByKey : SelectedPolicy
       }
 
       // Sync the stream if specified to flush runtime errors
-      
+
       error = CubDebug(detail::DebugSyncStream(stream));
       if (cudaSuccess != error)
       {

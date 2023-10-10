@@ -36,6 +36,8 @@
 #include <cub/util_math.cuh>
 #include <cub/util_type.cuh>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 namespace detail
@@ -716,7 +718,7 @@ struct DeviceUniqueByKeyPolicy
                                                       detail::default_delay_constructor_t<int>>;
   };
 
-  struct DefaultTuning 
+  struct DefaultTuning
   {
     static constexpr int INPUT_SIZE = sizeof(KeyT);
     enum

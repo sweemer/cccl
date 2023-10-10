@@ -48,6 +48,8 @@
 #include <cub/util_type.cuh>
 #include <cub/iterator/cache_modified_input_iterator.cuh>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 
@@ -135,7 +137,7 @@ struct AgentRadixSortDownsweep
     using ValuesItr = CacheModifiedInputIterator<LOAD_MODIFIER, ValueT, OffsetT>;
 
     // Radix ranking type to use
-    using BlockRadixRankT = 
+    using BlockRadixRankT =
       cub::detail::block_radix_rank_t<
         RANK_ALGORITHM, BLOCK_THREADS, RADIX_BITS, IS_DESCENDING, SCAN_ALGORITHM>;
 
@@ -202,7 +204,7 @@ struct AgentRadixSortDownsweep
     // The global scatter base offset for each digit (valid in the first RADIX_DIGITS threads)
     OffsetT bin_offset[BINS_TRACKED_PER_THREAD];
 
-    std::uint32_t current_bit; 
+    std::uint32_t current_bit;
     std::uint32_t num_bits;
 
     // Whether to short-cirucit
@@ -488,15 +490,15 @@ struct AgentRadixSortDownsweep
         OffsetT           relative_bin_offsets[ITEMS_PER_THREAD];
 
         // Assign default (min/max) value to all keys
-        bit_ordered_type default_key = IS_DESCENDING 
-                                     ? traits::min_raw_binary_key(decomposer) 
+        bit_ordered_type default_key = IS_DESCENDING
+                                     ? traits::min_raw_binary_key(decomposer)
                                      : traits::max_raw_binary_key(decomposer);
 
         // Load tile of keys
         LoadKeys(
             keys,
             block_offset,
-            valid_items, 
+            valid_items,
             default_key,
             Int2Type<FULL_TILE>(),
             Int2Type<LOAD_WARP_STRIPED>());

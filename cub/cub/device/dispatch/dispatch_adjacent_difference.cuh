@@ -40,6 +40,8 @@
 
 #include <iterator>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 template <typename AgentDifferenceInitT, typename InputIteratorT, typename InputT, typename OffsetT>
@@ -67,10 +69,10 @@ DeviceAdjacentDifferenceDifferenceKernel(InputIteratorT input,
                                          DifferenceOpT difference_op,
                                          OffsetT num_items)
 {
-  using ActivePolicyT = 
+  using ActivePolicyT =
     typename ChainedPolicyT::ActivePolicy::AdjacentDifferencePolicy;
 
-  // It is OK to introspect the return type or parameter types of the 
+  // It is OK to introspect the return type or parameter types of the
   // `operator()` function of `__device__` extended lambda within device code.
   using OutputT = detail::invoke_result_t<DifferenceOpT, InputT, InputT>;
 
@@ -94,7 +96,7 @@ DeviceAdjacentDifferenceDifferenceKernel(InputIteratorT input,
               num_items);
 
   int tile_idx = static_cast<int>(blockIdx.x);
-  OffsetT tile_base  = static_cast<OffsetT>(tile_idx) 
+  OffsetT tile_base  = static_cast<OffsetT>(tile_idx)
                      * ActivePolicyT::ITEMS_PER_TILE;
 
   agent.Process(tile_idx, tile_base);
@@ -313,7 +315,7 @@ struct DispatchAdjacentDifference : public SelectedPolicy
               num_items);
 
       error = CubDebug(detail::DebugSyncStream(stream));
-      
+
       if (cudaSuccess != error)
       {
         break;

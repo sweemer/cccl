@@ -54,6 +54,8 @@
 
 #include <nv/target>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 
@@ -196,9 +198,9 @@ DeviceSpmvEmptyMatrixKernel(SpmvParams<ValueT, OffsetT> spmv_params)
     {
         ValueT result = 0.0;
 
-        CUB_IF_CONSTEXPR(HAS_BETA) 
+        CUB_IF_CONSTEXPR(HAS_BETA)
         {
-            result += spmv_params.beta * spmv_params.d_vector_y[row]; 
+            result += spmv_params.beta * spmv_params.d_vector_y[row];
         }
 
         spmv_params.d_vector_y[row] = result;
@@ -838,7 +840,7 @@ struct DispatchSpmv
             constexpr bool has_beta = false;
 
             if (CubDebug(error = Dispatch(
-                d_temp_storage, temp_storage_bytes, spmv_params, stream, 
+                d_temp_storage, temp_storage_bytes, spmv_params, stream,
                 DeviceSpmv1ColKernel<PtxSpmvPolicyT, ValueT, OffsetT>,
                 DeviceSpmvSearchKernel<PtxSpmvPolicyT, OffsetT, CoordinateT, SpmvParamsT>,
                 DeviceSpmvKernel<PtxSpmvPolicyT, ScanTileStateT, ValueT, OffsetT, CoordinateT, has_alpha, has_beta>,

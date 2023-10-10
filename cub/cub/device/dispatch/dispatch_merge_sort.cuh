@@ -36,6 +36,8 @@
 #include <thrust/system/cuda/detail/core/triple_chevron_launch.h>
 #include <thrust/detail/integer_math.h>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 template <bool UseVShmem,

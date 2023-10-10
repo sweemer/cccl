@@ -44,6 +44,8 @@
 #include "../iterator/cache_modified_input_iterator.cuh"
 #include "../iterator/constant_input_iterator.cuh"
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 
@@ -240,7 +242,7 @@ struct AgentSegmentFixup
         else
             BlockLoadPairs(temp_storage.load_pairs).Load(d_pairs_in + tile_offset, pairs);
 
-        // RLE 
+        // RLE
         #pragma unroll
         for (int ITEM = 1; ITEM < ITEMS_PER_THREAD; ++ITEM)
         {

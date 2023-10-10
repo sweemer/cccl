@@ -42,6 +42,8 @@
 #include <cub/device/dispatch/dispatch_spmv_orig.cuh>
 #include <cub/util_deprecated.cuh>
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 CUB_NAMESPACE_BEGIN
 
 

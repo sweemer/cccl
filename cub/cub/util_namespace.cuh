@@ -47,6 +47,8 @@
 #error CUB requires a definition of CUB_NS_QUALIFIER when CUB_NS_PREFIX/POSTFIX are defined.
 #endif
 
+_CCCL_IMPLICIT_SYSTEM_HEADER
+
 /**
  * \def THRUST_CUB_WRAPPED_NAMESPACE
  * If defined, this value will be used as the name of a namespace that wraps the
